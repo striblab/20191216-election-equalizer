@@ -1,5 +1,5 @@
 <script>
-	import { projected_total_votes_statewide, projected_r_votes_statewide, projected_d_votes_statewide } from './stores.js';
+	import { total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, projected_total_votes_statewide, projected_r_votes_statewide, projected_d_votes_statewide } from './stores.js';
 	const commaNumber = require('comma-number')
 
 	const roundPct = function(input) {
@@ -31,10 +31,27 @@
 	// 	return roundPct(thirdPartyCounty / data_obj.votes_2016)
 	// }
 
+	let classification_label = function(classification) {
+		if (classification == 'outstate city') {
+			return 'Regional center'
+		} else if (classification == 'urban') {
+			return 'Urban'
+		} else if (classification == 'suburban') {
+			return 'Twin Cities suburbs'
+		} else if (classification == 'rural') {
+			return 'Rural'
+		}
+	}
+
 	export let turnout_modifier = 0;
 	export let partisan_modifier = 0;
 	export let other_party_modifier = 0;
 	export let other_party_partisan_modifier = 0;
+
+	total_votes_statewide_2016.update(n => n + county_data.votes_2016);
+	r_votes_statewide_2016.update(n => n + county_data.rVotes_2016);
+	d_votes_statewide_2016.update(n => n + county_data.dVotes_2016);
+
 	$ : {
 		if (!isNaN(partisan_modifier) && !isNaN(turnout_modifier)) {
 			let prev_projected_total_votes = projected_total_votes;
@@ -42,8 +59,11 @@
 			let prev_projected_d_votes = projected_d_votes;
 			projected_total_votes = Math.round(county_data.votes_2016 * (1 + (turnout_modifier / 100)));
 
-			let projected_base_r_pct = county_data.rPct_2016 + (partisan_modifier / 100);
-			let projected_base_d_pct = county_data.dPct_2016 - (partisan_modifier / 100);
+			let projected_base_r_pct = (county_data.rVotes_2016 / county_data.votes_2016) + (partisan_modifier / 100);
+			let projected_base_d_pct = (county_data.dVotes_2016 / county_data.votes_2016) - (partisan_modifier / 100);
+
+			// let projected_base_r_pct = county_data.rPct_2016 + (partisan_modifier / 100);
+			// let projected_base_d_pct = county_data.dPct_2016 - (partisan_modifier / 100);
 
 			projected_other_votes = thirdPartyCount(county_data) * (1 + (other_party_modifier / 100));
 			let projected_other_votes_diff = projected_other_votes - thirdPartyCount(county_data);
@@ -89,7 +109,7 @@
 
 <tr>
 	<td>{name}</td>
-	<td>{county_data.classification}</td>
+	<td>{classification_label(county_data.classification)}</td>
 	<td class="number">{commaNumber(county_data.votes_2016)}</td>
 	<td class="number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td>
 	<td class="number">{commaNumber(projected_total_votes)}</td>
