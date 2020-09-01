@@ -98,20 +98,22 @@
 	}
 
 </script>
-<!-- 
+
+<svelte:window bind:scrollY/>
+
+
 <div class="hero">
 	<h1>What would it take for Trump to win Minnesota?</h1>
 
 	<p>Geography is just one of many variables in a presidential race. But it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Try changing voter turnout and the partisan mix in different regions based on the 2016 election -- when Hillary Clinton won the state by less than 2 percent -- to discover what it would take to flip Minnesota red.</p>
-</div> -->
+</div>
 
-<svelte:window bind:scrollY/>
 
 <section id="year-comparison" class="fixed">
 
 	<div class="project-wrapper" >
 		<div id="totals-2020" class="year-totals">
-			<h2>2020 Projected Minnesota election results</h2>
+			<h2>What would it take for Trump to win Minnesota?</h2>
 			<div class="cand-totals">
 				<div class:winner="{$projected_d_votes_statewide > $projected_r_votes_statewide}" class="cand-info d">
 					<div class="cand-mug"></div>
@@ -159,7 +161,6 @@
 
 	
 </section>
-
 <!-- <div class="totals r" class:winner="{$projected_r_votes_statewide > $projected_d_votes_statewide}">Republican: {projected_r_pct}% {commaNumber($projected_r_votes_statewide)}</div>
 <div class="totals d" class:winner="{$projected_d_votes_statewide > $projected_r_votes_statewide}">Democrat: {projected_d_pct}% {commaNumber($projected_d_votes_statewide)}</div>
 <div>Total statewide projected votes: {commaNumber($projected_total_votes_statewide)}</div> -->
