@@ -189,13 +189,22 @@
 		</label>
 
 		<div class="expert">
-			<label>change other party percentage<br/>
-				<input type=number bind:value={other_party_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0>
-				<input type=range bind:value={other_party_modifiers["rural"]} min=-10 max=10 step=0.1>
+			<h5>Expert mode</h5>
+			<label>Change other party percentage<br/>
+				<input type=range bind:value={other_party_modifiers["rural"]} min=-10 max=10 step=0.1 class="density">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={other_party_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="more button">+</p>
+				</div>
 			</label>
 			<label>Which party do new "other party" votes take from?<br/>
-				<input type=number bind:value={other_party_partisan_modifiers["rural"]} min=0 max=1 step=0.1>
-				All from Dem <input type=range bind:value={other_party_partisan_modifiers["rural"]} min=0 max=1 step=0.1 placeholder=0.5> All from GOP
+				<input type=range bind:value={other_party_partisan_modifiers["rural"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={other_party_partisan_modifiers["rural"]} min=0 max=1 step=0.1>
+					<p class="more button">+</p>
+				</div>
 			</label>
 		</div>
 	</div>
@@ -221,13 +230,23 @@
 		</label>
 
 		<div class="expert">
+			<h5>Expert mode</h5>
 			<label>Change other party percentage<br/>
-				<input type=number bind:value={other_party_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
-				<input type=range bind:value={other_party_modifiers["outstate city"]} min=-10 max=10 step=0.1>
+				<input type=range bind:value={other_party_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
+				<div class="wrapper">
+				<p class="less button">-</p>
+					<input type=number bind:value={other_party_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="more button">+</p>
+				</div>
+				
 			</label>
 			<label>Which party do new "other party" votes take from?<br/>
-				<input type=number bind:value={other_party_partisan_modifiers["outstate city"]} min=0 max=1 step=0.1>
-				All from Dem <input type=range bind:value={other_party_partisan_modifiers["outstate city"]} min=0 max=1 step=0.1 placeholder=0.5> All from GOP
+				<input type=range bind:value={other_party_partisan_modifiers["outstate city"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
+				<div class="wrapper">
+				<p class="less button">-</p>
+					<input type=number bind:value={other_party_partisan_modifiers["outstate city"]} min=0 max=1 step=0.1>
+					<p class="more button">+</p>
+				</div>
 			</label>
 		</div>
 	</div>
@@ -253,13 +272,24 @@
 		</label>
 
 		<div class="expert">
-			<label>change other party percentage<br/>
-				<input type=number bind:value={other_party_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
-				<input type=range bind:value={other_party_modifiers["suburban"]} min=-10 max=10 step=0.1>
+			<h5>Expert mode</h5>
+			<label>Change other party percentage<br/>
+				<input type=range bind:value={other_party_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
+				<div class="wrapper">
+				<p class="less button">-</p>
+					<input type=number bind:value={other_party_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="more button">+</p>
+				</div>
+				
+				
 			</label>
 			<label>Which party do new "other party" votes take from?<br/>
-				<input type=number bind:value={other_party_partisan_modifiers["suburban"]} min=0 max=1 step=0.1>
-				All from Dem <input type=range bind:value={other_party_partisan_modifiers["suburban"]} min=0 max=1 step=0.1 placeholder=0.5> All from GOP
+				<input type=range bind:value={other_party_partisan_modifiers["suburban"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={other_party_partisan_modifiers["suburban"]} min=0 max=1 step=0.1>
+					<p class="more button">+</p>
+				</div>	
 			</label>
 		</div>
 	</div>
@@ -285,13 +315,24 @@
 		</label>
 
 		<div class="expert">
-			<label>change other party percentage<br/>
-				<input type=number bind:value={other_party_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
-				<input type=range bind:value={other_party_modifiers["urban"]} min=-10 max=10 step=0.1>
+			<h5>Expert mode</h5>
+			<label>Change other party percentage<br/>
+				<input type=range bind:value={other_party_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={other_party_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="more button">+</p>
+				</div>
+				
+				
 			</label>
 			<label>Which party do new "other party" votes take from?<br/>
-				<input type=number bind:value={other_party_partisan_modifiers["urban"]} min=0 max=1 step=0.1>
-				All from Dem <input type=range bind:value={other_party_partisan_modifiers["urban"]} min=0 max=1 step=0.1 placeholder=0.5> All from GOP
+				<input type=range bind:value={other_party_partisan_modifiers["urban"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={other_party_partisan_modifiers["urban"]} min=0 max=1 step=0.1>
+					<p class="more button">+</p>
+				</div>
 			</label>
 		</div>
 	</div>
