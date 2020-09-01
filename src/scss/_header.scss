@@ -1,0 +1,160 @@
+#year-comparison {
+	background: white;
+	width: 100%;
+}
+
+.project-wrapper {
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	max-width: 1200px;
+	height: 200px;
+	padding-top: 1vh;
+}
+
+.year-totals h2 {
+	text-align: center;
+	font-family: "Popular";
+	font-weight: bold;
+	width: 100%;
+	display: block;
+	text-transform: uppercase; 
+	letter-spacing: 1.5px;
+	font-size: 16px;
+}
+
+.fixed {
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+	left: 0;
+	background: white;
+	border-bottom: 2px solid #E5E7E9;
+}
+.inline {
+	position: relative;
+	background: white;
+	/*top: 0;
+	z-index: 1000;
+	left: 0;*/
+}
+div.cand-totals {
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+	position: relative;
+	height: 200px;
+	div.cand-info {
+		position: absolute;
+		top: 0;
+		&.d {
+			left: -50px;
+			div.cand-mug {
+				background-color: #3498DB;
+				background-image: url(https://static.startribune.com/svg/biden.png);
+				background-size: cover;
+				background-position: 50% 0%;
+			}
+			h4.cand-name {
+				left: 100px;
+				text-align: left;
+				&.old {
+					left: 90px;
+				}
+			}
+		}
+		&.r {
+			right: -50px;
+			div.cand-mug {
+				background-color: #C0392B;
+				background-image: url(https://static.startribune.com/svg/trump.png);
+				background-size: cover;
+				background-position: 50% 0%;
+			}
+			h4.cand-name {
+				right: 100px;
+				text-align: right;
+				&.old {
+					right: 90px;
+				}
+			}
+		}
+		div.cand-mug {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			margin: 0 !important;
+			z-index: 1000;
+
+		}
+		h4.cand-name {
+			font-size: 14px;
+			font-weight: normal;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+			position: absolute;
+			top: -20px;
+			width: 300px;
+			b {
+				display: inline-block;
+				margin: 0px 10px;
+			}
+			&.old {
+				top: 100px;
+				font-size: 12.5px;
+				margin: 0 5px;
+
+
+			}
+		}
+	}
+}
+
+div.bar {
+	position: absolute;
+	top: 20px; 
+	z-index: -1;
+	transition: 0.5s background;
+	&.old {
+		height: 1px;
+		top: 90px;
+	}
+	&.trump {
+	 	right: 0;
+	 	background: transparent;
+	 	border: 2px solid #C0392B;
+	 	&.winner {
+			background: #F2D7D5;
+			transition: 0.5s background;
+		}
+		&.old {
+			background: #C0392B;
+		}
+	}
+	&.biden {
+	 	left: 0;
+	 	border: 2px solid #3498DB;
+	 	background: transparent;
+	 	h3 {
+	 		text-align: right;
+	 		
+	 		
+	 	}
+	 	&.winner {
+			background: #D6EAF8;
+			transition: 0.5s background;
+		}
+		&.old {
+			background: #3498DB;
+		}
+	}
+	h3 {
+		font-family: "Benton Sans";
+	 	font-weight: bold;
+	 	text-align: left;
+	 	font-size: 24px;
+	 	padding: 10px;
+	 	line-height: 1;
+	 	margin: 0;
+	}
+}

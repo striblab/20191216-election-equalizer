@@ -85,30 +85,8 @@
 
 </script>
 
-<style>
-
-	td.number {
-		text-align: right;
-	}
-
-	td {
-		padding: 4px 10px;
-		border-bottom: 2px #FFF solid;
-	}
-
-	td.D-D-2016,
-	td.D-D-projected {
-		background-color: #9999ff;
-	}
-
-	td.R-R-2016,
-	td.R-R-projected {
-		background-color: #ff9999;
-	}
-</style>
-
 <tr>
-	<td>{name}</td>
+	<td class="county">{name}</td>
 	<td>{classification_label(county_data.classification)}</td>
 	<td class="number">{commaNumber(county_data.votes_2016)}</td>
 	<td class="number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td>

@@ -1,0 +1,44 @@
+table.county-projections {
+	max-width: 1200px;
+	margin: 0 auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+td.number {
+	text-align: right;
+}
+
+td {
+	padding: 10px 10px;
+	border-bottom: 2px #FFF solid;
+}
+
+td.county {
+	font-weight: bold;
+}
+
+td.D-D-2016,
+td.D-D-projected {
+	border-left: 1px solid #3498DB;
+	border-right: 1px solid #3498DB;
+	border-bottom: 1px solid #3498DB;
+	background: #D6EAF8;
+}
+
+td.R-R-2016,
+td.R-R-projected {
+	border-left: 1px solid #C0392B;
+	border-right: 1px solid #C0392B;
+	border-bottom: 1px solid #C0392B;
+	background: #F2D7D5;
+}
+
+th {
+	text-align: left;
+	border-bottom: 1px solid black;
+}
+
+tr:nth-child(even) {
+	background: #F2F3F4;
+}
