@@ -1,0 +1,73 @@
+.hero {
+	height: auto;
+	width: 100%;
+	padding-top: 15vh;
+	text-align: center;
+	img.logo {
+		height: 23px;
+		width: auto;
+		margin-bottom: 55px;	
+	}
+	h1 {
+		font-family: "Benton Sans";
+		font-weight: bold; 
+		font-size: 65px;
+		letter-spacing: -1px;
+		max-width: 900px;
+		margin: 85%;
+		margin: 0 auto;
+		text-align: center;
+		span.party {
+			display: inline-block;
+
+			&.republican {
+				color: #C0392B;
+				/*border-bottom: 4px solid #C0392B;*/
+				.cand-mug {
+					width: 75px;
+					margin-bottom: -15px;
+					height: 75px;
+					border-radius: 50%;
+					background-color: #C0392B;
+					background-image: url(https://static.startribune.com/svg/trump.png);
+					background-size: cover;
+					background-position: 50% 0%;
+					display: inline-block;
+				}
+			}
+			&.democrat {
+				color: #3498DB;
+				/*border-bottom: 4px solid #3498DB;*/
+				.cand-mug {
+					width: 75px;
+					margin-bottom: -15px;
+					height: 75px;
+					border-radius: 50%;
+					background-color: #3498DB;
+					background-image: url(https://static.startribune.com/svg/biden.png);
+					background-size: cover;
+					background-position: 50% 0%;
+					display: inline-block;
+				}
+			}
+		}
+	}
+	h2 {
+		font-family: "Benton Sans";
+		font-weight: normal;
+		font-size: 22px;
+		max-width: 950px;
+		line-height: 1.5;
+		margin: 85%;
+		margin: 0 auto;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		text-align: center;
+	}
+	p.byline-special {
+		font-weight: normal;
+		font-size: 14px;
+		text-align: center;
+		line-height: 1.5;
+	}
+}

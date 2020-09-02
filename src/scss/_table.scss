@@ -18,6 +18,11 @@ td.county {
 	font-weight: bold;
 }
 
+tr.sticky {
+	background: white;
+	padding-top: 10px;
+}
+
 td.D-D-2016,
 td.D-D-projected {
 	border-left: 1px solid #3498DB;
@@ -37,16 +42,9 @@ td.R-R-projected {
 th {
 	text-align: left;
 	border-bottom: 1px solid black;
+	background: white;
 }
 
 tr:nth-child(even) {
 	background: #F2F3F4;
-}
-
-.hero {
-	
-	max-width: 900px;
-	margin: 0 auto;
-	margin-top: 40vh;
-	text-align: center;
 }

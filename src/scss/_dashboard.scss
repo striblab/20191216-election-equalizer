@@ -36,21 +36,26 @@
 		text-transform: uppercase;
 		letter-spacing: 1px;
 	}
-	div.wrapper {
-		display: flex;
-		vertical-align: middle;
-		width: 115px;
-		margin: 0 auto;
-		margin-top: -10px;
-		margin-bottom: 30px;
-		.button {
-			width: 20px;
-			height: 20px;
-			border-radius: 50%;
-			border: 1px solid gray;
-			color: gray;
-			margin: 5px;
-		}
+}
+
+div.wrapper {
+	display: flex;
+	vertical-align: middle;
+	width: 125px;
+	margin: 0 auto;
+	margin-top: -10px;
+	margin-bottom: 30px;
+	.button {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		border: 1px solid gray;
+		color: gray;
+		margin: 5px;
+		align-self: center;
+		text-align: center;
+		padding: 0;
+		line-height: 1.4;
 	}
 }
 
@@ -100,6 +105,7 @@ button.reset-button {
 	.reset {
 		width: 15px;
 		padding-right: 5px;
+		margin-bottom: -2.5px;
 		display: inline-block;
 	}
 }

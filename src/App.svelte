@@ -80,8 +80,11 @@
 		}
 	}
 
+
+
 	export let scrollY;
 	export let y_from_top;
+
 
 	$: {
 		let happy = scrollY;
@@ -97,33 +100,44 @@
 	  element.classList.toggle("expanded");
 	}
 
+	let scenario2 = function () {
+	  var ruralP = document.getElementById("rural-p");
+	  var ruralD = document.getElementById("rural-d");
+	  ruralD.value = "10";
+	}
 </script>
 
-<svelte:window bind:scrollY/>
-
-
 <div class="hero">
-	<h1>What would it take for Trump to win Minnesota?</h1>
+	<img class="logo black" src="http://static.startribune.com/images/icons/startribune-logo-black.svg" alt="star tribune logo">
+	<h1>What would it take for <span class="republican party">Trump <div class="cand-mug"></div></span> to win Minnesota over <span class="democrat party">Biden <div class="cand-mug"></div></span>?</h1>
 
-	<p>Geography is just one of many variables in a presidential race. But it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Try changing voter turnout and the partisan mix in different regions based on the 2016 election -- when Hillary Clinton won the state by less than 2 percent -- to discover what it would take to flip Minnesota red.</p>
+	<h2>Geography is just one of many variables in a presidential race. But it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Try changing voter turnout and the partisan mix in different regions based on the 2016 election -- when Hillary Clinton won the state by less than 2 percent -- to discover what it would take to flip Minnesota red.</h2>
+
+	<p class="byline-special"><b>By Michael Corey, Political reporter here and here</b><br>Star Tribune • Sept. XX, 2020</p>
+	<!-- sharing -->
 </div>
 
+<div class="scenario first">
+	<h5>What we know from 2016</h5>
+	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget convallis pulvinar, nisl dolor luctus nisl, at ornare odio massa non leo. Quisque eleifend dictum neque, eget sagittis orci suscipit vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget. If the 2020 election looked the same as the previous presidential, election, Biden would win Minnesota with 46.9% of the vote.</p>
+	<p>Lets look at some scenarios where Trump could come out ahead.</p>
+</div>
 
-<section id="year-comparison" class="fixed">
-
+<section id="year-comparison">
 	<div class="project-wrapper" >
 		<div id="totals-2020" class="year-totals">
 			<h2>What would it take for Trump to win Minnesota?</h2>
 			<div class="cand-totals">
 				<div class:winner="{$projected_d_votes_statewide > $projected_r_votes_statewide}" class="cand-info d">
 					<div class="cand-mug"></div>
-					<h4 class="cand-name"><b>Joe Biden</b> {commaNumber($projected_d_votes_statewide)} votes</h4>
+					<h4 class="cand-name"><b>Joe Biden</b></h4>
 					<h4 class="cand-name old"><b>2016: Hillary Clinton</b> {commaNumber($d_votes_statewide_2016)}</h4>
 				</div>
 
 				<div class:winner="{$projected_r_votes_statewide > $projected_d_votes_statewide}" class="cand-info r" >
 					<div class="cand-mug"></div>
-					<h4 class="cand-name">{commaNumber($projected_r_votes_statewide)} votes <b>Donald Trump</b></h4>
+					<h4 class="cand-name"><b>Donald Trump</b></h4>
 					<h4 class="cand-name old"><b>2016: Donald Trump</b> {commaNumber($r_votes_statewide_2016)}</h4>
 				</div>
 
@@ -133,7 +147,8 @@
 				<div class:winner="{$projected_d_votes_statewide > $projected_r_votes_statewide}" class="biden bar" style="width: {projected_d_pct}%;">
 					<h3>{projected_d_pct}%</h3>
 				</div>
-
+				<h4 class="cand-votes r" style="right: calc({projected_r_pct}% - 150px)">{commaNumber($projected_r_votes_statewide)} votes</h4>
+				<h4 class="cand-votes d" style="left: calc({projected_d_pct}% - 150px);">{commaNumber($projected_d_votes_statewide)} votes</h4>
 				<div class="trump bar old" style="width: {r_pct_2016}%;"></div>
 				<div class="biden bar old" style="width: {d_pct_2016}%;"></div>
 			
@@ -158,9 +173,135 @@
 			</div>
 		</div>
 	</div> -->
-
-	
 </section>
+
+<div class="scenario second">
+	<h5>Rural revolt</h5>
+	<p>Trump has campagined on winning Minnesota based on driving voter turnout in rural counties. Minnesota has high voter turnout already. Trump would have to increase voter turnout by more than </p>
+	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
+	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
+	<p>Use the sliders below to explor scenarios in the rural counties that could lead to a Trump victory.</p>
+	<div class="inline-ex">
+		
+		<div class="inline-wrapper">
+			<p class="explainer"><b>Turnout percentage in rural counties</b> would need to increase by at least 5 percent.</p>
+			<label>	
+				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0>
+					<p class="more button">+</p>
+				</div>
+			</label>
+			<p class="explainer"><b>Or partisan balance in rural counties</b> would need to lean 4 percent more Republican.</p>
+			<label>
+				<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan" id="rural-p">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0 >
+					<p class="more button">+</p>
+				</div>
+			</label>
+		</div>
+		<div class="map">
+			<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
+		</div>
+	</div>
+	<button class="reset-button" type="button" on:click={resetDials}>
+	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
+Reset dials</button>
+	<!-- <button class="show" on:click={scenario2}>Play this scenario</button> -->
+</div>
+
+
+<div class="scenario third clear">
+	<h5>Suburban thing here</h5>
+	<p>Trump has campagined on winning Minnesota based on driving voter turnout in rural counties. Minnesota has high voter turnout already. Trump would have to increase voter turnout by more than </p>
+	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
+	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
+	<p>Use the sliders below to explor scenarios in the suburban counties that could lead to a Trump victory.</p>
+
+	<div class="inline-ex">
+		<div class="inline-wrapper">
+			<p class="explainer"><b>Turnout percentage in suburban counties</b> would need to increase by at least 5 percent.</p>
+			<label>
+				<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="more button">+</p>
+				</div>
+			</label>
+			<p class="explainer"><b>Or partisan balance in suburban counties</b> would need to lean 4 percent more Republican.</p>
+			<label>
+				<input type=range bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 class="partisan">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="more button">+</p>
+				</div>
+			</label>
+		</div>
+		<div class="map">
+			<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
+		</div>
+	</div>
+	<button class="reset-button" type="button" on:click={resetDials}>
+	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
+Reset dials</button>
+
+	<!-- <button class="show" on:click={scenario2}>Play this scenario</button> -->
+</div>
+
+
+<div class="scenario fourth">
+	<h5>Two counties, majority of votes</h5>
+	<p>Hennepin and Ramsey counties, home of the Twin Cities, account for X percent of votes in Minnesota. As a result, higher turnout here does stuf here and stuff.</p>
+	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
+	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
+	<p>Use the sliders below to explor scenarios in the suburban counties that could lead to a Trump victory.</p>
+
+	<div class="inline-ex">
+		<div class="inline-wrapper">
+			<p class="explainer"><b>Turnout percentage in urban counties</b> would need to increase by at least 5 percent.</p>
+			<label>
+				<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="more button">+</p>
+				</div>
+			</label>
+			<p class="explainer"><b>Or partisan balance in urban counties</b> would need to lean 4 percent more Republican.</p>
+			<label>
+				<input type=range bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 class="partisan">
+				<div class="wrapper">
+					<p class="less button">-</p>
+					<input type=number bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="more button">+</p>
+				</div>
+			</label>
+		</div>
+		<div class="map">
+			<img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map">
+		</div>
+	</div>
+	<button class="reset-button" type="button" on:click={resetDials}>
+	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
+Reset dials</button>
+
+	<!-- <button class="show" on:click={scenario2}>Play this scenario</button> -->
+</div>
+
+<div class="scenario last">
+	<h5>Your turn</h5>
+	<p>Explore possible scenarios below using all the tools at once, wow! ncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.  Vivamus vulputate, mi eget.</p>
+</div>
+
+
+
+
+
 <!-- <div class="totals r" class:winner="{$projected_r_votes_statewide > $projected_d_votes_statewide}">Republican: {projected_r_pct}% {commaNumber($projected_r_votes_statewide)}</div>
 <div class="totals d" class:winner="{$projected_d_votes_statewide > $projected_r_votes_statewide}">Democrat: {projected_d_pct}% {commaNumber($projected_d_votes_statewide)}</div>
 <div>Total statewide projected votes: {commaNumber($projected_total_votes_statewide)}</div> -->
@@ -168,10 +309,10 @@
 	<div id="rural-dashboard" class="dashboard">
 		
 		<h3>Rural<br></h3>
-		<img src="https://static.startribune.com/svg/blankmap.svg" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			
-			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density">
+			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
 				<p class="less button">-</p>
 				<input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0>
@@ -180,7 +321,7 @@
 		</label>
 
 		<label>Partisan balance<br/>
-			<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan">
+			<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan" id="rural-p">
 			<div class="wrapper">
 				<p class="less button">-</p>
 				<input type=number bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0 >
@@ -211,7 +352,7 @@
 
 	<div id="outcity-dashboard"  class="dashboard">
 		<h3>Greater MN counties with regional centers</h3>
-		<img src="https://static.startribune.com/svg/blankmap.svg" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
@@ -253,7 +394,7 @@
 
 	<div id="suburban-dashboard"  class="dashboard">
 		<h3>Suburban Twin Cities</h3>
-		<img src="https://static.startribune.com/svg/blankmap.svg" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
@@ -296,7 +437,7 @@
 
 	<div id="urban-dashboard"  class="dashboard">
 		<h3>Hennepin and Ramsey counties</h3>
-		<img src="https://static.startribune.com/svg/blankmap.svg" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
@@ -342,11 +483,11 @@
 
 
 <button class="reset-button" type="button" on:click={resetDials}>
-	<img src="https://static.startribune.com/svg/reset.svg" class="reset">
+	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
 Reset dials</button>
 
 <table class="county-projections" cellspacing="0" cellpadding="0">
-	<tr>
+	<tr class="sticky">
 		<th>County</th>
 		<th>Type</th>
 		<th>2016 total votes</th>

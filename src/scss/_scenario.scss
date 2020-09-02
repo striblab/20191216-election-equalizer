@@ -1,0 +1,56 @@
+.scenario {
+	max-width: 650px;
+	width: 85%;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	margin: 0 auto;
+	&.first {
+		padding-bottom: 50px;
+	}
+	&.last {
+		/*text-align: center;*/
+		padding-bottom: 0;
+	}
+	h5 {
+		font-family: "Popular";
+		font-weight: bold;
+		font-size: 15px;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+	p {
+		font-family: "Benton Sans";
+		font-weight: normal;
+		font-size: 17px;
+		line-height: 1.5;
+	}
+	p.explainer {
+		margin-bottom: 0px;
+	}
+	button.reset-button {
+		margin-left: 0;
+		margin-top: 10px;
+	}
+}
+
+.inline-ex {
+	width: 100%;
+	display: flex;
+	align-items: start;
+  	justify-content: center;
+  	margin-top: 70px;
+	.map {
+		width: 35%;
+		margin-left: 5%;
+		padding-top: 10px;
+		img {
+			width: 100%;
+		}
+	}
+	.inline-wrapper {
+		width: 60%;
+	}
+	label {
+		font-weight: bold;
+	}
+}
