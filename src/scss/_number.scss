@@ -1,0 +1,146 @@
+input[type=number] {
+	text-align: left;
+	position: relative;
+	/*width: 120px;*/
+}
+
+div.scenario {
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button {  
+	   opacity: 1;
+	   width: 50px;
+	   height: 50px;
+	   padding: 10px;
+	   background: transparent;
+	   color: gray;
+	   display: block;
+	   position: relative;
+	   transform: rotate(90deg);
+	   z-index: 10000;
+	   &:hover {
+	   	cursor: pointer;
+	   }
+	}
+
+	input[type="number"] {
+	    position: relative;
+	    text-align: right;
+	}
+
+
+	/*input[type=number]:before {
+		content: '+';
+		color: gray;
+		opacity: 1;
+		font-size: 16px;
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		border: 1px solid gray;
+		right: 30px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 100;
+	}*/
+
+	div.wrapper {
+		display: block;
+		vertical-align: middle;
+		width: 100px;
+		margin: 0 auto;
+		margin-top: -10px;
+		margin-bottom: 30px;
+		position: relative;
+		.button {
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			border: 1px solid gray;
+			color: gray;
+			margin: 5px;
+			align-self: center;
+			text-align: center;
+			padding: 0;
+			line-height: 1.4;
+			opacity: 1;
+			position: absolute;
+			top: -2.5px;
+			z-index: 100;
+			&:hover {
+				cursor:pointer;
+				color: #333;
+				border: 1px solid #333;
+			}
+			&.less {
+				left: 60%;
+			}
+			&.more {
+				right: -30%;
+			}
+		}
+	}
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+   width: 50px;
+   height: 50px;
+   padding: 10px;
+   background: transparent;
+   color: gray;
+   display: block;
+   position: relative;
+   transform: rotate(90deg);
+   z-index: 10000;
+   &:hover {
+   	cursor: pointer;
+   }
+}
+
+input[type="number"] {
+    position: relative;
+    text-align: right;
+}
+
+input[type="number"]:focus {
+    outline: none;
+}
+
+div.wrapper {
+	display: block;
+	vertical-align: middle;
+	width: 125px;
+	margin: 0 auto;
+	margin-top: -10px;
+	margin-bottom: 30px;
+	position: relative;
+	.button {
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		border: 1px solid gray;
+		color: gray;
+		margin: 5px;
+		align-self: center;
+		text-align: center;
+		padding: 0;
+		line-height: 1.4;
+		opacity: 1;
+		position: absolute;
+		top: -2.5px;
+		z-index: 100;
+		&:hover {
+			cursor:pointer;
+			color: #333;
+			border: 1px solid #333;
+		}
+		&.less {
+			left: 45%;
+		}
+		&.more {
+			right: -0%;
+		}
+	}
+}

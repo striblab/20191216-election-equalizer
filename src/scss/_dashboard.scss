@@ -38,27 +38,6 @@
 	}
 }
 
-div.wrapper {
-	display: flex;
-	vertical-align: middle;
-	width: 125px;
-	margin: 0 auto;
-	margin-top: -10px;
-	margin-bottom: 30px;
-	.button {
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-		border: 1px solid gray;
-		color: gray;
-		margin: 5px;
-		align-self: center;
-		text-align: center;
-		padding: 0;
-		line-height: 1.4;
-	}
-}
-
 p.expert-mode {
 	margin: 0 auto;
 	width: 390px;
@@ -81,10 +60,6 @@ p.expert-mode {
 		font-weight: bold;
 		font-size: 13px;
 	}
-}
-
-input[type=number] {
-	text-align: center;
 }
 
 button.reset-button {

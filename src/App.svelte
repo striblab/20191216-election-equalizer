@@ -155,24 +155,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- <div id="totals-2016" class="year-totals">
-		<h2>2016</h2>
-		<div class="cand-totals">
-			<img class="cand-mug" src="img/placeholder.jpg" alt="Hillary Clinton"/>
-			<div class="cand-info">
-				<span class="cand-name">Hillary Clinton</span>
-				<span class="totals d winner">{d_pct_2016}% {commaNumber($d_votes_statewide_2016)}</span>
-			</div>
-		</div>
-		<div class="cand-totals">
-			<img class="cand-mug" src="img/placeholder.jpg" alt="Donald Trump"/>
-			<div class="cand-info">
-				<span class="cand-name">Donald Trump</span>
-				<span class="totals r">{r_pct_2016}% {commaNumber($r_votes_statewide_2016)}</span>
-			</div>
-		</div>
-	</div> -->
 </section>
 
 <div class="scenario second">
