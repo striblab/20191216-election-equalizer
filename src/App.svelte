@@ -3,7 +3,7 @@
 	import County from './County.svelte';
 	const commaNumber = require('comma-number')
 
-	import { total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, projected_total_votes_statewide, projected_r_votes_statewide, projected_d_votes_statewide } from './stores.js';
+	import { elligible_voters_rural, elligible_voters_outstate, elligible_voters_suburban, elligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban } from './stores.js';
 
 	export let county_list = CountyData.sort( function( a, b ) {
 	    return a.county < b.county ? -1 : a.county > b.county ? 1 : 0;
@@ -37,17 +37,44 @@
 		"urban": 0.5
 	}
 
-	let projected_r_pct = 0;
-	let projected_d_pct = 0;
+	let proj_r_pct = 0;
+	let proj_d_pct = 0;
 	let d_pct_2016 = 0;
 	let r_pct_2016 = 0;
+	let total_votes_rural_2016 = 0;
+	let turnout_rural_2016 = 0;
+	let turnout_rural_projected = 0;
+
+	let total_votes_outstate_2016 = 0;
+	let turnout_outstate_2016 = 0;
+	let turnout_outstate_projected = 0;
+
+	let total_votes_suburban_2016 = 0;
+	let turnout_suburban_2016 = 0;
+	let turnout_suburban_projected = 0;
+
+	let total_votes_urban_2016 = 0;
+	let turnout_urban_2016 = 0;
+	let turnout_urban_projected = 0;
 	$ : {
 
 		d_pct_2016 = Math.round(($d_votes_statewide_2016 / $total_votes_statewide_2016) * 1000) / 10;
 		r_pct_2016 = Math.round(($r_votes_statewide_2016 / $total_votes_statewide_2016) * 1000) / 10;
 
-		projected_r_pct = Math.round(($projected_r_votes_statewide / $projected_total_votes_statewide) * 1000) / 10;
-		projected_d_pct = Math.round(($projected_d_votes_statewide / $projected_total_votes_statewide) * 1000) / 10;
+		proj_r_pct = Math.round(($proj_r_votes_statewide / $proj_total_votes_statewide) * 1000) / 10;
+		proj_d_pct = Math.round(($proj_d_votes_statewide / $proj_total_votes_statewide) * 1000) / 10;
+
+		turnout_rural_2016 = Math.round(($total_votes_regional_2016_rural / $elligible_voters_rural) * 1000) / 10;
+		turnout_rural_projected = Math.round(($proj_total_votes_regional_rural / $elligible_voters_rural) * 1000) / 10;
+
+		turnout_outstate_2016 = Math.round(($total_votes_regional_2016_outstate / $elligible_voters_outstate) * 1000) / 10;
+		turnout_outstate_projected = Math.round(($proj_total_votes_regional_outstate / $elligible_voters_outstate) * 1000) / 10;
+
+		turnout_suburban_2016 = Math.round(($total_votes_regional_2016_suburban / $elligible_voters_suburban) * 1000) / 10;
+		turnout_suburban_projected = Math.round(($proj_total_votes_regional_suburban / $elligible_voters_suburban) * 1000) / 10;
+
+		turnout_urban_2016 = Math.round(($total_votes_regional_2016_urban / $elligible_voters_urban) * 1000) / 10;
+		turnout_urban_projected = Math.round(($proj_total_votes_regional_urban / $elligible_voters_urban) * 1000) / 10;
 	}
 
 	let resetDials = function () {
@@ -129,29 +156,29 @@
 		<div id="totals-2020" class="year-totals">
 			<h2>What would it take for Trump to win Minnesota?</h2>
 			<div class="cand-totals">
-				<div class:winner="{$projected_d_votes_statewide > $projected_r_votes_statewide}" class="cand-info d">
+				<div class:winner="{$proj_d_votes_statewide > $proj_r_votes_statewide}" class="cand-info d">
 					<div class="cand-mug"></div>
 					<h4 class="cand-name"><b>Joe Biden</b></h4>
 					<h4 class="cand-name old"><b>2016: Hillary Clinton</b> {commaNumber($d_votes_statewide_2016)}</h4>
 				</div>
 
-				<div class:winner="{$projected_r_votes_statewide > $projected_d_votes_statewide}" class="cand-info r" >
+				<div class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}" class="cand-info r" >
 					<div class="cand-mug"></div>
 					<h4 class="cand-name"><b>Donald Trump</b></h4>
 					<h4 class="cand-name old"><b>2016: Donald Trump</b> {commaNumber($r_votes_statewide_2016)}</h4>
 				</div>
 
-				<div class:winner="{$projected_r_votes_statewide > $projected_d_votes_statewide}" class="trump bar" style="width: {projected_r_pct}%;">
-					<h3>{projected_r_pct}%</h3>
+				<div class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}" class="trump bar" style="width: {proj_r_pct}%;">
+					<h3>{proj_r_pct}%</h3>
 				</div>
-				<div class:winner="{$projected_d_votes_statewide > $projected_r_votes_statewide}" class="biden bar" style="width: {projected_d_pct}%;">
-					<h3>{projected_d_pct}%</h3>
+				<div class:winner="{$proj_d_votes_statewide > $proj_r_votes_statewide}" class="biden bar" style="width: {proj_d_pct}%;">
+					<h3>{proj_d_pct}%</h3>
 				</div>
-				<h4 class="cand-votes r" style="right: calc({projected_r_pct}% - 150px)">{commaNumber($projected_r_votes_statewide)} votes</h4>
-				<h4 class="cand-votes d" style="left: calc({projected_d_pct}% - 150px);">{commaNumber($projected_d_votes_statewide)} votes</h4>
+				<h4 class="cand-votes r" style="right: calc({proj_r_pct}% - 150px)">{commaNumber($proj_r_votes_statewide)} votes</h4>
+				<h4 class="cand-votes d" style="left: calc({proj_d_pct}% - 150px);">{commaNumber($proj_d_votes_statewide)} votes</h4>
 				<div class="trump bar old" style="width: {r_pct_2016}%;"></div>
 				<div class="biden bar old" style="width: {d_pct_2016}%;"></div>
-			
+
 			</div>
 		</div>
 	</div>
@@ -164,10 +191,10 @@
 	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
 	<p>Use the sliders below to explor scenarios in the rural counties that could lead to a Trump victory.</p>
 	<div class="inline-ex">
-		
+
 		<div class="inline-wrapper">
 			<p class="explainer"><b>Turnout percentage in rural counties</b> would need to increase by at least 5 percent.</p>
-			<label>	
+			<label>
 				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 				<div class="wrapper">
 					<p class="less button">-</p>
@@ -281,19 +308,28 @@ Reset dials</button>
 </div>
 
 
-
-
-
-<!-- <div class="totals r" class:winner="{$projected_r_votes_statewide > $projected_d_votes_statewide}">Republican: {projected_r_pct}% {commaNumber($projected_r_votes_statewide)}</div>
-<div class="totals d" class:winner="{$projected_d_votes_statewide > $projected_r_votes_statewide}">Democrat: {projected_d_pct}% {commaNumber($projected_d_votes_statewide)}</div>
-<div>Total statewide projected votes: {commaNumber($projected_total_votes_statewide)}</div> -->
+<!-- <div class="totals r" class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}">Republican: {proj_r_pct}% {commaNumber($proj_r_votes_statewide)}</div>
+<div class="totals d" class:winner="{$proj_d_votes_statewide > $proj_r_votes_statewide}">Democrat: {proj_d_pct}% {commaNumber($proj_d_votes_statewide)}</div>
+<div>Total statewide projected votes: {commaNumber($proj_total_votes_statewide)}</div> -->
 <div id="dashboard" class="dashboard-wrapper">
 	<div id="rural-dashboard" class="dashboard">
-		
+
 		<h3>Rural<br></h3>
+		<div class="regional-stats rural">
+			<div class="sixteen">
+				<h4>2016<br/>(actual)</h4>
+				<div class="pct">{ turnout_rural_2016 }%</div>
+				<div class="votes">{ commaNumber($total_votes_regional_2016_rural) }</div>
+			</div>
+			<div class="twenty">
+				<h4>2020<br/>(projected)</h4>
+				<div class="pct">{ turnout_rural_projected }%</div>
+				<div class="votes">{ commaNumber($proj_total_votes_regional_rural) }</div>
+			</div>
+		</div>
 		<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
-			
+
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
 				<p class="less button">-</p>
@@ -334,6 +370,18 @@ Reset dials</button>
 
 	<div id="outcity-dashboard"  class="dashboard">
 		<h3>Greater MN counties with regional centers</h3>
+		<div class="regional-stats outstate">
+			<div class="sixteen">
+				<h4>2016<br/>(actual)</h4>
+				<div class="pct">{ turnout_outstate_2016 }%</div>
+				<div class="votes">{ commaNumber($total_votes_regional_2016_outstate) }</div>
+			</div>
+			<div class="twenty">
+				<h4>2020<br/>(projected)</h4>
+				<div class="pct">{ turnout_outstate_projected }%</div>
+				<div class="votes">{ commaNumber($proj_total_votes_regional_outstate) }</div>
+			</div>
+		</div>
 		<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
@@ -361,7 +409,7 @@ Reset dials</button>
 					<input type=number bind:value={other_party_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
 					<p class="more button">+</p>
 				</div>
-				
+
 			</label>
 			<label>Which party do new "other party" votes take from?<br/>
 				<input type=range bind:value={other_party_partisan_modifiers["outstate city"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
@@ -376,6 +424,18 @@ Reset dials</button>
 
 	<div id="suburban-dashboard"  class="dashboard">
 		<h3>Suburban Twin Cities</h3>
+		<div class="regional-stats suburban">
+			<div class="sixteen">
+				<h4>2016<br/>(actual)</h4>
+				<div class="pct">{ turnout_suburban_2016 }%</div>
+				<div class="votes">{ commaNumber($total_votes_regional_2016_suburban) }</div>
+			</div>
+			<div class="twenty">
+				<h4>2020<br/>(projected)</h4>
+				<div class="pct">{ turnout_suburban_projected }%</div>
+				<div class="votes">{ commaNumber($proj_total_votes_regional_suburban) }</div>
+			</div>
+		</div>
 		<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
@@ -403,8 +463,8 @@ Reset dials</button>
 					<input type=number bind:value={other_party_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
 					<p class="more button">+</p>
 				</div>
-				
-				
+
+
 			</label>
 			<label>Which party do new "other party" votes take from?<br/>
 				<input type=range bind:value={other_party_partisan_modifiers["suburban"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
@@ -412,13 +472,25 @@ Reset dials</button>
 					<p class="less button">-</p>
 					<input type=number bind:value={other_party_partisan_modifiers["suburban"]} min=0 max=1 step=0.1>
 					<p class="more button">+</p>
-				</div>	
+				</div>
 			</label>
 		</div>
 	</div>
 
 	<div id="urban-dashboard"  class="dashboard">
 		<h3>Hennepin and Ramsey counties</h3>
+		<div class="regional-stats urban">
+			<div class="sixteen">
+				<h4>2016<br/>(actual)</h4>
+				<div class="pct">{ turnout_urban_2016 }%</div>
+				<div class="votes">{ commaNumber($total_votes_regional_2016_urban) }</div>
+			</div>
+			<div class="twenty">
+				<h4>2020<br/>(projected)</h4>
+				<div class="pct">{ turnout_urban_projected }%</div>
+				<div class="votes">{ commaNumber($proj_total_votes_regional_urban) }</div>
+			</div>
+		</div>
 		<img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
@@ -446,8 +518,8 @@ Reset dials</button>
 					<input type=number bind:value={other_party_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
 					<p class="more button">+</p>
 				</div>
-				
-				
+
+
 			</label>
 			<label>Which party do new "other party" votes take from?<br/>
 				<input type=range bind:value={other_party_partisan_modifiers["urban"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">

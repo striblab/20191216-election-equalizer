@@ -1,5 +1,5 @@
 <script>
-	import { total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, projected_total_votes_statewide, projected_r_votes_statewide, projected_d_votes_statewide } from './stores.js';
+	import { elligible_voters_rural, elligible_voters_outstate, elligible_voters_suburban, elligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban } from './stores.js';
 	const commaNumber = require('comma-number')
 
 	const roundPct = function(input) {
@@ -13,15 +13,15 @@
 		dPct_2016: 0,
 		classification: ''
 	};
-	let projected_total_votes = 0;
-	let projected_r_votes = 0;
-	let projected_d_votes = 0;
-	let projected_other_votes = 0;
-	let projected_r_pct = 1;
-	let projected_d_pct = 1;
-	let projected_final_r_pct = 1;
-	let projected_final_d_pct= 1;
-	// let projected_other_pct = 0.5;  // By default each party loses/gains half of projected third party votes
+	let proj_total_votes = 0;
+	let proj_r_votes = 0;
+	let proj_d_votes = 0;
+	let proj_other_votes = 0;
+	let proj_r_pct = 1;
+	let proj_d_pct = 1;
+	let proj_final_r_pct = 1;
+	let proj_final_d_pct= 1;
+	// let proj_other_pct = 0.5;  // By default each party loses/gains half of projected third party votes
 
 	let thirdPartyCount = function(data_obj) {
 		return data_obj.votes_2016 - data_obj.rVotes_2016 - data_obj.dVotes_2016
@@ -52,34 +52,80 @@
 	r_votes_statewide_2016.update(n => n + county_data.rVotes_2016);
 	d_votes_statewide_2016.update(n => n + county_data.dVotes_2016);
 
+	if (county_data['classification'] == 'rural') {
+		total_votes_regional_2016_rural.update(n => n + county_data.votes_2016);
+		r_votes_regional_2016_rural.update(n => n + county_data.rVotes_2016);
+		d_votes_regional_2016_rural.update(n => n + county_data.dVotes_2016);
+
+		elligible_voters_rural.update(n => n + (county_data.votes_2016 / (county_data.turnout_2016 / 100)));
+	} else if (county_data['classification'] == 'outstate city') {
+		total_votes_regional_2016_outstate.update(n => n + county_data.votes_2016);
+		r_votes_regional_2016_outstate.update(n => n + county_data.rVotes_2016);
+		d_votes_regional_2016_outstate.update(n => n + county_data.dVotes_2016);
+
+		elligible_voters_outstate.update(n => n + (county_data.votes_2016 / (county_data.turnout_2016 / 100)));
+	} else if (county_data['classification'] == 'suburban') {
+		total_votes_regional_2016_suburban.update(n => n + county_data.votes_2016);
+		r_votes_regional_2016_suburban.update(n => n + county_data.rVotes_2016);
+		d_votes_regional_2016_suburban.update(n => n + county_data.dVotes_2016);
+
+		elligible_voters_suburban.update(n => n + (county_data.votes_2016 / (county_data.turnout_2016 / 100)));
+	} else if (county_data['classification'] == 'urban') {
+		total_votes_regional_2016_urban.update(n => n + county_data.votes_2016);
+		r_votes_regional_2016_urban.update(n => n + county_data.rVotes_2016);
+		d_votes_regional_2016_urban.update(n => n + county_data.dVotes_2016);
+
+		elligible_voters_urban.update(n => n + (county_data.votes_2016 / (county_data.turnout_2016 / 100)));
+	}
+
+	// total_votes_regional_2016[county_data['classification']].update(n => n + county_data.votes_2016);
+	// r_votes_regional_2016[county_data['classification']].update(n => n + county_data.rVotes_2016);
+	// d_votes_regional_2016[county_data['classification']].update(n => n + county_data.dVotes_2016);
+
 	$ : {
 		if (!isNaN(partisan_modifier) && !isNaN(turnout_modifier)) {
-			let prev_projected_total_votes = projected_total_votes;
-			let prev_projected_r_votes = projected_r_votes;
-			let prev_projected_d_votes = projected_d_votes;
-			projected_total_votes = Math.round(county_data.votes_2016 * (1 + (turnout_modifier / 100)));
+			let prev_proj_total_votes = proj_total_votes;
+			let prev_proj_r_votes = proj_r_votes;
+			let prev_proj_d_votes = proj_d_votes;
+			proj_total_votes = Math.round(county_data.votes_2016 * (1 + (turnout_modifier / 100)));
 
-			let projected_base_r_pct = (county_data.rVotes_2016 / county_data.votes_2016) + (partisan_modifier / 100);
-			let projected_base_d_pct = (county_data.dVotes_2016 / county_data.votes_2016) - (partisan_modifier / 100);
+			let proj_base_r_pct = (county_data.rVotes_2016 / county_data.votes_2016) + (partisan_modifier / 100);
+			let proj_base_d_pct = (county_data.dVotes_2016 / county_data.votes_2016) - (partisan_modifier / 100);
 
-			// let projected_base_r_pct = county_data.rPct_2016 + (partisan_modifier / 100);
-			// let projected_base_d_pct = county_data.dPct_2016 - (partisan_modifier / 100);
+			// let proj_base_r_pct = county_data.rPct_2016 + (partisan_modifier / 100);
+			// let proj_base_d_pct = county_data.dPct_2016 - (partisan_modifier / 100);
 
-			projected_other_votes = thirdPartyCount(county_data) * (1 + (other_party_modifier / 100));
-			let projected_other_votes_diff = projected_other_votes - thirdPartyCount(county_data);
-			let projected_other_r_loss = projected_other_votes_diff * other_party_partisan_modifier;
-			let projected_other_d_loss = projected_other_votes_diff * (1 - other_party_partisan_modifier);
+			proj_other_votes = thirdPartyCount(county_data) * (1 + (other_party_modifier / 100));
+			let proj_other_votes_diff = proj_other_votes - thirdPartyCount(county_data);
+			let proj_other_r_loss = proj_other_votes_diff * other_party_partisan_modifier;
+			let proj_other_d_loss = proj_other_votes_diff * (1 - other_party_partisan_modifier);
 
+			proj_r_votes = Math.round((proj_base_r_pct * proj_total_votes) - proj_other_r_loss);
+			proj_d_votes = Math.round((proj_base_d_pct * proj_total_votes) - proj_other_d_loss);
+			proj_final_r_pct = proj_r_votes / proj_total_votes;
+			proj_final_d_pct = proj_d_votes / proj_total_votes;
 
+			proj_total_votes_statewide.update(n => n - prev_proj_total_votes + proj_total_votes);
+			proj_r_votes_statewide.update(n => n - prev_proj_r_votes + proj_r_votes);
+			proj_d_votes_statewide.update(n => n - prev_proj_d_votes + proj_d_votes);
 
-			projected_r_votes = Math.round((projected_base_r_pct * projected_total_votes) - projected_other_r_loss);
-			projected_d_votes = Math.round((projected_base_d_pct * projected_total_votes) - projected_other_d_loss);
-			projected_final_r_pct = projected_r_votes / projected_total_votes;
-			projected_final_d_pct = projected_d_votes / projected_total_votes;
-
-			projected_total_votes_statewide.update(n => n - prev_projected_total_votes + projected_total_votes);
-			projected_r_votes_statewide.update(n => n - prev_projected_r_votes + projected_r_votes);
-			projected_d_votes_statewide.update(n => n - prev_projected_d_votes + projected_d_votes);
+			if (county_data['classification'] == 'rural') {
+				proj_total_votes_regional_rural.update(n => n - prev_proj_total_votes + proj_total_votes);
+				proj_r_votes_regional_rural.update(n => n - prev_proj_r_votes + proj_r_votes);
+				proj_d_votes_regional_rural.update(n => n - prev_proj_d_votes + proj_d_votes);
+			} else if (county_data['classification'] == 'outstate city') {
+			 proj_total_votes_regional_outstate.update(n => n - prev_proj_total_votes + proj_total_votes);
+			 proj_r_votes_regional_outstate.update(n => n - prev_proj_r_votes + proj_r_votes);
+			 proj_d_votes_regional_outstate.update(n => n - prev_proj_d_votes + proj_d_votes);
+			} else if (county_data['classification'] == 'suburban') {
+			 proj_total_votes_regional_suburban.update(n => n - prev_proj_total_votes + proj_total_votes);
+			 proj_r_votes_regional_suburban.update(n => n - prev_proj_r_votes + proj_r_votes);
+			 proj_d_votes_regional_suburban.update(n => n - prev_proj_d_votes + proj_d_votes);
+			} else if (county_data['classification'] == 'urban') {
+			 proj_total_votes_regional_urban.update(n => n - prev_proj_total_votes + proj_total_votes);
+			 proj_r_votes_regional_urban.update(n => n - prev_proj_r_votes + proj_r_votes);
+			 proj_d_votes_regional_urban.update(n => n - prev_proj_d_votes + proj_d_votes);
+			}
 		}
 	}
 
@@ -90,9 +136,9 @@
 	<td>{classification_label(county_data.classification)}</td>
 	<td class="number">{commaNumber(county_data.votes_2016)}</td>
 	<td class="number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td>
-	<td class="number">{commaNumber(projected_total_votes)}</td>
+	<td class="number">{commaNumber(proj_total_votes)}</td>
 	<td class="number R-{county_data.winner_2016}-2016">{roundPct(county_data.rPct_2016)}</td>
 	<td class="number D-{county_data.winner_2016}-2016">{roundPct(county_data.dPct_2016)}</td>
-	<td class="number" class:R-R-projected="{projected_final_r_pct > projected_final_d_pct}">{roundPct(projected_final_r_pct)}</td>
-	<td class="number" class:D-D-projected="{projected_final_r_pct < projected_final_d_pct}">{roundPct(projected_final_d_pct)}</td>
+	<td class="number" class:R-R-projected="{proj_final_r_pct > proj_final_d_pct}">{roundPct(proj_final_r_pct)}</td>
+	<td class="number" class:D-D-projected="{proj_final_r_pct < proj_final_d_pct}">{roundPct(proj_final_d_pct)}</td>
 </tr>
