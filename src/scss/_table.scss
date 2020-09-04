@@ -3,6 +3,9 @@ table.county-projections {
 	margin: 0 auto;
 	margin-top: 100px;
 	margin-bottom: 100px;
+	@media only screen and (max-width: 900px) {
+		display: none;
+	}
 }
 
 td.number {

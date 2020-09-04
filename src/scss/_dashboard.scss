@@ -14,6 +14,9 @@
 			}
 		}
 	}
+	@media only screen and (max-width: 900px) {
+		display: block;
+	}
 }
 
 .dashboard {
@@ -21,8 +24,19 @@
 	padding: 30px;
 	text-align: center;
 	border-right: 1px solid #E5E7E9;
+	@media only screen and (max-width: 900px) {
+		width: 85%;
+		margin: 0 auto;
+		padding: 0;
+		border-right: none;
+		border-top: 1px solid #E5E7E9;
+		padding-top: 40px;
+	}
 	&:nth-child(4) {
 		border-right: none;
+	}
+	&:nth-child(1) {
+		border-top: none;
 	}
 	img.map {
 		margin: 0 auto;
@@ -40,7 +54,7 @@
 
 p.expert-mode {
 	margin: 0 auto;
-	width: 390px;
+	max-width: 390px;
 	margin-top: 50px;
 	text-align: center;
 	border-bottom: 1px solid black;

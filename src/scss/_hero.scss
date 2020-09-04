@@ -3,6 +3,9 @@
 	width: 100%;
 	padding-top: 15vh;
 	text-align: center;
+	@media only screen and (max-width: 900px) {
+		padding-top: 10vh;
+	}
 	img.logo {
 		height: 23px;
 		width: auto;
@@ -14,9 +17,12 @@
 		font-size: 65px;
 		letter-spacing: -1px;
 		max-width: 900px;
-		margin: 85%;
+		width: 85%;
 		margin: 0 auto;
 		text-align: center;
+		@media only screen and (max-width: 900px) {
+			font-size: 50px;
+		}
 		span.party {
 			display: inline-block;
 
@@ -33,6 +39,11 @@
 					background-size: cover;
 					background-position: 50% 0%;
 					display: inline-block;
+					@media only screen and (max-width: 900px) {
+						width: 50px;
+						height: 50px;
+						margin-bottom: -5px;
+					}
 				}
 			}
 			&.democrat {
@@ -48,6 +59,11 @@
 					background-size: cover;
 					background-position: 50% 0%;
 					display: inline-block;
+					@media only screen and (max-width: 900px) {
+						width: 50px;
+						height: 50px;
+						margin-bottom: -5px;
+					}
 				}
 			}
 		}
@@ -58,7 +74,7 @@
 		font-size: 22px;
 		max-width: 950px;
 		line-height: 1.5;
-		margin: 85%;
+		width: 85%;
 		margin: 0 auto;
 		margin-top: 50px;
 		margin-bottom: 50px;
@@ -69,5 +85,7 @@
 		font-size: 14px;
 		text-align: center;
 		line-height: 1.5;
+		width: 85%;
+		margin: 0 auto;
 	}
 }

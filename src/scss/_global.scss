@@ -7,8 +7,8 @@ html, body {
 body {
 	color: #333;
 	margin: 0;
-	padding: 8px;
-	box-sizing: border-box;
+	/*padding: 8px;*/
+	/*box-sizing: border-box;*/
 	font-family: "Benton Sans";
 	font-weight: normal;
 }
@@ -83,13 +83,13 @@ button:focus {
 		max-width: 350px;
 	}*/
 
-	#totals-2016 {
+	/*#totals-2016 {
 		text-align: right;
 	}
 
 	#totals-2016 h2 {
 		text-align: left;
-	}
+	}*/
 
 	/*#totals-2020 h2 {
 		text-align: right;
@@ -110,13 +110,13 @@ button:focus {
 		width: 8em;
 	}*/
 
-	#totals-2016 .cand-info span {
+	/*#totals-2016 .cand-info span {
 		margin-right: 1em;
 	}
 
 	#totals-2020 .cand-info span {
 		margin-left: 1em;
-	}
+	}*/
 
 	#dashboard input[type=number] {
 		/*width: 3em;*/
@@ -145,7 +145,7 @@ button:focus {
 		margin: 0 0 1em;
 	}*/
 
-	.totals {
+	/*.totals {
 		display: inline-block;
 		width: 50%;
 		font-size: 1em;
@@ -164,4 +164,4 @@ button:focus {
 	table.county-projections th {
 		padding: 4px 10px;
 		/*border-bottom: 2px #FFF solid;*/
-	}
+	
