@@ -1,6 +1,7 @@
 <script>
 	import CountyData from './data/mncounties.json'
 	import County from './County.svelte';
+	import RegionalStats from './RegionalStats.svelte';
 	const commaNumber = require('comma-number')
 
 	import { elligible_voters_rural, elligible_voters_outstate, elligible_voters_suburban, elligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban } from './stores.js';
@@ -56,6 +57,27 @@
 	let total_votes_urban_2016 = 0;
 	let turnout_urban_2016 = 0;
 	let turnout_urban_projected = 0;
+
+	let d_pct_rural_2016 = 0;
+	let d_pct_rural_projected = 0;
+	let r_pct_rural_2016 = 0;
+	let r_pct_rural_projected = 0;
+
+	let d_pct_outstate_2016 = 0;
+	let d_pct_outstate_projected = 0;
+	let r_pct_outstate_2016 = 0;
+	let r_pct_outstate_projected = 0;
+
+	let d_pct_suburban_2016 = 0;
+	let d_pct_suburban_projected = 0;
+	let r_pct_suburban_2016 = 0;
+	let r_pct_suburban_projected = 0;
+
+	let d_pct_urban_2016 = 0;
+	let d_pct_urban_projected = 0;
+	let r_pct_urban_2016 = 0;
+	let r_pct_urban_projected = 0;
+
 	$ : {
 
 		d_pct_2016 = Math.round(($d_votes_statewide_2016 / $total_votes_statewide_2016) * 1000) / 10;
@@ -75,6 +97,26 @@
 
 		turnout_urban_2016 = Math.round(($total_votes_regional_2016_urban / $elligible_voters_urban) * 1000) / 10;
 		turnout_urban_projected = Math.round(($proj_total_votes_regional_urban / $elligible_voters_urban) * 1000) / 10;
+
+		d_pct_rural_2016 = Math.round(($d_votes_regional_2016_rural / $total_votes_regional_2016_rural) * 1000) / 10;
+		d_pct_rural_projected = Math.round(($proj_d_votes_regional_rural / $proj_total_votes_regional_rural) * 1000) / 10;
+		r_pct_rural_2016 = Math.round(($r_votes_regional_2016_rural / $total_votes_regional_2016_rural) * 1000) / 10;
+		r_pct_rural_projected = Math.round(($proj_r_votes_regional_rural / $proj_total_votes_regional_rural) * 1000) / 10;
+
+		d_pct_outstate_2016 = Math.round(($d_votes_regional_2016_outstate / $total_votes_regional_2016_outstate) * 1000) / 10;
+		d_pct_outstate_projected = Math.round(($proj_d_votes_regional_outstate / $proj_total_votes_regional_outstate) * 1000) / 10;
+		r_pct_outstate_2016 = Math.round(($r_votes_regional_2016_outstate / $total_votes_regional_2016_outstate) * 1000) / 10;
+		r_pct_outstate_projected = Math.round(($proj_r_votes_regional_outstate / $proj_total_votes_regional_outstate) * 1000) / 10;
+
+		d_pct_suburban_2016 = Math.round(($d_votes_regional_2016_suburban / $total_votes_regional_2016_suburban) * 1000) / 10;
+		d_pct_suburban_projected = Math.round(($proj_d_votes_regional_suburban / $proj_total_votes_regional_suburban) * 1000) / 10;
+		r_pct_suburban_2016 = Math.round(($r_votes_regional_2016_suburban / $total_votes_regional_2016_suburban) * 1000) / 10;
+		r_pct_suburban_projected = Math.round(($proj_r_votes_regional_suburban / $proj_total_votes_regional_suburban) * 1000) / 10;
+
+		d_pct_urban_2016 = Math.round(($d_votes_regional_2016_urban / $total_votes_regional_2016_urban) * 1000) / 10;
+		d_pct_urban_projected = Math.round(($proj_d_votes_regional_urban / $proj_total_votes_regional_urban) * 1000) / 10;
+		r_pct_urban_2016 = Math.round(($r_votes_regional_2016_urban / $total_votes_regional_2016_urban) * 1000) / 10;
+		r_pct_urban_projected = Math.round(($proj_r_votes_regional_urban / $proj_total_votes_regional_urban) * 1000) / 10;
 	}
 
 	let resetDials = function () {
@@ -315,18 +357,21 @@ Reset dials</button>
 	<div id="rural-dashboard" class="dashboard">
 
 		<h3>Rural<br></h3>
-		<div class="regional-stats rural">
-			<div class="sixteen">
-				<h4>2016<br/>(actual)</h4>
-				<div class="pct">{ turnout_rural_2016 }%</div>
-				<div class="votes">{ commaNumber($total_votes_regional_2016_rural) }</div>
-			</div>
-			<div class="twenty">
-				<h4>2020<br/>(projected)</h4>
-				<div class="pct">{ turnout_rural_projected }%</div>
-				<div class="votes">{ commaNumber($proj_total_votes_regional_rural) }</div>
-			</div>
-		</div>
+		<RegionalStats
+		  region='rural'
+		  d_votes_2016={$d_votes_regional_2016_rural}
+		  d_pct_2016={d_pct_rural_2016}
+		  d_votes_proj={$proj_d_votes_regional_rural}
+		  d_pct_proj={d_pct_rural_projected}
+		  r_votes_2016={$r_votes_regional_2016_rural}
+		  r_pct_2016={r_pct_rural_2016}
+		  r_votes_proj={$proj_r_votes_regional_rural}
+		  r_pct_proj={r_pct_rural_projected}
+		  total_votes_2016={$total_votes_regional_2016_rural}
+		  total_votes_proj={$proj_total_votes_regional_rural}
+		  turnout_pct_2016={turnout_rural_2016}
+		  turnout_pct_proj={turnout_rural_projected}
+		/>
 		<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 
@@ -370,18 +415,21 @@ Reset dials</button>
 
 	<div id="outcity-dashboard"  class="dashboard">
 		<h3>Greater MN counties with regional centers</h3>
-		<div class="regional-stats outstate">
-			<div class="sixteen">
-				<h4>2016<br/>(actual)</h4>
-				<div class="pct">{ turnout_outstate_2016 }%</div>
-				<div class="votes">{ commaNumber($total_votes_regional_2016_outstate) }</div>
-			</div>
-			<div class="twenty">
-				<h4>2020<br/>(projected)</h4>
-				<div class="pct">{ turnout_outstate_projected }%</div>
-				<div class="votes">{ commaNumber($proj_total_votes_regional_outstate) }</div>
-			</div>
-		</div>
+		<RegionalStats
+			type='outstate'
+			d_votes_2016={$d_votes_regional_2016_outstate}
+			d_pct_2016={d_pct_outstate_2016}
+			d_votes_proj={$proj_d_votes_regional_outstate}
+			d_pct_proj={d_pct_outstate_projected}
+			r_votes_2016={$r_votes_regional_2016_outstate}
+			r_pct_2016={r_pct_outstate_2016}
+			r_votes_proj={$proj_r_votes_regional_outstate}
+			r_pct_proj={r_pct_outstate_projected}
+			total_votes_2016={$total_votes_regional_2016_outstate}
+			total_votes_proj={$proj_total_votes_regional_outstate}
+			turnout_pct_2016={turnout_outstate_2016}
+			turnout_pct_proj={turnout_outstate_projected}
+		/>
 		<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
@@ -424,18 +472,21 @@ Reset dials</button>
 
 	<div id="suburban-dashboard"  class="dashboard">
 		<h3>Suburban Twin Cities</h3>
-		<div class="regional-stats suburban">
-			<div class="sixteen">
-				<h4>2016<br/>(actual)</h4>
-				<div class="pct">{ turnout_suburban_2016 }%</div>
-				<div class="votes">{ commaNumber($total_votes_regional_2016_suburban) }</div>
-			</div>
-			<div class="twenty">
-				<h4>2020<br/>(projected)</h4>
-				<div class="pct">{ turnout_suburban_projected }%</div>
-				<div class="votes">{ commaNumber($proj_total_votes_regional_suburban) }</div>
-			</div>
-		</div>
+		<RegionalStats
+		  region='suburban'
+		  d_votes_2016={$d_votes_regional_2016_suburban}
+		  d_pct_2016={d_pct_suburban_2016}
+		  d_votes_proj={$proj_d_votes_regional_suburban}
+		  d_pct_proj={d_pct_suburban_projected}
+		  r_votes_2016={$r_votes_regional_2016_suburban}
+		  r_pct_2016={r_pct_suburban_2016}
+		  r_votes_proj={$proj_r_votes_regional_suburban}
+		  r_pct_proj={r_pct_suburban_projected}
+		  total_votes_2016={$total_votes_regional_2016_suburban}
+		  total_votes_proj={$proj_total_votes_regional_suburban}
+		  turnout_pct_2016={turnout_suburban_2016}
+		  turnout_pct_proj={turnout_suburban_projected}
+		/>
 		<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
@@ -479,18 +530,21 @@ Reset dials</button>
 
 	<div id="urban-dashboard"  class="dashboard">
 		<h3>Hennepin and Ramsey counties</h3>
-		<div class="regional-stats urban">
-			<div class="sixteen">
-				<h4>2016<br/>(actual)</h4>
-				<div class="pct">{ turnout_urban_2016 }%</div>
-				<div class="votes">{ commaNumber($total_votes_regional_2016_urban) }</div>
-			</div>
-			<div class="twenty">
-				<h4>2020<br/>(projected)</h4>
-				<div class="pct">{ turnout_urban_projected }%</div>
-				<div class="votes">{ commaNumber($proj_total_votes_regional_urban) }</div>
-			</div>
-		</div>
+		<RegionalStats
+		  region='urban'
+		  d_votes_2016={$d_votes_regional_2016_urban}
+		  d_pct_2016={d_pct_urban_2016}
+		  d_votes_proj={$proj_d_votes_regional_urban}
+		  d_pct_proj={d_pct_urban_projected}
+		  r_votes_2016={$r_votes_regional_2016_urban}
+		  r_pct_2016={r_pct_urban_2016}
+		  r_votes_proj={$proj_r_votes_regional_urban}
+		  r_pct_proj={r_pct_urban_projected}
+		  total_votes_2016={$total_votes_regional_2016_urban}
+		  total_votes_proj={$proj_total_votes_regional_urban}
+		  turnout_pct_2016={turnout_urban_2016}
+		  turnout_pct_proj={turnout_urban_projected}
+		/>
 		<img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map">
 		<label>Turnout percentage<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
