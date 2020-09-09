@@ -17,11 +17,11 @@
 		font-size: 65px;
 		letter-spacing: -1px;
 		max-width: 900px;
-		width: 85%;
+		width: 90%;
 		margin: 0 auto;
 		text-align: center;
 		@media only screen and (max-width: 900px) {
-			font-size: 50px;
+			font-size: 40px;
 		}
 		span.party {
 			display: inline-block;
@@ -35,7 +35,7 @@
 					height: 75px;
 					border-radius: 50%;
 					background-color: #C0392B;
-					background-image: url(https://static.startribune.com/svg/trump.png);
+					background-image: url(https://static.startribune.com/svg/trump.png?cache=trash);
 					background-size: cover;
 					background-position: 50% 0%;
 					display: inline-block;
@@ -55,7 +55,7 @@
 					height: 75px;
 					border-radius: 50%;
 					background-color: #3498DB;
-					background-image: url(https://static.startribune.com/svg/biden.png);
+					background-image: url(https://static.startribune.com/svg/biden.png?cache=trash);
 					background-size: cover;
 					background-position: 50% 0%;
 					display: inline-block;
@@ -79,6 +79,9 @@
 		margin-top: 50px;
 		margin-bottom: 50px;
 		text-align: center;
+		@media only screen and (max-width: 900px) {
+			font-size: 18px;
+		}
 	}
 	p.byline-special {
 		font-weight: normal;

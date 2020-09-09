@@ -1,0 +1,451 @@
+#year-comparison {
+	background: white;
+	width: 100%;
+	z-index: 1000;
+	padding: 0;
+}
+
+.project-wrapper {
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	max-width: 1200px;
+	height: 200px;
+	padding: 0;
+	overflow: hidden;
+	transition: 0.5s height;
+	&.expanded {
+		height: 375px;
+		transition: 0.5s height;
+		@media only screen and (max-width: 900px) {
+			height: 440px;
+		}
+		h3.applied {
+			i {
+				transform: rotate(270deg);
+				transition: 0.5s all;
+			}
+		}
+		div.modifiers {
+			height: 160px;
+			transition: 0.5s height;
+			@media only screen and (max-width: 900px) {
+				height: 270px;
+			}
+		}
+	}
+	@media only screen and (max-width: 900px) {
+		height: 170px;
+	}
+	h3.applied {
+		font-size: 14px;
+		font-family: "Benton Sans";
+		text-align: center;
+		color: gray;
+		margin-top: 30px;
+		padding-top: 0;
+		font-weight: normal;
+		margin-bottom: 0;
+		transition: 0.5s opacity;
+		opacity: 0;
+		@media only screen and (max-width: 900px) {
+			font-size: 13px;
+			margin-top: 20px;
+		}
+		span {
+			/*border-bottom: 1px solid gray;*/
+		}
+		i {
+			display: inline-block;
+			transform: rotate(90deg);
+			margin-left: 5px;
+			transition: 0.5s all;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	div.modifiers {
+		width: 100%;
+		max-width: 900px;
+		margin: 0 auto;
+		height: 0;
+		overflow: hidden;
+		transition: 0.5s height;
+		padding: 0;
+		margin-top: 10px;
+		div.wrapper {
+			display: grid;
+			grid-template-columns: 25% 25% 25% 25%;
+  			grid-template-rows: 100%;
+			width: 100%;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			@media only screen and (max-width: 900px) {
+				grid-template-columns: 50% 50%;
+  				grid-template-rows: 50% 50%;
+  				margin-bottom: 30px;
+  				margin-top: 10px;
+			}
+			div {
+				width: 100%;
+				padding: 0px 10px;
+				font-size: 13px;
+				font-family: "Benton Sans";
+				font-weight: normal;
+				@media only screen and (max-width: 900px) {
+					margin: 0 auto;
+					padding: 0;
+				}
+				h5 {
+					text-transform: uppercase;
+					letter-spacing: 0.5px;
+					@media only screen and (max-width: 900px) {
+						margin-bottom: 10px;
+						margin-top: 0;
+					}
+				}
+				p {
+					position: relative;
+					margin-bottom: 10px;
+					padding-bottom: 10px;
+					transition: 0.5s background;
+					@media only screen and (max-width: 900px) {
+						margin-bottom: 5px;
+						padding-bottom: 5px;
+					}
+					b {
+						display: inline-block;
+						text-align: right;
+						padding-right: 5px;
+						background: white;
+						font-weight: normal;
+					}
+					span {
+						padding: 2.5px 5px;
+						border-radius: 5px;
+					}
+					.positive {
+						background: #F2D7D5;
+						transition: 0.5s background;
+					}
+					.negative {
+						background: #D6EAF8;
+						transition: 0.5s background;
+					}
+					&.first {
+						border-bottom: 1px solid #E5E7E9;
+					}
+				}
+			}
+			div:nth-child(1) {
+				@media only screen and (max-width: 900px) {
+					border-bottom: 1px solid #333;
+					border-right: 1px solid #333;
+				}
+			}
+			div:nth-child(2) {
+				@media only screen and (max-width: 900px) {
+					border-bottom: 1px solid #333;
+				}
+			}
+			div:nth-child(3) {
+				@media only screen and (max-width: 900px) {
+					border-right: 1px solid #333;
+					h5 {
+						margin-top: 20px;
+					}
+				}
+			}
+			div:nth-child(4) {
+				@media only screen and (max-width: 900px) {
+					h5 {
+						margin-top: 20px;
+					}
+				}
+			}
+		}
+		button.reset-button {
+			margin-top: 5px;
+		}
+	}
+}
+
+.results-2016 {
+	margin: 0 auto;
+	margin-top: 45px;
+	margin-bottom: 45px;
+	width: 100%;
+	max-width: 650px;
+	@media only screen and (max-width: 900px) {
+	    overflow: hidden;
+	    width: 100%;
+	    margin-left: 0;
+	}
+	h2 {
+		font-family: "Benton Sans";
+		font-weight: bold;
+		width: 85%;
+		margin: 0 auto;
+		display: block;
+		text-transform: uppercase; 
+		letter-spacing: 1px;
+		font-size: 13px;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	div.cand-totals	div.cand-info {
+		&.d {
+			div.cand-mug {
+				background-color: #3498DB;
+				background-image: url(https://static.startribune.com/svg/clinton.png?cache=trash);
+				background-size: cover;
+				background-position: 50% 0%;
+			}
+			h4.cand-name {
+				left: 75px;
+				text-align: left;
+				@media only screen and (max-width: 900px) {
+					left: 50px;
+				}
+			}
+		}
+		&.r {
+			h4.cand-name {
+				right: 75px;
+				text-align: right;
+				@media only screen and (max-width: 900px) {
+					right: 50px;
+				}
+			}
+		}
+	}
+	div.cand-totals div.cand-info h4.cand-name {
+		top: -20px;
+	}	
+	h4.cand-votes {
+		top: 50px;
+	}	
+	div.cand-totals {
+		height: 95px;
+	}
+}
+
+.year-totals h2 {
+	text-align: center;
+	font-family: "Benton Sans";
+	font-weight: bold;
+	width: 85%;
+	margin: 0 auto;
+	display: block;
+	text-transform: uppercase; 
+	letter-spacing: 1px;
+	font-size: 13px;
+	opacity: 1;
+	transition: 1s opacity;
+	padding-top: 20px;
+	margin-bottom: 10px;
+	@media only screen and (max-width: 900px) {
+		left: 0px;
+		top: 90px;
+		margin-bottom: 0;
+	}
+}
+
+.fixed {
+	border-bottom: 2px solid #E5E7E9;
+	transition: 1s border-bottom;
+	/*.year-totals h2 {
+		opacity: 1;
+		transition: 1s opacity;
+	}*/
+	h3.applied {
+		transition: 0.5s opacity;
+		opacity: 1;
+	}
+}
+
+div.cand-totals {
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	position: relative;
+	height: 90px;
+	div.cand-info {
+		position: absolute;
+		top: 0;
+		@media only screen and (max-width: 900px) {
+			top: 20px;
+			width: 100%;
+		}
+		&.d {
+			left: -10px;
+			@media only screen and (max-width: 900px) {
+				left: -10px;
+			}
+			div.cand-mug {
+				background-color: #3498DB;
+				background-image: url(https://static.startribune.com/svg/biden.png?cache=trash);
+				background-size: cover;
+				background-position: 50% 0%;
+			}
+			h4.cand-name {
+				left: 80px;
+				text-align: left;
+				@media only screen and (max-width: 900px) {
+					left: 55px;
+					top: -20px;
+				}
+			}
+		}
+		&.r {
+			right: -10px;
+			text-align: left;
+			@media only screen and (max-width: 900px) {
+				right: -10px;
+				/*top: 100px;*/
+			}
+			div.cand-mug {
+				background-color: #C0392B;
+				background-image: url(https://static.startribune.com/svg/trump.png?cache=trash);
+				background-size: cover;
+				background-position: 50% 0%;
+				position: absolute;
+				right: 0;
+
+			}
+			h4.cand-name {
+				right: 80px;
+				text-align: right;
+				@media only screen and (max-width: 900px) {
+					right: 55px;
+					/*left: 20px;*/
+					top: -20px;
+					text-align: left;
+				}
+				&.old {
+					right: 90px;
+				}
+			}
+		}
+		div.cand-mug {
+			width: 75px;
+			height: 75px;
+			border-radius: 50%;
+			margin: 0 !important;
+			z-index: 1000;
+			border: 2px solid white;
+			@media only screen and (max-width: 900px) {
+				width: 50px;
+				height: 50px;
+				margin-bottom: -5px;
+			}
+
+		}
+		h4.cand-name {
+			font-size: 14px;
+			font-weight: normal;
+			letter-spacing: 0px;
+			text-transform: none;
+			position: absolute;
+			top: -17.5px;
+			width: 300px;
+			@media only screen and (max-width: 900px) {
+				top: 0;
+				width: auto;
+			}
+			/*b {
+				display: inline-block;
+				margin: 0px 10px;
+			}*/
+		}
+	}
+}
+
+h4.cand-votes {
+	font-size: 16px;
+	font-weight: normal;
+	position: absolute;
+	top: 50px;
+	width: 150px;
+	@media only screen and (max-width: 900px) {
+		font-size: 15px;
+		width: auto;
+	}
+	&.r {
+		text-align: left;
+		@media only screen and (max-width: 900px) {
+			top: 55px;
+			right: 40px !important;
+			text-align: right;
+			width: auto;
+		}
+	}
+	&.d {
+		text-align: right;
+		@media only screen and (max-width: 900px) {
+			top: 55px;
+			left: 40px !important;
+			text-align: left;
+			width: auto;
+		}
+	}
+}
+
+div.bar {
+	position: absolute;
+	top: 17.5px; 
+	z-index: -1;
+	transition: 0.5s background;
+	&.trump {
+	 	right: 0;
+	 	background: transparent;
+	 	border: 2px solid #C0392B;
+	 	@media only screen and (max-width: 900px) {
+			right: 0px;
+			top: 37.5px;
+		}
+	 	&.winner {
+			background: #F5B7B1;
+			transition: 0.5s all;
+			/*color: white;*/
+		}
+		h3 {
+			@media only screen and (max-width: 900px) {
+				text-align: left;
+			}
+		}
+	}
+	&.biden {
+	 	left: 0;
+	 	border: 2px solid #3498DB;
+	 	background: transparent;
+	 	@media only screen and (max-width: 900px) {
+			left: 0px;
+			top: 37.5px;
+		}
+	 	h3 {
+	 		text-align: right;	
+	 	}
+	 	&.winner {
+			background: #AED6F1;
+			transition: 0.5s all;
+			/*color: white;*/
+		}
+	}
+	h3 {
+		font-family: "Benton Sans";
+	 	font-weight: bold;
+	 	text-align: left;
+	 	font-size: 24px;
+	 	padding: 10px;
+	 	line-height: 1;
+	 	margin: 0;
+	 	@media only screen and (max-width: 900px) {
+			font-size: 16px;
+			padding: 5px;
+		}
+	}
+}

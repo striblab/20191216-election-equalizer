@@ -1,53 +1,109 @@
-table.county-projections {
-	max-width: 1200px;
-	margin: 0 auto;
+.table-wrapper {
+	width: 100%;
 	margin-top: 100px;
-	margin-bottom: 100px;
-	@media only screen and (max-width: 900px) {
-		display: none;
+	margin-bottom: -50px;
+	table {
+		th {
+			font-size: 14px;
+		}
 	}
 }
 
+table.county-projections {
+	max-width: 1200px;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 100px;
+	width: 100%;
+	.desktop-show {
+		display: table-cell !important;
+		@media only screen and (max-width: 900px) {
+			display: none !important;
+		}
+	}
+	&.no-marg {
+		/*margin-bottom: -50px;*/
+		background: white;
+		/*height: 65px;*/
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.county {
+		width: 20%;
+		@media only screen and (max-width: 900px) {
+			width: 50%
+		}
+	}
+	.type {
+		width: 15%;
+	}
+	.votes-2016, .votes-2020, .r-2016, .r-2020, .d-2016, .d-2020 {
+		width: 10.8333333333333333333333%;
+		@media only screen and (max-width: 900px) {
+			width: 25%
+		}
+	}
+}
+
+.county {
+	@media only screen and (max-width: 900px) {
+		width: 50%;
+	}
+}
+
+
 td.number {
-	text-align: right;
+	text-align: left;
+	@media only screen and (max-width: 900px) {
+		width: 25%;
+	}
 }
 
 td {
-	padding: 10px 10px;
-	border-bottom: 2px #FFF solid;
+	padding: 10px 5px;
+	border-bottom: 1px #E5E7E9 solid;
+	width: auto;
+	@media only screen and (max-width: 900px) {
+		padding: 5px 5px;
+		font-size: 15px;
+		/*width: 33.3333%;*/
+	}
 }
 
 td.county {
 	font-weight: bold;
 }
 
-tr.sticky {
+thead.sticky {
 	background: white;
 	padding-top: 10px;
 }
 
 td.D-D-2016,
 td.D-D-projected {
-	border-left: 1px solid #3498DB;
-	border-right: 1px solid #3498DB;
-	border-bottom: 1px solid #3498DB;
+	/*border-left: 1px solid #3498DB;*/
+	/*border-right: 1px solid #3498DB;*/
+	/*border-bottom: 1px solid #3498DB;*/
 	background: #D6EAF8;
+	border-bottom: 1px white solid;
 }
 
 td.R-R-2016,
 td.R-R-projected {
-	border-left: 1px solid #C0392B;
-	border-right: 1px solid #C0392B;
-	border-bottom: 1px solid #C0392B;
+	/*border-left: 1px solid #C0392B;*/
+	/*border-right: 1px solid #C0392B;*/
+	/*border-bottom: 1px solid #C0392B;*/
 	background: #F2D7D5;
+	border-bottom: 1px white solid;
 }
 
 th {
 	text-align: left;
 	border-bottom: 1px solid black;
 	background: white;
-}
-
-tr:nth-child(even) {
-	background: #F2F3F4;
+	padding: 10px 5px;
+	vertical-align: bottom;
+	/*@media only screen and (max-width: 900px) {
+		width: 33.333%
+	}*/
 }

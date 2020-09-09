@@ -178,7 +178,7 @@
 
 // Project specific styles.  Split styles into files per component
 @import 'global';
-@import 'header';
+@import 'scoreboard';
 @import 'hero';
 @import 'dashboard';
 @import 'density';
@@ -186,3 +186,17 @@
 @import 'table';
 @import 'scenario';
 @import 'number';
+
+.desktop-show {
+    display: block !important; 
+    @media only screen and (max-width: 900px) {
+        display: none !important;
+    }
+}
+
+.mobile-show {
+    display: none !important; 
+    @media only screen and (max-width: 900px) {
+        display: block!important;
+    }
+}

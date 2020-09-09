@@ -1,11 +1,18 @@
 .scenario {
 	max-width: 650px;
-	width: 90%;
+	width: 85%;
 	padding-top: 100px;
 	padding-bottom: 100px;
 	margin: 0 auto;
+	@media only screen and (max-width: 900px) {
+		padding-top: 75px;
+		padding-bottom: 75px;
+	}
 	&.first {
 		padding-bottom: 50px;
+	}
+	&.ahead {
+		padding-bottom: 30px;
 	}
 	&.last {
 		/*text-align: center;*/
@@ -14,14 +21,14 @@
 	h5 {
 		font-family: "Popular";
 		font-weight: bold;
-		font-size: 15px;
+		font-size: 16px;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		letter-spacing: 1px;
 	}
 	p {
 		font-family: "Benton Sans";
 		font-weight: normal;
-		font-size: 17px;
+		font-size: 16px;
 		line-height: 1.5;
 	}
 	p.explainer {
@@ -29,7 +36,16 @@
 	}
 	button.reset-button {
 		margin-left: 0;
-		margin-top: 10px;
+		margin-top: 0px;
+		@media only screen and (max-width: 900px) {
+			margin-top: -30px;
+		}
+	}
+	.map.mobile-show {
+		width: 125px;
+		float: right;
+		margin-bottom: 20px;
+		margin-left: 20px;
 	}
 }
 
@@ -61,5 +77,35 @@
 	}
 	label {
 		font-weight: bold;
+	}
+}
+
+div.credits {
+	padding-top: 30px;
+	margin-top: 50px;
+	border-top: 1px solid #E5E7E9;
+	padding-bottom: 20vh;
+	width: 100%;
+	max-width: 650px;
+	font-family: "Benton Sans";
+	font-size: 14px;
+	text-align: left;
+	p {
+		margin-bottom: 15px;
+		font-size: 15px;
+		b {
+			display: inline-block;
+			margin-right: 5px;
+		}
+	}
+	h5 {
+		font-family: "Benton Sans";
+		font-weight: bold;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 15px;
+		margin-top: 35px;	
+		font-size: 13px;
+		width: 100%;
 	}
 }

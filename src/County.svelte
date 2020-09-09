@@ -134,12 +134,12 @@
 
 <tr>
 	<td class="county">{name}</td>
-	<td>{classification_label(county_data.classification)}</td>
-	<td class="number">{commaNumber(county_data.votes_2016)}</td>
-	<td class="number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td>
-	<td class="number">{commaNumber(proj_total_votes)}</td>
-	<td class="number R-{county_data.winner_2016}-2016">{roundPct(county_data.rPct_2016)}</td>
-	<td class="number D-{county_data.winner_2016}-2016">{roundPct(county_data.dPct_2016)}</td>
-	<td class="number" class:R-R-projected="{proj_final_r_pct > proj_final_d_pct}">{roundPct(proj_final_r_pct)}</td>
-	<td class="number" class:D-D-projected="{proj_final_r_pct < proj_final_d_pct}">{roundPct(proj_final_d_pct)}</td>
+	<td class="desktop-show type">{classification_label(county_data.classification)}</td>
+	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)}</td>
+	<!-- <td class="desktop-show number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td> -->
+	<td class="desktop-show number votes-2020">{commaNumber(proj_total_votes)}</td>
+	<td class="desktop-show number r-2016 R-{county_data.winner_2016}-2016">{roundPct(county_data.rPct_2016)}</td>
+	<td class="desktop-show number d-2016 D-{county_data.winner_2016}-2016">{roundPct(county_data.dPct_2016)}</td>
+	<td class="number r-2020" class:R-R-projected="{proj_final_r_pct > proj_final_d_pct}">{roundPct(proj_final_r_pct)}</td>
+	<td class="number d-2020" class:D-D-projected="{proj_final_r_pct < proj_final_d_pct}">{roundPct(proj_final_d_pct)}</td>
 </tr>
