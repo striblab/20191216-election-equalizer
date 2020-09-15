@@ -2,6 +2,8 @@
 	import CountyData from './data/mncounties.json'
 	import County from './County.svelte';
 	import RegionalStats from './RegionalStats.svelte';
+	import { onMount } from 'svelte';
+	import ConfettiGenerator from "confetti-js";
 
 	const commaNumber = require('comma-number')
 
@@ -150,21 +152,6 @@
 		}
 	}
 
-
-
-	export let scrollY;
-	export let y_from_top;
-
-
-	$: {
-		let happy = scrollY;
-		if (document.querySelector('.project-wrapper')) {
-			y_from_top = document.querySelector('.project-wrapper').getBoundingClientRect().top;
-		} else {
-			y_from_top = 8675309;
-		}
-	}
-
 	let myFunction = function () {
 	  var element = document.getElementById("project-wrapper");
 	  element.classList.toggle("expanded");
@@ -175,6 +162,46 @@
 	  var ruralD = document.getElementById("rural-d");
 	  ruralD.value = "10";
 	}
+
+	onMount(async () => {
+		var controller = new ScrollMagic.Controller();
+
+		var tableHeight = document.getElementById("table").offsetHeight;
+
+		var scene = new ScrollMagic.Scene({triggerElement: "#year-comparison"})
+			.setPin("#year-comparison", {pushFollowers: false})
+			.setClassToggle("#year-comparison", "fixed")
+			.addTo(controller);
+		var triggerHook = scene.triggerHook(0);
+
+		if (window.innerWidth > 900) {
+			var scene = new ScrollMagic.Scene({triggerElement: ".sticky", duration: tableHeight, offset: -200})
+				.setPin(".sticky", {pushFollowers: false})
+				.addTo(controller);
+			var triggerHook = scene.triggerHook(0);
+
+		} else {
+			var scene = new ScrollMagic.Scene({triggerElement: ".sticky", duration: tableHeight, offset: -170})
+				.setPin(".sticky", {pushFollowers: false})
+				.addTo(controller);
+			var triggerHook = scene.triggerHook(0);
+		}
+
+		var biden = document.getElementById("biden-nav");
+		var trump = document.getElementById("trump-nav");
+
+		if (proj_d_votes_statewide > proj_r_votes_statewide) {
+			console.log('biden winner');
+			var confettiSettings = { colors: '[ [40, 116, 166], [52, 152, 219], [174, 214, 241] ]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
+			var confetti = new ConfettiGenerator(confettiSettings);
+			confetti.render();
+		} else {
+			var confettiSettings = { colors: '[ [176, 58, 46], [231, 76, 60], [203, 67, 53] ]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
+			var confetti = new ConfettiGenerator(confettiSettings);
+			confetti.render();
+		}
+
+	});
 </script>
 
 <div class="hero">
@@ -238,7 +265,8 @@
 </div>
 
 <section id="year-comparison">
-	<canvas id="my-canvas"></canvas>
+	<canvas class="my-canvas" id="canvas-dem"></canvas>
+	<canvas class="my-canvas" id="canvas-gop"></canvas>
 	<div class="project-wrapper" id="project-wrapper">
 		<div id="totals-2020" class="year-totals">
 			<h2 class="desktop-show">Projected Minnesota results</h2>
