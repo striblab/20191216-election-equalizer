@@ -187,19 +187,54 @@
 			var triggerHook = scene.triggerHook(0);
 		}
 
-		var biden = document.getElementById("biden-nav");
-		var trump = document.getElementById("trump-nav");
+		// var biden = document.getElementById("biden-nav");
+		// var trump = document.getElementById("trump-nav");
 
-		if (proj_d_votes_statewide > proj_r_votes_statewide) {
-			console.log('biden winner');
-			var confettiSettings = { colors: '[ [40, 116, 166], [52, 152, 219], [174, 214, 241] ]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
-			var confetti = new ConfettiGenerator(confettiSettings);
-			confetti.render();
-		} else {
-			var confettiSettings = { colors: '[ [176, 58, 46], [231, 76, 60], [203, 67, 53] ]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
-			var confetti = new ConfettiGenerator(confettiSettings);
-			confetti.render();
-		}
+		
+
+		// document.addEventListener("input", function (e) {
+		//     if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
+		// 		console.log('biden winner');
+		// 		var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
+		// 		var confetti = new ConfettiGenerator(confettiSettings);
+		// 		confetti.render();
+		// 		setTimeout(function(){ 
+		// 			confetti.clear()
+		// 		}, 4000);
+		// 	} else if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
+		// 		console.log('trump winner');
+		// 		var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
+		// 		var confetti = new ConfettiGenerator(confettiSettings);
+		// 		setTimeout(function(){ 
+		// 			confetti.clear()
+		// 		}, 4000);
+		// 	}
+		// });
+
+		document.addEventListener("input", function (e) {
+			var biden = document.getElementById("biden-nav");
+			var trump = document.getElementById("trump-nav");
+
+		    if (biden.classList.contains("winner")) {
+				console.log('biden winner');
+				var confettiSettings = { colors: '[[40,116,166], [52,152,219]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25, rotate: true};
+				var demConfetti = new ConfettiGenerator(confettiSettings);
+				demConfetti.render();
+				setTimeout(function(){ 
+					demConfetti.clear()
+				}, 4000);
+			} else if (trump.classList.contains("winner")) {
+				console.log('trump winner');
+				var confettiSettings = { "colors": '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25, rotate: true };
+				var gopConfetti = new ConfettiGenerator(confettiSettings);
+				gopConfetti.render();
+				setTimeout(function(){ 
+					gopConfetti.clear()
+				}, 4000);
+			}
+		});
+
+		
 
 	});
 </script>
