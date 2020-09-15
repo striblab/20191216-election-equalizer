@@ -2,6 +2,7 @@
 	import CountyData from './data/mncounties.json'
 	import County from './County.svelte';
 	import RegionalStats from './RegionalStats.svelte';
+
 	const commaNumber = require('comma-number')
 
 	import { elligible_voters_rural, elligible_voters_outstate, elligible_voters_suburban, elligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban } from './stores.js';
@@ -186,13 +187,13 @@
 	<div class="minnesota desktop-show"></div>
 	<div class="headline-wrapper">
 		<div class="minnesota mobile show"></div>
-		<img class="logo white" src="http://static.startribune.com/images/reverse-startribune-logo-white.svg">
+		<img class="logo white" src="http://static.startribune.com/images/reverse-startribune-logo-white.svg" alt="star tribune logo">
 		<h1>What would it take for <span class="republican party">Trump <div class="cand-mug"></div></span> to win Minnesota over <span class="democrat party">Biden <div class="cand-mug"></div></span>?</h1>
 	</div>
 </div>
 
 <div class="subhead-wrapper">
-	<h2>Geography is just one of many variables in a presidential race. But it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Try changing voter turnout and the partisan mix in different regions based on the 2016 election -- when Hillary Clinton won the state by less than 2 percent -- to discover what it would take to flip Minnesota red.</h2>
+	<h2>Geography is just one of many variables in a presidential race. But it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Try changing voter turnout and the partisan mix in different regions based on the 2016 election — when Hillary Clinton won the state by less than 2 percent — to discover what it would take to flip Minnesota red.</h2>
 
 	<p class="byline-special"><b>By Michael Corey, Political reporter here and here</b><br>Star Tribune • Sept. XX, 2020</p>
 	<!-- sharing -->
@@ -237,6 +238,7 @@
 </div>
 
 <section id="year-comparison">
+	<canvas id="my-canvas"></canvas>
 	<div class="project-wrapper" id="project-wrapper">
 		<div id="totals-2020" class="year-totals">
 			<h2 class="desktop-show">Projected Minnesota results</h2>
