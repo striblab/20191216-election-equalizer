@@ -177,9 +177,21 @@
 </script>
 
 <div class="hero">
-	<img class="logo black" src="http://static.startribune.com/images/icons/startribune-logo-black.svg" alt="star tribune logo">
-	<h1>What would it take for <span class="republican party">Trump <div class="cand-mug"></div></span> to win Minnesota over <span class="democrat party">Biden <div class="cand-mug"></div></span>?</h1>
+	<div class="gop">
+		<!-- <div class="cand-mug"></div> -->
+	</div>
+	<div class="dem">
+		<!-- <div class="cand-mug"></div> -->
+	</div>
+	<div class="minnesota desktop-show"></div>
+	<div class="headline-wrapper">
+		<div class="minnesota mobile show"></div>
+		<img class="logo white" src="http://static.startribune.com/images/reverse-startribune-logo-white.svg">
+		<h1>What would it take for <span class="republican party">Trump <div class="cand-mug"></div></span> to win Minnesota over <span class="democrat party">Biden <div class="cand-mug"></div></span>?</h1>
+	</div>
+</div>
 
+<div class="subhead-wrapper">
 	<h2>Geography is just one of many variables in a presidential race. But it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Try changing voter turnout and the partisan mix in different regions based on the 2016 election -- when Hillary Clinton won the state by less than 2 percent -- to discover what it would take to flip Minnesota red.</h2>
 
 	<p class="byline-special"><b>By Michael Corey, Political reporter here and here</b><br>Star Tribune • Sept. XX, 2020</p>
@@ -230,13 +242,13 @@
 			<h2 class="desktop-show">Projected Minnesota results</h2>
 			<h2 class="mobile-show">Projected Minn. results</h2>
 			<div class="cand-totals">
-				<div class:winner="{$proj_d_votes_statewide > $proj_r_votes_statewide}" class="cand-info d">
+				<div class:winner="{$proj_d_votes_statewide > $proj_r_votes_statewide}" class:loser="{$proj_r_votes_statewide > $proj_d_votes_statewide}" class="cand-info d" id="biden-nav">
 					<div class="cand-mug"></div>
 					<h4 class="cand-name desktop-show"><b>Joe Biden</b></h4>
 					<h4 class="cand-name mobile-show"><b>Biden</b></h4>
 				</div>
 
-				<div class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}" class="cand-info r" >
+				<div class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}" class:loser="{$proj_r_votes_statewide < $proj_d_votes_statewide}" class="cand-info r" id="trump-mav">
 					<div class="cand-mug"></div>
 					<h4 class="cand-name desktop-show"><b>Donald Trump</b></h4>
 					<h4 class="cand-name mobile-show"><b>Trump</b></h4>
@@ -257,23 +269,23 @@
 			<div class="wrapper">
 				<div class="rural">
 					<h5>Rural</h5>
-					<p class="first"><b>Voter turnout</b> {turnout_modifiers["rural"]}</p>
-					<p><b>Partisanship</b> <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_modifiers["rural"]}</span></p>
+					<p class="first"><b>Voter turnout:</b> {turnout_modifiers["rural"]}</p>
+					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_modifiers["rural"]}</span></p>
 				</div>
 				<div class="regional">
 					<h5>Regional</h5>
-					<p class="first"><b>Voter turnout</b> {turnout_modifiers["outstate city"]}</p>
-					<p><b>Partisanship</b> <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_modifiers["outstate city"]}</span></p>
+					<p class="first"><b>Voter turnout:</b> {turnout_modifiers["outstate city"]}</p>
+					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_modifiers["outstate city"]}</span></p>
 				</div>
 				<div class="suburban">
 					<h5>Suburban</h5>
-					<p class="first"><b>Voter turnout</b> {turnout_modifiers["suburban"]}</p>
-					<p><b>Partisanship</b> <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_modifiers["suburban"]}</span></p>
+					<p class="first"><b>Voter turnout:</b> {turnout_modifiers["suburban"]}</p>
+					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_modifiers["suburban"]}</span></p>
 				</div>
 				<div class="urban">
 					<h5>Urban</h5>
-					<p class="first"><b>Voter turnout</b> {turnout_modifiers["urban"]}</p>
-					<p><b>Partisanship</b> <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_modifiers["urban"]}</span></p>
+					<p class="first"><b>Voter turnout:</b> {turnout_modifiers["urban"]}</p>
+					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_modifiers["urban"]}</span></p>
 				</div>
 			</div>
 			<button class="reset-button" type="button" on:click={resetDials}><img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">Reset dials</button>

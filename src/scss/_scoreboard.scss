@@ -18,7 +18,7 @@
 		height: 375px;
 		transition: 0.5s height;
 		@media only screen and (max-width: 900px) {
-			height: 440px;
+			height: 450px;
 		}
 		h3.applied {
 			i {
@@ -76,7 +76,7 @@
 		margin-top: 10px;
 		div.wrapper {
 			display: grid;
-			grid-template-columns: 25% 25% 25% 25%;
+			grid-template-columns: 24% 24% 24% 24%;
   			grid-template-rows: 100%;
 			width: 100%;
 			text-align: center;
@@ -92,6 +92,8 @@
 			div {
 				width: 100%;
 				padding: 0px 10px;
+				margin-top: 10px;
+				margin-bottom: 10px;
 				font-size: 13px;
 				font-family: "Benton Sans";
 				font-weight: normal;
@@ -102,6 +104,8 @@
 				h5 {
 					text-transform: uppercase;
 					letter-spacing: 0.5px;
+					margin-top: 0;
+
 					@media only screen and (max-width: 900px) {
 						margin-bottom: 10px;
 						margin-top: 0;
@@ -110,7 +114,7 @@
 				p {
 					position: relative;
 					margin-bottom: 10px;
-					padding-bottom: 10px;
+					padding-bottom: 0px;
 					transition: 0.5s background;
 					@media only screen and (max-width: 900px) {
 						margin-bottom: 5px;
@@ -119,7 +123,7 @@
 					b {
 						display: inline-block;
 						text-align: right;
-						padding-right: 5px;
+						padding-right: 2.5px;
 						background: white;
 						font-weight: normal;
 					}
@@ -135,23 +139,23 @@
 						background: #D6EAF8;
 						transition: 0.5s background;
 					}
-					&.first {
-						border-bottom: 1px solid #E5E7E9;
-					}
 				}
 			}
 			div:nth-child(1) {
+				border-right: 1px solid #E5E7E9;
 				@media only screen and (max-width: 900px) {
 					border-bottom: 1px solid #333;
 					border-right: 1px solid #333;
 				}
 			}
 			div:nth-child(2) {
+				border-right: 1px solid #E5E7E9;
 				@media only screen and (max-width: 900px) {
 					border-bottom: 1px solid #333;
 				}
 			}
 			div:nth-child(3) {
+				border-right: 1px solid #E5E7E9;
 				@media only screen and (max-width: 900px) {
 					border-right: 1px solid #333;
 					h5 {
@@ -180,7 +184,7 @@
 	width: 100%;
 	max-width: 650px;
 	@media only screen and (max-width: 900px) {
-	    overflow: hidden;
+	    /*overflow: hidden;*/
 	    width: 100%;
 	    margin-left: 0;
 	}
@@ -287,9 +291,9 @@ div.cand-totals {
 			}
 			div.cand-mug {
 				background-color: #3498DB;
-				background-image: url(https://static.startribune.com/svg/biden.png?cache=trash);
+				background-image: url(https://static.startribune.com/svg/biden.png?cache=trashshs);
 				background-size: cover;
-				background-position: 50% 0%;
+				background-position: 50% 45%;
 			}
 			h4.cand-name {
 				left: 80px;
@@ -297,6 +301,12 @@ div.cand-totals {
 				@media only screen and (max-width: 900px) {
 					left: 55px;
 					top: -20px;
+				}
+			}
+			&.loser {
+				div.cand-mug {
+					background-image: url(https://static.startribune.com/svg/bidensad.png?cache=trash);
+					background-position: 50% 80%;
 				}
 			}
 		}
@@ -309,9 +319,9 @@ div.cand-totals {
 			}
 			div.cand-mug {
 				background-color: #C0392B;
-				background-image: url(https://static.startribune.com/svg/trump.png?cache=trash);
+				background-image: url(https://static.startribune.com/svg/trump.png?cache=trashshs);
 				background-size: cover;
-				background-position: 50% 0%;
+				background-position: 50% 50%;
 				position: absolute;
 				right: 0;
 
@@ -327,6 +337,12 @@ div.cand-totals {
 				}
 				&.old {
 					right: 90px;
+				}
+			}
+			&.loser {
+				div.cand-mug {
+					background-image: url(https://static.startribune.com/svg/trumpsad.png?cache=trash);
+					background-position: 50% 50%;
 				}
 			}
 		}

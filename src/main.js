@@ -16,6 +16,9 @@ var controller = new ScrollMagic.Controller();
 
 var tableHeight = document.getElementById("table").offsetHeight;
 
+var biden = document.getElementById("biden-nav");
+var trump = document.getElementById("trump-nav");
+
 var scene = new ScrollMagic.Scene({triggerElement: "#year-comparison"})
 	.setPin("#year-comparison", {pushFollowers: false})
 	.setClassToggle("#year-comparison", "fixed")
@@ -32,6 +35,12 @@ if (window.innerWidth > 900) {
 		.setPin(".sticky", {pushFollowers: false})
 		.addTo(controller);
 	var triggerHook = scene.triggerHook(0);
+}
+
+if (biden.classList.contains('winner')) {
+	startConfettiDem();
+} else if (trump.classList.contains('winner')) {
+	startConfettiGop();
 }
 
 
