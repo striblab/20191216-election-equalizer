@@ -187,54 +187,29 @@
 			var triggerHook = scene.triggerHook(0);
 		}
 
-		// var biden = document.getElementById("biden-nav");
-		// var trump = document.getElementById("trump-nav");
+		var biden = document.getElementById("biden-nav");
+		var trump = document.getElementById("trump-nav");
 
 		
 
-		// document.addEventListener("input", function (e) {
-		//     if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
-		// 		console.log('biden winner');
-		// 		var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
-		// 		var confetti = new ConfettiGenerator(confettiSettings);
-		// 		confetti.render();
-		// 		setTimeout(function(){ 
-		// 			confetti.clear()
-		// 		}, 4000);
-		// 	} else if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
-		// 		console.log('trump winner');
-		// 		var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
-		// 		var confetti = new ConfettiGenerator(confettiSettings);
-		// 		setTimeout(function(){ 
-		// 			confetti.clear()
-		// 		}, 4000);
-		// 	}
-		// });
-
 		document.addEventListener("input", function (e) {
-			var biden = document.getElementById("biden-nav");
-			var trump = document.getElementById("trump-nav");
-
-		    if (biden.classList.contains("winner")) {
+		    if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
 				console.log('biden winner');
-				var confettiSettings = { colors: '[[40,116,166], [52,152,219]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25, rotate: true};
-				var demConfetti = new ConfettiGenerator(confettiSettings);
-				demConfetti.render();
+				var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
+				var confetti = new ConfettiGenerator(confettiSettings);
+				confetti.render();
 				setTimeout(function(){ 
-					demConfetti.clear()
+					confetti.clear()
 				}, 4000);
-			} else if (trump.classList.contains("winner")) {
+			} else if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
 				console.log('trump winner');
-				var confettiSettings = { "colors": '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25, rotate: true };
-				var gopConfetti = new ConfettiGenerator(confettiSettings);
-				gopConfetti.render();
+				var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
+				var confetti = new ConfettiGenerator(confettiSettings);
 				setTimeout(function(){ 
-					gopConfetti.clear()
+					confetti.clear()
 				}, 4000);
 			}
 		});
-
-		
 
 	});
 </script>
@@ -250,14 +225,14 @@
 	<div class="headline-wrapper">
 		<div class="minnesota mobile show"></div>
 		<img class="logo white" src="http://static.startribune.com/images/reverse-startribune-logo-white.svg" alt="star tribune logo">
-		<h1>What would it take for <span class="republican party">Trump <div class="cand-mug"></div></span> to win Minnesota over <span class="democrat party">Biden <div class="cand-mug"></div></span>?</h1>
+		<h1>What would it take for <span class="republican party">Trump <div class="mug-wrapper"><div class="cand-mug happy"></div><div class="cand-mug sad"></div></div></span> to win Minnesota over <span class="democrat party">Biden <div class="mug-wrapper"><div class="cand-mug sad"></div><div class="cand-mug happy"></div></div></span>?</h1>
 	</div>
 </div>
 
 <div class="subhead-wrapper">
 	<h2>Geography is just one of many variables in a presidential race. But it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Try changing voter turnout and the partisan mix in different regions based on the 2016 election — when Hillary Clinton won the state by less than 2 percent — to discover what it would take to flip Minnesota red.</h2>
 
-	<p class="byline-special"><b>By Michael Corey, Political reporter here and here</b><br>Star Tribune • Sept. XX, 2020</p>
+	<p class="byline-special"><b>Michael Corey, Anna Boone, Jessie Van Berkel and Torey Van Oot</b><br>Star Tribune • Sept. 21, 2020</p>
 	<!-- sharing -->
 </div>
 
@@ -313,7 +288,7 @@
 					<h4 class="cand-name mobile-show"><b>Biden</b></h4>
 				</div>
 
-				<div class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}" class:loser="{$proj_r_votes_statewide < $proj_d_votes_statewide}" class="cand-info r" id="trump-mav">
+				<div class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}" class:loser="{$proj_r_votes_statewide < $proj_d_votes_statewide}" class="cand-info r" id="trump-nav">
 					<div class="cand-mug"></div>
 					<h4 class="cand-name desktop-show"><b>Donald Trump</b></h4>
 					<h4 class="cand-name mobile-show"><b>Trump</b></h4>
@@ -359,25 +334,25 @@
 </section>
 
 <div class="scenario second">
-	<h5>Rural revolt</h5>
+	<h5>RELYING ON RURAL SUPPORT</h5>
 	<div class="map mobile-show">
 		<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
 	</div>
-	<p>Trump has campagined on winning Minnesota based on driving voter turnout in rural counties. Minnesota has high voter turnout already. Trump would have to increase voter turnout by more than </p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
+	<p>Trump’s campaign has focused on driving up voter turnout in rural areas of Minnesota and across the Midwest. Rural Minnesota turnout was the lowest of the four regions in 2016. However, the number of additional votes that can come from the state’s sparsely populated counties is relatively limited.</p>
+	<p>To make a significant difference in the 2020 election Trump would not just need to turn out more people in those areas, he would likely also have to shift voters – such as independents – his way. Parts of Greater Minnesota, including the Iron Range, have trended deeper red in recent elections. The president has devoted a lot of time to northern Minnesota and emphasized how the region has benefited from his tariffs on imported steel. Both Donald Trump, Jr. and Vice President Mike Pence stopped in Duluth recently, and Trump visited Bemidji.</p>
+	<p>In farm country, the Trump campaign has championed the trade deal with Mexico and Canada that took effect in July. However, trade tensions with China have hurt farmers during Trump’s term and economic downturn amid the COVID-19 pandemic is creating an additional challenge. In rural areas where there have been fewer coronavirus cases, campaigning Republicans have emphasized frustrations over Democratic Gov. Tim Walz’s pandemic regulations.</p>
 	<p>Use the sliders below to explor scenarios in the rural counties that could lead to a Trump victory.</p>
 	<div class="inline-ex">
 
 		<div class="inline-wrapper">
-			<p class="explainer"><b>Turnout percentage in rural counties</b> would need to increase by at least 5 percent.</p>
+			<p class="explainer">Turnout percentage in <b>rural counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 				<div class="wrapper">
 					<input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0>
 				</div>
 			</label>
-			<p class="explainer"><b>Or partisan balance in rural counties</b> would need to lean 4 percent more Republican.</p>
+			<p class="explainer">Partisan balance in <b>rural counties</b></p>
 			<label>
 				<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan" id="rural-p">
 				<div class="wrapper">
@@ -395,100 +370,26 @@ Reset dials</button>
 	<!-- <button class="show" on:click={scenario2}>Play this scenario</button> -->
 </div>
 
-
-<div class="scenario third clear">
-	<h5>Rochester rebels</h5>
-	<div class="map mobile-show">
-		<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
-	</div>
-	<p>Trump has campagined on winning Minnesota based on driving voter turnout in rural counties. Minnesota has high voter turnout already. Trump would have to increase voter turnout by more than </p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
-	<p>Use the sliders below to explor scenarios in the suburban counties that could lead to a Trump victory.</p>
-
-	<div class="inline-ex">
-		<div class="inline-wrapper">
-			<p class="explainer"><b>Turnout percentage in regional city counties</b> would need to increase by at least 5 percent.</p>
-			<label>
-				<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
-				<div class="wrapper">
-					<input type=number bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
-				</div>
-			</label>
-			<p class="explainer"><b>Or partisan balance in regional city counties</b> would need to lean 4 percent more Republican.</p>
-			<label>
-				<input type=range bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="partisan">
-				<div class="wrapper">
-					<input type=number bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
-				</div>
-			</label>
-		</div>
-		<div class="map">
-			<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
-		</div>
-	</div>
-	<button class="reset-button" type="button" on:click={resetDials}>
-	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
-	Reset dials</button>
-</div>
-
-<div class="scenario third clear">
-	<h5>Suburban thing here</h5>
-	<div class="map mobile-show">
-		<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
-	</div>
-	<p>Trump has campagined on winning Minnesota based on driving voter turnout in rural counties. Minnesota has high voter turnout already. Trump would have to increase voter turnout by more than </p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
-	<p>Use the sliders below to explor scenarios in the suburban counties that could lead to a Trump victory.</p>
-
-	<div class="inline-ex">
-		<div class="inline-wrapper">
-			<p class="explainer"><b>Turnout percentage in suburban counties</b> would need to increase by at least 5 percent.</p>
-			<label>
-				<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
-				<div class="wrapper">
-					<input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
-				</div>
-			</label>
-			<p class="explainer"><b>Or partisan balance in suburban counties</b> would need to lean 4 percent more Republican.</p>
-			<label>
-				<input type=range bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 class="partisan">
-				<div class="wrapper">
-					<input type=number bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
-				</div>
-			</label>
-		</div>
-		<div class="map">
-			<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
-		</div>
-	</div>
-	<button class="reset-button" type="button" on:click={resetDials}>
-	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
-	Reset dials</button>
-</div>
-
-
 <div class="scenario fourth">
-	<h5>Two counties, majority of votes</h5>
+	<h5>TWO COUNTIES, A LOAD OF VOTES</h5>
 	<div class="map mobile-show">
 		<img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map">
 	</div>
-	<p>Hennepin and Ramsey counties, home of the Twin Cities, account for X percent of votes in Minnesota. As a result, higher turnout here does stuf here and stuff.</p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
+	<p>Hennepin and Ramsey counties, which include Minneapolis, St. Paul and many surrounding suburban cities, are home to to nearly one-third of Minnesota’s residents. Voter turnout in these counties, which historically overwhelmingly pick Democrats, can have a significant impact on statewide elections.</p>
+	<p>Hillary Clinton carried the two counties with 64.4% of the vote four years ago. Biden supporters are trying to fire up voters in the heart of the metro and said a drop in turnout there could be disastrous for their chances. Democratic state officials have stressed the importance of not only getting their base to show up but also drawing new voters, including young people and voters in the Twin Cities’ immigrant communities.</p>
 	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
 	<p>Use the sliders below to explor scenarios in the suburban counties that could lead to a Trump victory.</p>
 
 	<div class="inline-ex">
 		<div class="inline-wrapper">
-			<p class="explainer"><b>Turnout percentage in urban counties</b> would need to increase by at least 5 percent.</p>
+			<p class="explainer">Turnout percentage in <b>urban counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
 					<input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
 				</div>
 			</label>
-			<p class="explainer"><b>Or partisan balance in urban counties</b> would need to lean 4 percent more Republican.</p>
+			<p class="explainer">Partisan balance in <b>urban counties</b></p>
 			<label>
 				<input type=range bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 class="partisan">
 				<div class="wrapper">
@@ -507,6 +408,77 @@ Reset dials</button>
 	<!-- <button class="show" on:click={scenario2}>Play this scenario</button> -->
 </div>
 
+
+<div class="scenario third clear">
+	<h5>WILL THE SUBURBS SHIFT?</h5>
+	<div class="map mobile-show">
+		<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
+	</div>
+	<p>Over the past three presidential elections, Republicans have carried three of the five metro counties that surround Hennepin and Ramsey. However, the suburban communities around the Twin Cities trended deeper blue in 2018, with Democratic U.S. Reps. Angie Craig and Dean Phillips flipping districts that include wide swaths of the south and west suburbs. In that midterm, Sen. Amy Klobuchar carried all five of the counties – which could bode well for Biden’s chances in those areas.</p>
+	<p>Past polls have shown Trump struggling with suburban swing voters, particularly women. However, Republicans are hoping to make inroads among moderates in the suburbs and are painting Biden as part of the “radical left.” The GOP has emphasized public safety and their support for police as they try to win over those areas, saying that Democrats have failed to prevent “lawlessness” during the civil unrest that followed George Floyd’s killing by Minneapolis police.</p>
+
+	<div class="inline-ex">
+		<div class="inline-wrapper">
+			<p class="explainer">Turnout percentage in <b>suburban counties</b></p>
+			<label>
+				<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
+				<div class="wrapper">
+					<input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+				</div>
+			</label>
+			<p class="explainer">Partisan balance in <b>suburban counties</b></p>
+			<label>
+				<input type=range bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 class="partisan">
+				<div class="wrapper">
+					<input type=number bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+				</div>
+			</label>
+		</div>
+		<div class="map">
+			<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
+		</div>
+	</div>
+	<button class="reset-button" type="button" on:click={resetDials}>
+	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
+	Reset dials</button>
+</div>
+
+<div class="scenario third clear">
+	<h5>Will urban centers outside the Twin Cities tip the scales? </h5>
+	<div class="map mobile-show">
+		<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
+	</div>
+	<p>While much of Greater Minnesota tends to vote Republican, there are several significant regional population centers that could boost Democrats. Population shifts in the Rochester area, home to the Mayo Clinic, have created fresh opportunities for the DFL, especially among college-educated voters and growing communities of color. Though Clinton narrowly defeated Trump in Olmsted County in 2016, Democrats have gained ground in the region since 2014.</p>
+	<p>St. Louis County, home to Duluth, remains a Democratic stronghold, even as GOP support grows elsewhere on the Iron Range. Clinton won that county by 11 percentage points in 2016. Trump is making a play to peel more votes, though, with multiple campaign events in and around Duluth.</p>
+	<p>In Central Minnesota, the greater St. Cloud area leans GOP. The president won both Stearns and Sherburne counties by wide margins in 2016. He also edged out Clinton in Blue Earth County, which includes Mankato, by about 1,000 votes. The margin there was 47% to 43% in 2016. Combined, these areas helped Democrats in 2016. To turn the tide, the Trump campaign must turn these areas redder this November.</p>
+	<p>The campaign has taken steps to do just that. In addition to the Duluth visits, Republicans have been knocking doors and opening offices in St. Cloud and across Southern Minnesota. Democrats, meanwhile, hope to expand their base of support in these areas to help drive up vote totals statewide.</p>
+
+	<div class="inline-ex">
+		<div class="inline-wrapper">
+			<p class="explainer">Turnout percentage in <b>regional city counties</b></p>
+			<label>
+				<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
+				<div class="wrapper">
+					<input type=number bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
+				</div>
+			</label>
+			<p class="explainer">Partisan balance in <b>regional city counties</b></p>
+			<label>
+				<input type=range bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="partisan">
+				<div class="wrapper">
+					<input type=number bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
+				</div>
+			</label>
+		</div>
+		<div class="map">
+			<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
+		</div>
+	</div>
+	<button class="reset-button" type="button" on:click={resetDials}>
+	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
+	Reset dials</button>
+</div>
+
 <div class="scenario last">
 	<h5>Your turn</h5>
 	<p>Explore possible scenarios below using all the tools at once, wow! ncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.  Vivamus vulputate, mi eget.</p>
@@ -523,7 +495,6 @@ Reset dials</button>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_rural_2016}%</span> of the rural counties votes in 2016.</p>
 		<!-- <img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map"> -->
 		<label>Turnout percentage<br/>
-
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
 				<input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0>
