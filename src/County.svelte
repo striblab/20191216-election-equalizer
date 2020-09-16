@@ -11,6 +11,7 @@
 		votes_2016: 0,
 		rPct_2016: 0,
 		dPct_2016: 0,
+		turnout_2016: 0,
 		classification: ''
 	};
 	let proj_total_votes = 0;
@@ -19,8 +20,11 @@
 	let proj_other_votes = 0;
 	let proj_r_pct = 1;
 	let proj_d_pct = 1;
+	let proj_turnout_pct = 0;
 	let proj_final_r_pct = 1;
 	let proj_final_d_pct= 1;
+	let elligible_voters = 0;
+
 	// let proj_other_pct = 0.5;  // By default each party loses/gains half of projected third party votes
 
 	let thirdPartyCount = function(data_obj) {
@@ -52,30 +56,32 @@
 	r_votes_statewide_2016.update(n => n + county_data.rVotes_2016);
 	d_votes_statewide_2016.update(n => n + county_data.dVotes_2016);
 
+	elligible_voters = county_data.votes_2016 / (county_data.turnout_2016 / 100);
+
 	if (county_data['classification'] == 'rural') {
 		total_votes_regional_2016_rural.update(n => n + county_data.votes_2016);
 		r_votes_regional_2016_rural.update(n => n + county_data.rVotes_2016);
 		d_votes_regional_2016_rural.update(n => n + county_data.dVotes_2016);
 
-		elligible_voters_rural.update(n => n + (county_data.votes_2016 / (county_data.turnout_2016 / 100)));
+		elligible_voters_rural.update(n => n + elligible_voters);
 	} else if (county_data['classification'] == 'outstate city') {
 		total_votes_regional_2016_outstate.update(n => n + county_data.votes_2016);
 		r_votes_regional_2016_outstate.update(n => n + county_data.rVotes_2016);
 		d_votes_regional_2016_outstate.update(n => n + county_data.dVotes_2016);
 
-		elligible_voters_outstate.update(n => n + (county_data.votes_2016 / (county_data.turnout_2016 / 100)));
+		elligible_voters_outstate.update(n => n + elligible_voters);
 	} else if (county_data['classification'] == 'suburban') {
 		total_votes_regional_2016_suburban.update(n => n + county_data.votes_2016);
 		r_votes_regional_2016_suburban.update(n => n + county_data.rVotes_2016);
 		d_votes_regional_2016_suburban.update(n => n + county_data.dVotes_2016);
 
-		elligible_voters_suburban.update(n => n + (county_data.votes_2016 / (county_data.turnout_2016 / 100)));
+		elligible_voters_suburban.update(n => n + elligible_voters);
 	} else if (county_data['classification'] == 'urban') {
 		total_votes_regional_2016_urban.update(n => n + county_data.votes_2016);
 		r_votes_regional_2016_urban.update(n => n + county_data.rVotes_2016);
 		d_votes_regional_2016_urban.update(n => n + county_data.dVotes_2016);
 
-		elligible_voters_urban.update(n => n + (county_data.votes_2016 / (county_data.turnout_2016 / 100)));
+		elligible_voters_urban.update(n => n + elligible_voters);
 	}
 
 	// total_votes_regional_2016[county_data['classification']].update(n => n + county_data.votes_2016);
@@ -88,6 +94,8 @@
 			let prev_proj_r_votes = proj_r_votes;
 			let prev_proj_d_votes = proj_d_votes;
 			proj_total_votes = Math.round(county_data.votes_2016 * (1 + (turnout_modifier / 100)));
+
+			proj_turnout_pct = Math.round((proj_total_votes / elligible_voters) * 1000) / 10;
 
 			let proj_base_r_pct = (county_data.rVotes_2016 / county_data.votes_2016) + (partisan_modifier / 100);
 			let proj_base_d_pct = (county_data.dVotes_2016 / county_data.votes_2016) - (partisan_modifier / 100);
@@ -133,11 +141,14 @@
 </script>
 
 <tr>
-	<td class="county">{name}</td>
-	<td class="desktop-show type">{classification_label(county_data.classification)}</td>
-	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)}</td>
+	<td class="county">
+		{name}
+		<div>{classification_label(county_data.classification)}</div>
+	</td>
+	<!-- <td class="desktop-show type"></td> -->
+	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)} ({county_data.turnout_2016}%)</td>
 	<!-- <td class="desktop-show number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td> -->
-	<td class="desktop-show number votes-2020">{commaNumber(proj_total_votes)}</td>
+	<td class="desktop-show number votes-2020">{commaNumber(proj_total_votes)} ({proj_turnout_pct}%)</td>
 	<td class="desktop-show number r-2016 R-{county_data.winner_2016}-2016">{roundPct(county_data.rPct_2016)}</td>
 	<td class="desktop-show number d-2016 D-{county_data.winner_2016}-2016">{roundPct(county_data.dPct_2016)}</td>
 	<td class="number r-2020" class:R-R-projected="{proj_final_r_pct > proj_final_d_pct}">{roundPct(proj_final_r_pct)}</td>

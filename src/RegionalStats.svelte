@@ -2,16 +2,16 @@
   const commaNumber = require('comma-number')
 
   export let region = '';
-  export let d_votes_2016 = 0;
-  export let d_pct_2016 = 0;
+  // export let d_votes_2016 = 0;
+  // export let d_pct_2016 = 0;
   export let d_votes_proj = 0;
   export let d_pct_proj = 0;
-  export let r_votes_2016 = 0;
-  export let r_pct_2016 = 0;
+  // export let r_votes_2016 = 0;
+  // export let r_pct_2016 = 0;
   export let r_votes_proj = 0;
   export let r_pct_proj = 0;
-  export let total_votes_2016 = 0;
-  export let total_votes_proj = 0;
+  // export let total_votes_2016 = 0;
+  // export let total_votes_proj = 0;
   export let turnout_pct_2016 = 0;
   export let turnout_pct_proj = 0;
 </script>

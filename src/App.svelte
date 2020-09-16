@@ -190,7 +190,7 @@
 		var biden = document.getElementById("biden-nav");
 		var trump = document.getElementById("trump-nav");
 
-		
+
 
 		document.addEventListener("input", function (e) {
 		    if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
@@ -198,14 +198,14 @@
 				var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
 				var confetti = new ConfettiGenerator(confettiSettings);
 				confetti.render();
-				setTimeout(function(){ 
+				setTimeout(function(){
 					confetti.clear()
 				}, 4000);
 			} else if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
 				console.log('trump winner');
 				var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
 				var confetti = new ConfettiGenerator(confettiSettings);
-				setTimeout(function(){ 
+				setTimeout(function(){
 					confetti.clear()
 				}, 4000);
 			}
@@ -309,22 +309,22 @@
 			<div class="wrapper">
 				<div class="rural">
 					<h5>Rural</h5>
-					<p class="first"><b>Voter turnout:</b> {turnout_modifiers["rural"]}</p>
+					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["rural"]}% of 2016</p>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_modifiers["rural"]}</span></p>
 				</div>
 				<div class="regional">
 					<h5>Regional</h5>
-					<p class="first"><b>Voter turnout:</b> {turnout_modifiers["outstate city"]}</p>
+					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["outstate city"]}% of 2016</p>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_modifiers["outstate city"]}</span></p>
 				</div>
 				<div class="suburban">
 					<h5>Suburban</h5>
-					<p class="first"><b>Voter turnout:</b> {turnout_modifiers["suburban"]}</p>
+					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["suburban"]}% of 2016</p>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_modifiers["suburban"]}</span></p>
 				</div>
 				<div class="urban">
 					<h5>Urban</h5>
-					<p class="first"><b>Voter turnout:</b> {turnout_modifiers["urban"]}</p>
+					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["urban"]}% of 2016</p>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_modifiers["urban"]}</span></p>
 				</div>
 			</div>
@@ -345,11 +345,12 @@
 	<div class="inline-ex">
 
 		<div class="inline-wrapper">
-			<p class="explainer">Turnout percentage in <b>rural counties</b></p>
+			<p class="explainer">Total votes in <b>rural counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 				<div class="wrapper">
-					<input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0>
+					{100 + turnout_modifiers["rural"]}% of 2016
+					<!-- <input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0> -->
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>rural counties</b></p>
@@ -382,11 +383,12 @@ Reset dials</button>
 
 	<div class="inline-ex">
 		<div class="inline-wrapper">
-			<p class="explainer">Turnout percentage in <b>urban counties</b></p>
+			<p class="explainer">Total votes in <b>urban counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
+					{100 + turnout_modifiers["urban"]}% of 2016
+					<!-- <input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0> -->
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>urban counties</b></p>
@@ -419,11 +421,12 @@ Reset dials</button>
 
 	<div class="inline-ex">
 		<div class="inline-wrapper">
-			<p class="explainer">Turnout percentage in <b>suburban counties</b></p>
+			<p class="explainer">Total votes in <b>suburban counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+					{100 + turnout_modifiers["suburban"]}% of 2016
+					<!-- <input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0> -->
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>suburban counties</b></p>
@@ -455,11 +458,12 @@ Reset dials</button>
 
 	<div class="inline-ex">
 		<div class="inline-wrapper">
-			<p class="explainer">Turnout percentage in <b>regional city counties</b></p>
+			<p class="explainer">Total votes in <b>regional city counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<input type=number bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
+					{100 + turnout_modifiers["outstate city"]}% of 2016
+					<!-- <input type=number bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0> -->
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>regional city counties</b></p>
@@ -484,6 +488,9 @@ Reset dials</button>
 	<p>Explore possible scenarios below using all the tools at once, wow! ncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.  Vivamus vulputate, mi eget.</p>
 </div>
 
+<button class="reset-button" type="button" on:click={resetDials}>
+	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
+Reset dials</button>
 
 <!-- <div class="totals r" class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}">Republican: {proj_r_pct}% {commaNumber($proj_r_votes_statewide)}</div>
 <div class="totals d" class:winner="{$proj_d_votes_statewide > $proj_r_votes_statewide}">Democrat: {proj_d_pct}% {commaNumber($proj_d_votes_statewide)}</div>
@@ -494,10 +501,11 @@ Reset dials</button>
 		<h3>Rural<br></h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_rural_2016}%</span> of the rural counties votes in 2016.</p>
 		<!-- <img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map"> -->
-		<label>Turnout percentage<br/>
+		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
-				<input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0>
+				{100 + turnout_modifiers["rural"]}% of 2016
+				<!-- <input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0> -->
 			</div>
 		</label>
 
@@ -545,10 +553,11 @@ Reset dials</button>
 		<h3><!-- Greater  -->Minn. counties with regional centers</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_outstate_2016}%</span> of the rural counties votes in 2016.</p>
 		<!-- <img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map"> -->
-		<label>Turnout percentage<br/>
+		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<input type=number bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0 >
+				{100 + turnout_modifiers["outstate city"]}% of 2016
+				<!-- <input type=number bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0 > -->
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -596,10 +605,11 @@ Reset dials</button>
 		<h3>Suburban Twin Cities</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_suburban_2016}%</span> of the suburban counties' votes in 2016.</p>
 		<!-- <img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map"> -->
-		<label>Turnout percentage<br/>
+		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+				{100 + turnout_modifiers["suburban"]}% of 2016
+				<!-- <input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0> -->
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -648,10 +658,11 @@ Reset dials</button>
 		<h3>Hennepin and Ramsey counties</h3>
 		<p class="summary">Clinton won <span class="dem percent">{d_pct_urban_2016}%</span> of the urban counties' votes in 2016.</p>
 		<!-- <img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map"> -->
-		<label>Turnout percentage<br/>
+		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
+				{100 + turnout_modifiers["urban"]}% of 2016
+				<!-- <input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0> -->
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -701,20 +712,15 @@ Reset dials</button>
 
 <!-- <p class="expert-mode" on:click={myFunction} id="expert">Are you a statistical pro? Bring out the expert mode</p> -->
 
-
-<button class="reset-button" type="button" on:click={resetDials}>
-	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
-Reset dials</button>
-
 <div class="table-wrapper sticky">
 	<table class="county-projections no-marg">
 		<thead>
 			<tr>
 				<th class="county">County</th>
-				<th class="desktop-show type">Type</th>
-				<th class="desktop-show votes-2016">2016 total votes</th>
+				<!-- <th class="desktop-show type">Type</th> -->
+				<th class="desktop-show votes-2016">2016 total votes (turnout)</th>
 				<!-- <th class="desktop-show">2016 3rd/other party votes</th> -->
-				<th class="desktop-show votes-2020">Projected total votes</th>
+				<th class="desktop-show votes-2020">Projected total votes (turnout)</th>
 				<th class="desktop-show r-2016">2016 %R</th>
 				<th class="desktop-show d-2016">2016 %D</th>
 				<th class="r-2020">Projected %R</th>
