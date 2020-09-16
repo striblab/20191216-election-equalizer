@@ -30,9 +30,7 @@ table.county-projections {
 		}
 	}
 	&.no-marg {
-		/*margin-bottom: -50px;*/
 		background: white;
-		/*height: 65px;*/
 		margin-top: 0;
 		margin-bottom: 0;
 	}
@@ -71,7 +69,6 @@ td {
 	@media only screen and (max-width: 900px) {
 		padding: 5px 5px;
 		font-size: 15px;
-		/*width: 33.3333%;*/
 	}
 }
 
@@ -99,18 +96,12 @@ thead.sticky {
 
 td.D-D-2016,
 td.D-D-projected {
-	/*border-left: 1px solid #3498DB;*/
-	/*border-right: 1px solid #3498DB;*/
-	/*border-bottom: 1px solid #3498DB;*/
 	background: #D6EAF8;
 	border-bottom: 1px white solid;
 }
 
 td.R-R-2016,
 td.R-R-projected {
-	/*border-left: 1px solid #C0392B;*/
-	/*border-right: 1px solid #C0392B;*/
-	/*border-bottom: 1px solid #C0392B;*/
 	background: #F2D7D5;
 	border-bottom: 1px white solid;
 }
@@ -121,7 +112,4 @@ th {
 	background: white;
 	padding: 10px 5px;
 	vertical-align: bottom;
-	/*@media only screen and (max-width: 900px) {
-		width: 33.333%
-	}*/
 }

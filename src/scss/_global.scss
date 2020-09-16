@@ -63,106 +63,21 @@ button:focus {
 	border-color: #666;
 }
 
-/*#dashboard {
-			margin-bottom: 2em;
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+@supports (-moz-appearance:none) {
+	#dashboard input[type=range] {
+		padding: 9px 0;
+		position: relative;
+		top: 10px;
 	}
+}
 
-	#dashboard div {
-			display: inline-block;
-			font-size: 0.7em;
-			margin-right: 2em;
-	}*/
-
-	/*#year-comparison {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}*/
-
-	/*.year-totals {
-		flex: 1 1 0px;
-		max-width: 350px;
-	}*/
-
-	/*#totals-2016 {
-		text-align: right;
-	}
-
-	#totals-2016 h2 {
-		text-align: left;
-	}*/
-
-	/*#totals-2020 h2 {
-		text-align: right;
-	}*/
-
-	/*img.cand-mug {
-		display: inline-block;
-		width: 25%;
-	}*/
-
-	/*.cand-info {
-		display: inline-block;
-		/* width: 70%; */
-
-
-	/*.cand-info span {
-		display: block;
-		width: 8em;
-	}*/
-
-	/*#totals-2016 .cand-info span {
-		margin-right: 1em;
-	}
-
-	#totals-2020 .cand-info span {
-		margin-left: 1em;
-	}*/
-
-	#dashboard input[type=number] {
-		/*width: 3em;*/
-	}
-
-	input[type=number]::-webkit-outer-spin-button,
-	input[type=number]::-webkit-inner-spin-button {
-	    -webkit-appearance: none;
-	    margin: 0;
-	}
-
-	input[type=number] {
-	    -moz-appearance:textfield;
-	}
-
-	@supports (-moz-appearance:none) {
-		#dashboard input[type=range] {
-			padding: 9px 0;
-			position: relative;
-			top: 10px;
-		}
-	}
-
-
-	/*.reset-button {
-		margin: 0 0 1em;
-	}*/
-
-	/*.totals {
-		display: inline-block;
-		width: 50%;
-		font-size: 1em;
-		padding: 10px;
-		margin-bottom: 20px;
-	}
-
-	.totals.r.winner {
-		background-color: #ff9999;
-	}
-
-	.totals.d.winner {
-		background-color: #9999ff;
-	}
-
-	table.county-projections th {
-		padding: 4px 10px;
-		/*border-bottom: 2px #FFF solid;*/
-	
