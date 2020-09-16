@@ -9,6 +9,14 @@
 	}
 }
 
+table {
+	font-size: 15px;
+	span.turnout {
+		color: gray;
+		font-weight: normal;
+	}
+}
+
 table.county-projections {
 	max-width: 1200px;
 	margin: 0 auto;

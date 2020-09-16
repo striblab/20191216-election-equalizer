@@ -718,9 +718,9 @@ Reset dials</button>
 			<tr>
 				<th class="county">County</th>
 				<!-- <th class="desktop-show type">Type</th> -->
-				<th class="desktop-show votes-2016">2016 total votes (turnout)</th>
+				<th class="desktop-show votes-2016">2016 total votes <span class="turnout">(turnout)</span></th>
 				<!-- <th class="desktop-show">2016 3rd/other party votes</th> -->
-				<th class="desktop-show votes-2020">Projected total votes (turnout)</th>
+				<th class="desktop-show votes-2020">Projected total votes <span class="turnout">(turnout)</span></th>
 				<th class="desktop-show r-2016">2016 %R</th>
 				<th class="desktop-show d-2016">2016 %D</th>
 				<th class="r-2020">Projected %R</th>

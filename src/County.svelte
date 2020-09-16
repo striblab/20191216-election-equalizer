@@ -143,9 +143,9 @@
 <tr>
 	<td class="county">{name}<br><span class="type">{classification_label(county_data.classification)}</span></td>
 	<!-- <td class="desktop-show type"></td> -->
-	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)} ({county_data.turnout_2016}%)</td>
+	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)} <span class="turnout">({county_data.turnout_2016}%)</span></td>
 	<!-- <td class="desktop-show number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td> -->
-	<td class="desktop-show number votes-2020">{commaNumber(proj_total_votes)} ({proj_turnout_pct}%)</td>
+	<td class="desktop-show number votes-2020">{commaNumber(proj_total_votes)} <span class="turnout">({proj_turnout_pct}%)</span></td>
 	<td class="desktop-show number r-2016 R-{county_data.winner_2016}-2016">{roundPct(county_data.rPct_2016)}</td>
 	<td class="desktop-show number d-2016 D-{county_data.winner_2016}-2016">{roundPct(county_data.dPct_2016)}</td>
 	<td class="number r-2020" class:R-R-projected="{proj_final_r_pct > proj_final_d_pct}">{roundPct(proj_final_r_pct)}</td>
