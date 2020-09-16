@@ -18,7 +18,7 @@
 	margin: 0 auto;
 	position: relative;
 	max-width: 1200px;
-	height: 200px;
+	height: 185px;
 	padding: 0;
 	overflow: hidden;
 	transition: 0.5s height;
@@ -46,11 +46,11 @@
 		height: 170px;
 	}
 	h3.applied {
-		font-size: 14px;
+		font-size: 13px;
 		font-family: "Benton Sans";
 		text-align: center;
 		color: gray;
-		margin-top: 30px;
+		margin-top: 20px;
 		padding-top: 0;
 		font-weight: normal;
 		margin-bottom: 0;
@@ -349,7 +349,7 @@ div.cand-totals {
 			}
 			&.loser {
 				div.cand-mug {
-					background-image: url(https://static.startribune.com/svg/trumpsad.png?cache=trash);
+					background-image: url(https://static.startribune.com/svg/sadtrump.png?cache=trashfsfdsdf);
 					background-position: 50% 50%;
 				}
 			}

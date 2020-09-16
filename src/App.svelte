@@ -164,6 +164,46 @@
 	}
 
 	onMount(async () => {
+
+		document.addEventListener("input", function (e) {
+			let showDemConfetti = false;
+			let showGopConfetti = false;
+			var biden = document.getElementById("biden-nav");
+			var trump = document.getElementById("trump-nav");
+		    
+	    	if (showDemConfetti == false) {
+	    		if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
+		    		console.log('biden winner');
+					var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
+					var confettiDem = new ConfettiGenerator(confettiSettings);
+					confettiDem.render();
+					setTimeout(function(){
+						confettiDem.clear()
+					}, 4000);
+					showDemConfetti = true;
+					console.log(showDemConfetti);
+		    	} 
+		    	// else {
+	    		// 	showDemConfetti = true;
+	    		// }	
+			} 
+			if (showGopConfetti == false) {
+				if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
+					console.log('trump winner');
+					var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
+					var confettiGop = new ConfettiGenerator(confettiSettings);
+					setTimeout(function(){
+						confettiGop.clear()
+					}, 4000);
+					showGopConfetti = true;
+					console.log(showGopConfetti);
+				}
+				// else {
+		  //   		confettiGop.clear();
+		  //   	}
+			}
+		});
+
 		var controller = new ScrollMagic.Controller();
 
 		var tableHeight = document.getElementById("table").offsetHeight;
@@ -175,7 +215,7 @@
 		var triggerHook = scene.triggerHook(0);
 
 		if (window.innerWidth > 900) {
-			var scene = new ScrollMagic.Scene({triggerElement: ".sticky", duration: tableHeight, offset: -200})
+			var scene = new ScrollMagic.Scene({triggerElement: ".sticky", duration: tableHeight, offset: -185})
 				.setPin(".sticky", {pushFollowers: false})
 				.addTo(controller);
 			var triggerHook = scene.triggerHook(0);
@@ -187,29 +227,26 @@
 			var triggerHook = scene.triggerHook(0);
 		}
 
-		var biden = document.getElementById("biden-nav");
-		var trump = document.getElementById("trump-nav");
 
 
-
-		document.addEventListener("input", function (e) {
-		    if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
-				console.log('biden winner');
-				var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
-				var confetti = new ConfettiGenerator(confettiSettings);
-				confetti.render();
-				setTimeout(function(){
-					confetti.clear()
-				}, 4000);
-			} else if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
-				console.log('trump winner');
-				var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
-				var confetti = new ConfettiGenerator(confettiSettings);
-				setTimeout(function(){
-					confetti.clear()
-				}, 4000);
-			}
-		});
+		// document.addEventListener("input", function (e) {
+		//     if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
+		// 		console.log('biden winner');
+		// 		var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
+		// 		var confetti = new ConfettiGenerator(confettiSettings);
+		// 		confetti.render();
+		// 		setTimeout(function(){
+		// 			confetti.clear()
+		// 		}, 4000);
+		// 	} else if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
+		// 		console.log('trump winner');
+		// 		var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
+		// 		var confetti = new ConfettiGenerator(confettiSettings);
+		// 		setTimeout(function(){
+		// 			confetti.clear()
+		// 		}, 4000);
+		// 	}
+		// });
 
 	});
 </script>
@@ -238,8 +275,9 @@
 
 <div class="scenario first">
 	<h5>What we know from 2016</h5>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget convallis pulvinar, nisl dolor luctus nisl, at ornare odio massa non leo. Quisque eleifend dictum neque, eget sagittis orci suscipit vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, with the majority of her votes coming from Hennepin and Ramsey counties. Trump won rural counties, and his campagin said he will win the whole state of Minnesota by relying on those counties again. If the 2020 election looked the same as the previous presidential, election, Biden would win Minnesota with 46.9% of the vote.</p>
+	<p>Clinton narrowly defeated Trump to win Minnesota’s 10 electoral college votes in 2016. The final margin: 46.44% to 44.92%. </p>
+	<p>On its face, the victory shouldn’t have been surprising. Minnesotans have delivered the state’s to the Democratic nominee in every presidential election since 1972.</p>
+	<p>But the 44,765-vote margin was the closest since 1984, when Democratic nominee Walter Mondale, a Minnesota native, eked out a 3,700-vote win over Republican Ronald Reagan. </p>
 	<div class="results-2016">
 		<h2>2016 results</h2>
 		<div class="cand-totals">
@@ -265,7 +303,12 @@
 			<h4 class="cand-votes d" style="left: calc({d_pct_2016}% - 150px); transition: 0.5s all;">1,366,653 votes</h4>
 		</div>
 	</div>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, with the majority of her votes coming from Hennepin and Ramsey counties. Trump won rural counties, and his campagin said he will win the whole state of Minnesota by relying on those counties again. If the 2020 election looked the same as the previous presidential, election, Biden would win Minnesota with 46.9% of the vote.</p>
+	<p>So what happened? Trump credits his decision to visit Minnesota ahead of Election Day, often arguing one more speech would have tipped him to victory. Clinton did not campaign in person or invest significant resources in the state. </p>
+	<p>But as the pros like to say, it all came down to turnout. </p>
+	<p>Trump’s strong performance brought him within 1.5 percentage points of a win. But his raw vote total — 1,322,951 — was barely more than Mitt Romney got when he lost the state to President Barack Obama by 7 percentage points in 2012. President George W. Bush actually carried more votes in the state in 2004, despite losing to Democrat John Kerry by more than 3 percentage points. Clinton, meanwhile, got about 200,000 votes less than Obama both times he was on the ballot, and  underperformed Kerry by more than 100,000 votes. </p>
+	<p>Those statistics suggest depressed turnout among Minneosta Democrats, who either stayed home, voted third-party or flipped to Trump, contributed to the closeness of the race.</p>
+	<p>The results also showcase a growing urban-rural divide. Trump won 78 of the state’s 87 counties, carrying the expansive Seventh Congressional District that hugs the state’s western borner by 30 points and Southern Minnesota's First Congressional District with 52%. Clinton won big in the Twin Cities. The Minneapolis-based Fifth Congressional District alone delivered more than 270,000 votes for the Democratic nominee — 9% of the votes cast statewide.</p>
+	<p>Support for presidential hopefuls not named Clinton or Trump also played a role in the 2016 split. Combined, third-party and write-in candidates captured about 8% of the vote. In some counties, it was even higher.</p>
 </div>
 
 <div class="scenario ahead">
@@ -368,7 +411,6 @@
 	<button class="reset-button" type="button" on:click={resetDials}>
 	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
 Reset dials</button>
-	<!-- <button class="show" on:click={scenario2}>Play this scenario</button> -->
 </div>
 
 <div class="scenario fourth">
@@ -387,7 +429,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					{100 + turnout_modifiers["urban"]}% of 2016
+					<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</p>
 					<!-- <input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0> -->
 				</div>
 			</label>
@@ -407,7 +449,6 @@ Reset dials</button>
 	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
 Reset dials</button>
 
-	<!-- <button class="show" on:click={scenario2}>Play this scenario</button> -->
 </div>
 
 
@@ -425,8 +466,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					{100 + turnout_modifiers["suburban"]}% of 2016
-					<!-- <input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0> -->
+					<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</p>
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>suburban counties</b></p>
@@ -462,8 +502,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					{100 + turnout_modifiers["outstate city"]}% of 2016
-					<!-- <input type=number bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0> -->
+					<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</p>
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>regional city counties</b></p>
@@ -492,20 +531,15 @@ Reset dials</button>
 	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
 Reset dials</button>
 
-<!-- <div class="totals r" class:winner="{$proj_r_votes_statewide > $proj_d_votes_statewide}">Republican: {proj_r_pct}% {commaNumber($proj_r_votes_statewide)}</div>
-<div class="totals d" class:winner="{$proj_d_votes_statewide > $proj_r_votes_statewide}">Democrat: {proj_d_pct}% {commaNumber($proj_d_votes_statewide)}</div>
-<div>Total statewide projected votes: {commaNumber($proj_total_votes_statewide)}</div> -->
 <div id="dashboard" class="dashboard-wrapper">
 	<div id="rural-dashboard" class="dashboard">
 
 		<h3>Rural<br></h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_rural_2016}%</span> of the rural counties votes in 2016.</p>
-		<!-- <img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map"> -->
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
-				{100 + turnout_modifiers["rural"]}% of 2016
-				<!-- <input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0> -->
+				<p class="turnout">{100 + turnout_modifiers["rural"]}% of 2016</p>
 			</div>
 		</label>
 
@@ -531,33 +565,15 @@ Reset dials</button>
 		  turnout_pct_2016={turnout_rural_2016}
 		  turnout_pct_proj={turnout_rural_projected}
 		/>
-
-		<div class="expert">
-			<h5>Expert mode</h5>
-			<label>Change other party percentage<br/>
-				<input type=range bind:value={other_party_modifiers["rural"]} min=-10 max=10 step=0.1 class="density">
-				<div class="wrapper">
-					<input type=number bind:value={other_party_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0>
-				</div>
-			</label>
-			<label>Which party do new "other party" votes take from?<br/>
-				<input type=range bind:value={other_party_partisan_modifiers["rural"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
-				<div class="wrapper">
-					<input type=number bind:value={other_party_partisan_modifiers["rural"]} min=0 max=1 step=0.1>
-				</div>
-			</label>
-		</div>
 	</div>
 
 	<div id="outcity-dashboard"  class="dashboard">
 		<h3><!-- Greater  -->Minn. counties with regional centers</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_outstate_2016}%</span> of the rural counties votes in 2016.</p>
-		<!-- <img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map"> -->
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				{100 + turnout_modifiers["outstate city"]}% of 2016
-				<!-- <input type=number bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0 > -->
+				<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</p>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -582,34 +598,15 @@ Reset dials</button>
 			turnout_pct_2016={turnout_outstate_2016}
 			turnout_pct_proj={turnout_outstate_projected}
 		/>
-
-		<div class="expert">
-			<h5>Expert mode</h5>
-			<label>Change other party percentage<br/>
-				<input type=range bind:value={other_party_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
-				<div class="wrapper">
-					<input type=number bind:value={other_party_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
-				</div>
-
-			</label>
-			<label>Which party do new "other party" votes take from?<br/>
-				<input type=range bind:value={other_party_partisan_modifiers["outstate city"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
-				<div class="wrapper">
-					<input type=number bind:value={other_party_partisan_modifiers["outstate city"]} min=0 max=1 step=0.1>
-				</div>
-			</label>
-		</div>
 	</div>
 
 	<div id="suburban-dashboard"  class="dashboard">
 		<h3>Suburban Twin Cities</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_suburban_2016}%</span> of the suburban counties' votes in 2016.</p>
-		<!-- <img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map"> -->
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				{100 + turnout_modifiers["suburban"]}% of 2016
-				<!-- <input type=number bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0> -->
+				<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</p>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -634,35 +631,15 @@ Reset dials</button>
 		  turnout_pct_2016={turnout_suburban_2016}
 		  turnout_pct_proj={turnout_suburban_projected}
 		/>
-
-		<div class="expert">
-			<h5>Expert mode</h5>
-			<label>Change other party percentage<br/>
-				<input type=range bind:value={other_party_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
-				<div class="wrapper">
-					<input type=number bind:value={other_party_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
-				</div>
-
-
-			</label>
-			<label>Which party do new "other party" votes take from?<br/>
-				<input type=range bind:value={other_party_partisan_modifiers["suburban"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
-				<div class="wrapper">
-					<input type=number bind:value={other_party_partisan_modifiers["suburban"]} min=0 max=1 step=0.1>
-				</div>
-			</label>
-		</div>
 	</div>
 
 	<div id="urban-dashboard"  class="dashboard">
 		<h3>Hennepin and Ramsey counties</h3>
 		<p class="summary">Clinton won <span class="dem percent">{d_pct_urban_2016}%</span> of the urban counties' votes in 2016.</p>
-		<!-- <img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map"> -->
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				{100 + turnout_modifiers["urban"]}% of 2016
-				<!-- <input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0> -->
+				<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</p>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -687,39 +664,15 @@ Reset dials</button>
 		  turnout_pct_2016={turnout_urban_2016}
 		  turnout_pct_proj={turnout_urban_projected}
 		/>
-
-		<div class="expert">
-			<h5>Expert mode</h5>
-			<label>Change other party percentage<br/>
-				<input type=range bind:value={other_party_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
-				<div class="wrapper">
-					<input type=number bind:value={other_party_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
-				</div>
-
-
-			</label>
-			<label>Which party do new "other party" votes take from?<br/>
-				<input type=range bind:value={other_party_partisan_modifiers["urban"]} min=0 max=1 step=0.1 placeholder=0.5 class="partisan">
-				<div class="wrapper">
-					<p class="less button">-</p>
-					<input type=number bind:value={other_party_partisan_modifiers["urban"]} min=0 max=1 step=0.1>
-					<p class="more button">+</p>
-				</div>
-			</label>
-		</div>
 	</div>
 </div>
-
-<!-- <p class="expert-mode" on:click={myFunction} id="expert">Are you a statistical pro? Bring out the expert mode</p> -->
 
 <div class="table-wrapper sticky">
 	<table class="county-projections no-marg">
 		<thead>
 			<tr>
 				<th class="county">County</th>
-				<!-- <th class="desktop-show type">Type</th> -->
 				<th class="desktop-show votes-2016">2016 total votes <span class="turnout">(turnout)</span></th>
-				<!-- <th class="desktop-show">2016 3rd/other party votes</th> -->
 				<th class="desktop-show votes-2020">Projected total votes <span class="turnout">(turnout)</span></th>
 				<th class="desktop-show r-2016">2016 %R</th>
 				<th class="desktop-show d-2016">2016 %D</th>

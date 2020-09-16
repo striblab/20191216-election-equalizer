@@ -12,8 +12,8 @@
 table {
 	font-size: 15px;
 	span.turnout {
-		color: gray;
-		font-weight: normal;
+		color: #A6ACAF;
+		font-weight: inherit;
 	}
 }
 
@@ -36,17 +36,14 @@ table.county-projections {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
-	.county {
+	.county, .votes-2016, .votes-2020 {
 		width: 20%;
 		@media only screen and (max-width: 900px) {
 			width: 50%
 		}
 	}
-	.type {
-		width: 15%;
-	}
-	.votes-2016, .votes-2020, .r-2016, .r-2020, .d-2016, .d-2020 {
-		width: 10.8333333333333333333333%;
+	.r-2016, .r-2020, .d-2016, .d-2020 {
+		width: 10%;
 		@media only screen and (max-width: 900px) {
 			width: 25%
 		}
@@ -85,7 +82,7 @@ td.county {
 		font-size: 11px;
 		display: inline-block;
 		width: auto;
-		color: gray;
+		color: #A6ACAF;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 	}
@@ -94,6 +91,10 @@ td.county {
 thead.sticky {
 	background: white;
 	padding-top: 10px;
+	span.turnout {
+		font-weight: bold;
+	}
+
 }
 
 td.D-D-2016,
