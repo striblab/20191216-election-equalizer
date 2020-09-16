@@ -133,8 +133,8 @@
 </script>
 
 <tr>
-	<td class="county">{name}</td>
-	<td class="desktop-show type">{classification_label(county_data.classification)}</td>
+	<td class="county">{name}<br><span class="type">{classification_label(county_data.classification)}</span></td>
+	<!-- <td class="desktop-show type"></td> -->
 	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)}</td>
 	<!-- <td class="desktop-show number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td> -->
 	<td class="desktop-show number votes-2020">{commaNumber(proj_total_votes)}</td>

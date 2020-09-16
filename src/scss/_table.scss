@@ -60,7 +60,7 @@ td.number {
 }
 
 td {
-	padding: 10px 5px;
+	padding: 6px 5px;
 	border-bottom: 1px #E5E7E9 solid;
 	width: auto;
 	@media only screen and (max-width: 900px) {
@@ -72,6 +72,15 @@ td {
 
 td.county {
 	font-weight: bold;
+	span.type {
+		font-weight: normal;
+		font-size: 11px;
+		display: inline-block;
+		width: auto;
+		color: gray;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
 }
 
 thead.sticky {

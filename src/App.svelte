@@ -711,7 +711,7 @@ Reset dials</button>
 		<thead>
 			<tr>
 				<th class="county">County</th>
-				<th class="desktop-show type">Type</th>
+				<!-- <th class="desktop-show type">Type</th> -->
 				<th class="desktop-show votes-2016">2016 total votes</th>
 				<!-- <th class="desktop-show">2016 3rd/other party votes</th> -->
 				<th class="desktop-show votes-2020">Projected total votes</th>
