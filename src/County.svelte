@@ -9,9 +9,12 @@
 	export let name;
 	export let county_data = {
 		votes_2016: 0,
+		rVotes_2016: 0,
+		dVotes_2016: 0,
 		rPct_2016: 0,
 		dPct_2016: 0,
 		turnout_2016: 0,
+		cvap_2016: 0,
 		classification: ''
 	};
 	let proj_total_votes = 0;
@@ -24,6 +27,7 @@
 	let proj_final_r_pct = 1;
 	let proj_final_d_pct= 1;
 	let elligible_voters = 0;
+	let turnout_2016_rounded = 0;
 
 	// let proj_other_pct = 0.5;  // By default each party loses/gains half of projected third party votes
 
@@ -56,7 +60,9 @@
 	r_votes_statewide_2016.update(n => n + county_data.rVotes_2016);
 	d_votes_statewide_2016.update(n => n + county_data.dVotes_2016);
 
-	elligible_voters = county_data.votes_2016 / (county_data.turnout_2016 / 100);
+	// elligible_voters = county_data.votes_2016 / county_data.turnout_2016);
+	elligible_voters = county_data.cvap_2016;
+	turnout_2016_rounded = Math.round((county_data.votes_2016 / elligible_voters) * 1000) / 10;
 
 	if (county_data['classification'] == 'rural') {
 		total_votes_regional_2016_rural.update(n => n + county_data.votes_2016);
@@ -143,7 +149,7 @@
 <tr>
 	<td class="county">{name}<br><span class="type">{classification_label(county_data.classification)}</span></td>
 	<!-- <td class="desktop-show type"></td> -->
-	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)} <span class="turnout">({county_data.turnout_2016}%)</span></td>
+	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)} <span class="turnout">({turnout_2016_rounded}%)</span></td>
 	<!-- <td class="desktop-show number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td> -->
 	<td class="desktop-show number votes-2020">{commaNumber(proj_total_votes)} <span class="turnout">({proj_turnout_pct}%)</span></td>
 	<td class="desktop-show number r-2016 R-{county_data.winner_2016}-2016">{roundPct(county_data.rPct_2016)}</td>
