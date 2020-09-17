@@ -1,0 +1,61 @@
+.global-nav-mod {
+	display: none;
+}
+
+.nav-shortcuts-mod.borderless {
+    display: none;
+}
+
+.series-article .article-headline {
+	display: none;
+}
+
+.series-article .article-subhead {
+	display: none;
+}
+
+.article-byline-mod {
+	display: none;
+}
+
+.series-article.body-override .article-body {
+	max-width: 100%;
+}
+
+.page-article {
+    padding-top: 0px;
+}
+
+h1.article-title {
+	display: none;
+}
+
+p.byline.milli {
+	display: none;
+}
+
+.content-scroll {
+    max-width: 100%;
+    margin: auto;
+    padding: 0;
+}
+
+.content {
+	padding: 0;
+}
+
+.series-article .site-header {
+	display: none;
+}
+
+.search-pane {
+	display: none;
+}
+
+.site-container {
+	display: none;
+}
+
+#comment-count-toggle {
+	padding: 0 7.5%;
+}

@@ -24,11 +24,12 @@ div.scenario {
 		font-size: 16px;
 		text-transform: uppercase;
 		letter-spacing: 1px;
+		margin-bottom: 15px;
 	}
 	p {
 		font-family: "Benton Sans";
 		font-weight: normal;
-		font-size: 16px;
+		font-size: 16px !important;
 		line-height: 1.5;
 	}
 	p.explainer {
@@ -40,6 +41,11 @@ div.scenario {
 		margin-top: -30px;
 		@media only screen and (max-width: 900px) {
 			margin-top: -30px;
+		}
+		img {
+			@media only screen and (max-width: 900px) {
+				width: 20px;
+			}	
 		}
 	}
 	.map.mobile-show {

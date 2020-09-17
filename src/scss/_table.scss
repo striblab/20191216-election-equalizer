@@ -11,6 +11,7 @@
 
 table {
 	font-size: 15px;
+	font-family: "Benton Sans";
 	span.turnout {
 		color: #A6ACAF;
 		font-weight: inherit;
@@ -66,6 +67,7 @@ td {
 	padding: 6px 5px;
 	border-bottom: 1px #E5E7E9 solid;
 	width: auto;
+	vertical-align: middle;
 	@media only screen and (max-width: 900px) {
 		padding: 5px 5px;
 		font-size: 15px;
@@ -74,6 +76,7 @@ td {
 
 td.county {
 	font-weight: bold;
+	line-height: 1;
 	span.type {
 		font-weight: normal;
 		font-size: 11px;

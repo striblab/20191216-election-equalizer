@@ -267,7 +267,7 @@
 </div>
 
 <div class="subhead-wrapper">
-	<h2>Geography is just one of many variables in a presidential race. But it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Try changing voter turnout and the partisan mix in different regions based on the 2016 election — when Hillary Clinton won the state by less than 2 percent — to discover what it would take to flip Minnesota red.</h2>
+	<h2>Geography is just one of many variables in a presidential race — but it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Use the interactive sliders below to change voter turnout and the partisan mix in different regions to discover what it would take to flip Minnesota red.</h2>
 
 	<p class="byline-special"><b>Michael Corey, Anna Boone, Jessie Van Berkel and Torey Van Oot</b><br>Star Tribune • Sept. 21, 2020</p>
 	<!-- sharing -->

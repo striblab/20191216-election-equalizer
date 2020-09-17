@@ -85,9 +85,10 @@
 		margin-bottom: 0;
 	}
 	p.summary {
-		font-size: 13px;
+		font-size: 13px !important;
 		margin-top: 10px;
 		margin-bottom: 35px;
+		font-family: "Benton Sans";
 		span {
 			display: inline-block;
 			padding: 1.5px 4px;
@@ -112,12 +113,15 @@
 		text-align: left;
 		vertical-align: bottom;
 		align-items: flex-end;
+		font-family: "Benton Sans";
 		.dem,.gop {
 			width: 50%;
 			div {
 				font-size: 15px;
 				padding: 5px;
 				transition: 0.5s background;
+				font-family: "Benton Sans";
+				line-height: 1.2;
 				&.pct {
 					border-bottom: 1px solid #E5E7E9;
 				}
@@ -158,6 +162,7 @@
 			div {
 				font-size: 15px;
 				padding: 5px;
+				font-family: "Benton Sans";
 			}
 		}
 		.twenty {
@@ -176,6 +181,7 @@
 			text-transform: none;
 			letter-spacing: 0px;
 			margin-top: 0;
+			line-height: 1.2;
 		}
 	}
 	h4 {
