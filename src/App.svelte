@@ -81,6 +81,10 @@
 	let r_pct_urban_2016 = 0;
 	let r_pct_urban_projected = 0;
 
+	let confettiDem;
+	let confettiGop;
+	let last_winner = 'd';
+
 	$ : {
 
 		d_pct_2016 = Math.round(($d_votes_statewide_2016 / $total_votes_statewide_2016) * 1000) / 10;
@@ -120,6 +124,28 @@
 		d_pct_urban_projected = Math.round(($proj_d_votes_regional_urban / $proj_total_votes_regional_urban) * 1000) / 10;
 		r_pct_urban_2016 = Math.round(($r_votes_regional_2016_urban / $total_votes_regional_2016_urban) * 1000) / 10;
 		r_pct_urban_projected = Math.round(($proj_r_votes_regional_urban / $proj_total_votes_regional_urban) * 1000) / 10;
+
+		if ($proj_d_votes_statewide > $proj_r_votes_statewide && last_winner == 'r') {
+			last_winner = 'd';
+			console.log('new biden winner');
+			buildConfetti('d');
+			// confettiDem.clear()
+			confettiDem.render();
+			setTimeout(function() {
+				confettiDem.clear()
+			}, 4000);
+
+
+		} else if ($proj_r_votes_statewide > $proj_d_votes_statewide && last_winner == 'd') {
+			last_winner = 'r';
+			console.log('new trump winner');
+			buildConfetti('r');
+			confettiGop.render();
+			setTimeout(function() {
+				confettiGop.clear()
+			}, 4000);
+
+		}
 	}
 
 	let resetDials = function () {
@@ -163,46 +189,31 @@
 	  ruralD.value = "10";
 	}
 
-	onMount(async () => {
+	const buildConfetti = function (party) {
+		var biden = document.getElementById("biden-nav");
+		var trump = document.getElementById("trump-nav");
+		var confettiSettings = {
+				// colors: [[40,116,166], [52,152,219], [174,214,241]],
+				"height": "200",
+				// target: 'canvas-dem',
+				respawn: false,
+				clock: 25
+		};
 
-		document.addEventListener("input", function (e) {
-			let showDemConfetti = false;
-			let showGopConfetti = false;
-			var biden = document.getElementById("biden-nav");
-			var trump = document.getElementById("trump-nav");
-		    
-	    	if (showDemConfetti == false) {
-	    		if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
-		    		console.log('biden winner');
-					var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
-					var confettiDem = new ConfettiGenerator(confettiSettings);
-					confettiDem.render();
-					setTimeout(function(){
-						confettiDem.clear()
-					}, 4000);
-					showDemConfetti = true;
-					console.log(showDemConfetti);
-		    	} 
-		    	// else {
-	    		// 	showDemConfetti = true;
-	    		// }	
-			} 
-			if (showGopConfetti == false) {
-				if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
-					console.log('trump winner');
-					var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
-					var confettiGop = new ConfettiGenerator(confettiSettings);
-					setTimeout(function(){
-						confettiGop.clear()
-					}, 4000);
-					showGopConfetti = true;
-					console.log(showGopConfetti);
-				}
-				// else {
-		  //   		confettiGop.clear();
-		  //   	}
-			}
-		});
+		if (party == 'd') {
+			// Build Dem
+			confettiSettings.colors = [[40,116,166], [52,152,219], [174,214,241]];
+			confettiSettings.target = 'canvas-dem';
+			confettiDem = new ConfettiGenerator(confettiSettings);
+		} else if (party == 'r') {
+			// Build GOP
+			confettiSettings.colors = [[176,58,46], [231,76,60], [203,67,53]];
+			confettiSettings.target = 'canvas-gop';
+			confettiGop = new ConfettiGenerator(confettiSettings);
+		}
+	}
+
+	onMount(async () => {
 
 		var controller = new ScrollMagic.Controller();
 
@@ -226,27 +237,6 @@
 				.addTo(controller);
 			var triggerHook = scene.triggerHook(0);
 		}
-
-
-
-		// document.addEventListener("input", function (e) {
-		//     if ($proj_d_votes_statewide > $proj_r_votes_statewide) {
-		// 		console.log('biden winner');
-		// 		var confettiSettings = { colors: '[[40,116,166], [52,152,219], [174,214,241]]', "height":"200", target: 'canvas-dem', respawn: false, clock: 25};
-		// 		var confetti = new ConfettiGenerator(confettiSettings);
-		// 		confetti.render();
-		// 		setTimeout(function(){
-		// 			confetti.clear()
-		// 		}, 4000);
-		// 	} else if ($proj_r_votes_statewide > $proj_d_votes_statewide) {
-		// 		console.log('trump winner');
-		// 		var confettiSettings = { colors: '[[176,58,46], [231,76,60], [203,67,53]]', "height":"200", target: 'canvas-gop', respawn: false, clock: 25 };
-		// 		var confetti = new ConfettiGenerator(confettiSettings);
-		// 		setTimeout(function(){
-		// 			confetti.clear()
-		// 		}, 4000);
-		// 	}
-		// });
 
 	});
 </script>
@@ -275,9 +265,9 @@
 
 <div class="scenario first">
 	<h5>What we know from 2016</h5>
-	<p>Clinton narrowly defeated Trump to win Minnesota’s 10 electoral college votes in 2016. The final margin: 46.44% to 44.92%. </p>
-	<p>On its face, the victory shouldn’t have been surprising. Minnesotans have delivered the state’s to the Democratic nominee in every presidential election since 1972.</p>
-	<p>But the 44,765-vote margin was the closest since 1984, when Democratic nominee Walter Mondale, a Minnesota native, eked out a 3,700-vote win over Republican Ronald Reagan. </p>
+	<p>On its face, Clinton’s victory shouldn’t have been surprising. Minnesotans have delivered the state’s 10 electoral votes to the Democratic nominee in every presidential election since 1972.</p>
+
+	<p>But the 44,765-vote margin was the closest since 1984, when Democratic nominee Walter Mondale, a Minnesota native, eked out a 3,700-vote win over Republican Ronald Reagan.</p>
 	<div class="results-2016">
 		<h2>2016 results</h2>
 		<div class="cand-totals">
@@ -299,22 +289,22 @@
 			<div class="biden bar winner" style="width: {d_pct_2016}%;">
 				<h3>{d_pct_2016}%</h3>
 			</div>
-			<h4 class="cand-votes r" style="right: calc({r_pct_2016}% - 150px); transition: 0.5s all;">1,322,871 votes</h4>
-			<h4 class="cand-votes d" style="left: calc({d_pct_2016}% - 150px); transition: 0.5s all;">1,366,653 votes</h4>
+			<h4 class="cand-votes r" style="right: calc({r_pct_2016}% - 150px); transition: 0.5s all;">{commaNumber($r_votes_statewide_2016)}</h4>
+			<h4 class="cand-votes d" style="left: calc({d_pct_2016}% - 150px); transition: 0.5s all;">{commaNumber($d_votes_statewide_2016)}</h4>
 		</div>
 	</div>
-	<p>So what happened? Trump credits his decision to visit Minnesota ahead of Election Day, often arguing one more speech would have tipped him to victory. Clinton did not campaign in person or invest significant resources in the state. </p>
-	<p>But as the pros like to say, it all came down to turnout. </p>
-	<p>Trump’s strong performance brought him within 1.5 percentage points of a win. But his raw vote total — 1,322,951 — was barely more than Mitt Romney got when he lost the state to President Barack Obama by 7 percentage points in 2012. President George W. Bush actually carried more votes in the state in 2004, despite losing to Democrat John Kerry by more than 3 percentage points. Clinton, meanwhile, got about 200,000 votes less than Obama both times he was on the ballot, and  underperformed Kerry by more than 100,000 votes. </p>
-	<p>Those statistics suggest depressed turnout among Minneosta Democrats, who either stayed home, voted third-party or flipped to Trump, contributed to the closeness of the race.</p>
-	<p>The results also showcase a growing urban-rural divide. Trump won 78 of the state’s 87 counties, carrying the expansive Seventh Congressional District that hugs the state’s western borner by 30 points and Southern Minnesota's First Congressional District with 52%. Clinton won big in the Twin Cities. The Minneapolis-based Fifth Congressional District alone delivered more than 270,000 votes for the Democratic nominee — 9% of the votes cast statewide.</p>
+	<p>So what happened? Trump credits his decision to visit Minnesota ahead of Election Day, often arguing one more speech would have tipped him to victory. Clinton did not campaign in person or invest significant resources in the state.</p>
+	<p>But as the pros like to say, it all came down to turnout.</p>
+	<p>Trump’s strong performance brought him within 1.5 percentage points of a win. But his raw vote total — 1,322,951 — was barely more than Mitt Romney got when he lost the state to President Barack Obama by 7 percentage points in 2012. President George W. Bush actually received more votes in the state in 2004, despite losing to Democrat John Kerry by more than 3 percentage points. Clinton, meanwhile, got about 200,000 votes less than Obama both times he was on the ballot, and underperformed Kerry by more than 100,000 votes.</p>
+	<p>Those statistics suggest depressed turnout among Minnesota Democrats, who either stayed home, voted third party or flipped to Trump, which contributed to the closeness of the race.</p>
+	<p>The results also showcase a growing urban-rural divide. Trump won 78 of the state’s 87 counties, carrying the expansive Seventh Congressional District that hugs the state’s western borner by 30 points and Southern Minnesota's First Congressional District with 52%. Clinton won big in the Twin Cities. </p>
 	<p>Support for presidential hopefuls not named Clinton or Trump also played a role in the 2016 split. Combined, third-party and write-in candidates captured about 8% of the vote. In some counties, it was even higher.</p>
 </div>
 
 <div class="scenario ahead">
 	<h5>Looking ahead</h5>
-	<p>To start, we are going to give Biden and Trump the same vote totals Clinton and Trump had in Minnesota in 2016.</p>
-	<p>From there, lets look at some scenarios where Trump could come out ahead.</p>
+	<p>So what does Trump need to do this time to turn things around? Let’s start by giving Biden and Trump the same vote totals Clinton and Trump had in Minnesota in 2016.</p>
+	<p>From there, let’s look at some scenarios where Trump could come out ahead.</p>
 </div>
 
 <section id="year-comparison">
@@ -381,10 +371,8 @@
 	<div class="map mobile-show">
 		<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
 	</div>
-	<p>Trump’s campaign has focused on driving up voter turnout in rural areas of Minnesota and across the Midwest. Rural Minnesota turnout was the lowest of the four regions in 2016. However, the number of additional votes that can come from the state’s sparsely populated counties is relatively limited.</p>
-	<p>To make a significant difference in the 2020 election Trump would not just need to turn out more people in those areas, he would likely also have to shift voters – such as independents – his way. Parts of Greater Minnesota, including the Iron Range, have trended deeper red in recent elections. The president has devoted a lot of time to northern Minnesota and emphasized how the region has benefited from his tariffs on imported steel. Both Donald Trump, Jr. and Vice President Mike Pence stopped in Duluth recently, and Trump visited Bemidji.</p>
-	<p>In farm country, the Trump campaign has championed the trade deal with Mexico and Canada that took effect in July. However, trade tensions with China have hurt farmers during Trump’s term and economic downturn amid the COVID-19 pandemic is creating an additional challenge. In rural areas where there have been fewer coronavirus cases, campaigning Republicans have emphasized frustrations over Democratic Gov. Tim Walz’s pandemic regulations.</p>
-	<p>Use the sliders below to explor scenarios in the rural counties that could lead to a Trump victory.</p>
+	<p>Trump’s campaign has focused on driving up voter turnout in rural areas of Minnesota and across the Midwest. Rural Minnesota turnout was the lowest of the four regions in 2016. However, the number of additional votes that can come from the state’s sparsely populated counties is relatively limited. Try changing rural turnout with the sliders: Even if you increase the number of rural votes by 10 percentage points over 2016, it’s not enough. And that would require some rural counties to have more than 80% of voters turn out -- an unlikely number, even for high-turnout Minnesota.</p>
+
 	<div class="inline-ex">
 
 		<div class="inline-wrapper">
@@ -411,6 +399,10 @@
 	<button class="reset-button" type="button" on:click={resetDials}>
 	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
 Reset dials</button>
+
+	<p>To make a significant difference in the 2020 election Trump would not just need to turn out more people in those areas, he would likely also have to shift voters – such as independents – his way. Parts of Greater Minnesota, including the Iron Range, have trended deeper red in recent elections. The president has devoted a lot of time to northern Minnesota and emphasized how the region has benefited from his tariffs on imported steel. Both Donald Trump, Jr. and Vice President Mike Pence stopped in Duluth recently, and Trump visited Bemidji.</p>
+	<p>In farm country, the Trump campaign has championed the trade deal with Mexico and Canada that took effect in July. However, trade tensions with China have hurt farmers during Trump’s term and economic downturn amid the COVID-19 pandemic is creating an additional challenge. In rural areas where there have been fewer coronavirus cases, campaigning Republicans have emphasized frustrations over Democratic Gov. Tim Walz’s pandemic regulations.</p>
+	<p>So if Trump could bump up rural turnout and turn these regions even more red (try moving the partisan slider to the right), that could be enough to tip the balance -- if nothing changes in the other regions.</p>
 </div>
 
 <div class="scenario fourth">
@@ -418,10 +410,8 @@ Reset dials</button>
 	<div class="map mobile-show">
 		<img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map">
 	</div>
-	<p>Hennepin and Ramsey counties, which include Minneapolis, St. Paul and many surrounding suburban cities, are home to to nearly one-third of Minnesota’s residents. Voter turnout in these counties, which historically overwhelmingly pick Democrats, can have a significant impact on statewide elections.</p>
+	<p>Hennepin and Ramsey counties, which include Minneapolis, St. Paul and many surrounding suburban cities, are home to nearly a third of Minnesota’s residents. Voter turnout in these counties, which historically overwhelmingly pick Democrats, can have a significant impact on statewide elections.</p>
 	<p>Hillary Clinton carried the two counties with 64.4% of the vote four years ago. Biden supporters are trying to fire up voters in the heart of the metro and said a drop in turnout there could be disastrous for their chances. Democratic state officials have stressed the importance of not only getting their base to show up but also drawing new voters, including young people and voters in the Twin Cities’ immigrant communities.</p>
-	<p>Democratic candidate Hillary Clinton won Minnesota in 2016, carrying more lorem ipsum here and more stuff here. Rhoncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.</p>
-	<p>Use the sliders below to explor scenarios in the suburban counties that could lead to a Trump victory.</p>
 
 	<div class="inline-ex">
 		<div class="inline-wrapper">
@@ -458,7 +448,7 @@ Reset dials</button>
 		<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
 	</div>
 	<p>Over the past three presidential elections, Republicans have carried three of the five metro counties that surround Hennepin and Ramsey. However, the suburban communities around the Twin Cities trended deeper blue in 2018, with Democratic U.S. Reps. Angie Craig and Dean Phillips flipping districts that include wide swaths of the south and west suburbs. In that midterm, Sen. Amy Klobuchar carried all five of the counties – which could bode well for Biden’s chances in those areas.</p>
-	<p>Past polls have shown Trump struggling with suburban swing voters, particularly women. However, Republicans are hoping to make inroads among moderates in the suburbs and are painting Biden as part of the “radical left.” The GOP has emphasized public safety and their support for police as they try to win over those areas, saying that Democrats have failed to prevent “lawlessness” during the civil unrest that followed George Floyd’s killing by Minneapolis police.</p>
+	<p>Past polls have shown Trump struggling with suburban swing voters, particularly women. However, Republicans are hoping to make inroads among moderates in the suburbs and are painting Biden as part of the “radical left.” The GOP has emphasized public safety and their support for police as they try to win over those areas, saying that Democrats have failed to prevent lawlessness during the civil unrest that followed George Floyd’s killing by Minneapolis police.</p>
 
 	<div class="inline-ex">
 		<div class="inline-wrapper">
@@ -491,7 +481,7 @@ Reset dials</button>
 	<div class="map mobile-show">
 		<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
 	</div>
-	<p>While much of Greater Minnesota tends to vote Republican, there are several significant regional population centers that could boost Democrats. Population shifts in the Rochester area, home to the Mayo Clinic, have created fresh opportunities for the DFL, especially among college-educated voters and growing communities of color. Though Clinton narrowly defeated Trump in Olmsted County in 2016, Democrats have gained ground in the region since 2014.</p>
+	<p>While much of Greater Minnesota tends to vote Republican, there are several significant regional population centers that could boost either party. Population shifts in the Rochester area, home to the Mayo Clinic, have created fresh opportunities for the DFL, especially among college-educated voters and growing communities of color. Though Clinton narrowly defeated Trump in Olmsted County in 2016, Democrats have gained ground in the region since 2014.</p>
 	<p>St. Louis County, home to Duluth, remains a Democratic stronghold, even as GOP support grows elsewhere on the Iron Range. Clinton won that county by 11 percentage points in 2016. Trump is making a play to peel more votes, though, with multiple campaign events in and around Duluth.</p>
 	<p>In Central Minnesota, the greater St. Cloud area leans GOP. The president won both Stearns and Sherburne counties by wide margins in 2016. He also edged out Clinton in Blue Earth County, which includes Mankato, by about 1,000 votes. The margin there was 47% to 43% in 2016. Combined, these areas helped Democrats in 2016. To turn the tide, the Trump campaign must turn these areas redder this November.</p>
 	<p>The campaign has taken steps to do just that. In addition to the Duluth visits, Republicans have been knocking doors and opening offices in St. Cloud and across Southern Minnesota. Democrats, meanwhile, hope to expand their base of support in these areas to help drive up vote totals statewide.</p>
@@ -524,7 +514,7 @@ Reset dials</button>
 
 <div class="scenario last">
 	<h5>Your turn</h5>
-	<p>Explore possible scenarios below using all the tools at once, wow! ncus turpis. Fusce id arcu quis ex egestas tincidunt non et mi. Etiam sit amet accumsan risus. Vivamus vulputate, mi eget.  Vivamus vulputate, mi eget.</p>
+	<p>Some, all or none of these scenarios could play out in November, so it’s time for some predictions of your own. Try out some of your own assumptions and see what happens.</p>
 </div>
 
 <button class="reset-button" type="button" on:click={resetDials}>
