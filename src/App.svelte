@@ -241,12 +241,10 @@
 	});
 </script>
 
-<div class="hero">
+<!-- <div class="hero">
 	<div class="gop">
-		<!-- <div class="cand-mug"></div> -->
 	</div>
 	<div class="dem">
-		<!-- <div class="cand-mug"></div> -->
 	</div>
 	<div class="minnesota desktop-show"></div>
 	<div class="headline-wrapper">
@@ -260,8 +258,7 @@
 	<h2>Geography is just one of many variables in a presidential race — but it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Use the interactive sliders below to see how changes in turnout and the partisan mix in different regions could flip Minnesota.</h2>
 
 	<p class="byline-special"><b>Michael Corey, Anna Boone, Jessie Van Berkel and Torey Van Oot</b><br>Star Tribune • Sept. 21, 2020</p>
-	<!-- sharing -->
-</div>
+</div> -->
 
 <div class="scenario first">
 	<h5>What we know from 2016</h5>
@@ -373,14 +370,13 @@
 	</div>
 	<p>Trump’s campaign in 2020 has focused on driving up voter turnout in rural areas of Minnesota and across the Midwest. Rural Minnesota turnout was the lowest of the four regions in 2016. However, the number of additional votes that can come from the state’s sparsely populated counties is relatively limited. Try changing rural turnout with the sliders, then watch the scoreboard change at the top of the page. Even if you increase the number of rural votes by 10 percentage points over 2016, it’s not enough for Trump to win. And that would require some rural counties to have more than 80% of voters turn out -- an unlikely number, even for high-turnout Minnesota.</p>
 
-	<div class="inline-ex">
-
+	<div class="inline-ex middle">
 		<div class="inline-wrapper">
 			<p class="explainer">Total votes in <b>rural counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 				<div class="wrapper">
-					{100 + turnout_modifiers["rural"]}% of 2016
+					<p class="turnout">{100 + turnout_modifiers["rural"]}% of 2016</p>
 					<!-- <input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0> -->
 				</div>
 			</label>
@@ -396,7 +392,7 @@
 			<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
 		</div>
 	</div>
-	<button class="reset-button" type="button" on:click={resetDials}>
+	<button class="reset-button middle" type="button" on:click={resetDials}>
 	<img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">
 Reset dials</button>
 

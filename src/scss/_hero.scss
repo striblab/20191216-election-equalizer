@@ -268,6 +268,7 @@
 			@media only screen and (max-width: 900px) {
 				font-size: 40px;
 				line-height: 1.1;
+				width: 100%;
 			}
 			span.party {
 				display: inline-block;
@@ -349,7 +350,7 @@ div.subhead-wrapper {
 		font-family: "Benton Sans";
 		font-weight: normal;
 		font-size: 22px;
-		max-width: 950px;
+		max-width: 835px;
 		line-height: 1.5;
 		width: 85%;
 		margin: 0 auto;
@@ -358,6 +359,7 @@ div.subhead-wrapper {
 		text-align: center;
 		@media only screen and (max-width: 900px) {
 			font-size: 18px;
+			width: 88%;
 		}
 	}
 	p.byline-special {
@@ -367,5 +369,6 @@ div.subhead-wrapper {
 		line-height: 1.5;
 		width: 85%;
 		margin: 0 auto;
+		margin-bottom: 30px;
 	}
 }
