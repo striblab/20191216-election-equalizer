@@ -690,6 +690,6 @@ Reset dials</button>
 			<p><b>Design</b> Anna Boone and Michael Corey</p>
       <p><b>Development</b> Michael Corey and Anna Boone</p>
       <p><b>Data</b> Jeff Hargarten</p>
-      <p><b>Editing</b> Matt DeLong, XXXX and XXXX</p>
+      <p><b>Editing</b> Matt DeLong, Eric Wieffering and Catherine Preus</p>
   </div>
 </div>

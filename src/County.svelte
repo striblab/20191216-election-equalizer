@@ -11,8 +11,8 @@
 		votes_2016: 0,
 		rVotes_2016: 0,
 		dVotes_2016: 0,
-		rPct_2016: 0,
-		dPct_2016: 0,
+		// rPct_2016: 0,
+		// dPct_2016: 0,
 		turnout_2016: 0,
 		cvap_2016: 0,
 		classification: ''
@@ -27,7 +27,10 @@
 	let proj_final_r_pct = 1;
 	let proj_final_d_pct= 1;
 	let eligible_voters = 0;
+	let d_pct_2016 = 0;
+	let r_pct_2016 = 0;
 	let turnout_2016_rounded = 0;
+	let bool_excessive_turnout = false;
 
 	// let proj_other_pct = 0.5;  // By default each party loses/gains half of projected third party votes
 
@@ -61,6 +64,8 @@
 	d_votes_statewide_2016.update(n => n + county_data.dVotes_2016);
 
 	// eligible_voters = county_data.votes_2016 / county_data.turnout_2016);
+	d_pct_2016 = county_data.dVotes_2016 / county_data.votes_2016;
+	r_pct_2016 = county_data.rVotes_2016 / county_data.votes_2016;
 	eligible_voters = county_data.cvap_2016;
 	turnout_2016_rounded = Math.round((county_data.votes_2016 / eligible_voters) * 1000) / 10;
 
@@ -151,8 +156,8 @@
 	<td class="desktop-show number votes-2016">{commaNumber(county_data.votes_2016)} <span class="turnout">({turnout_2016_rounded}%)</span></td>
 	<!-- <td class="desktop-show number">{roundPct(thirdPartyCount(county_data) / county_data.votes_2016)}</td> -->
 	<td class="desktop-show number votes-2020">{commaNumber(proj_total_votes)} <span class="turnout">({proj_turnout_pct}%)</span></td>
-	<td class="desktop-show number r-2016 R-{county_data.winner_2016}-2016">{roundPct(county_data.rPct_2016)}</td>
-	<td class="desktop-show number d-2016 D-{county_data.winner_2016}-2016">{roundPct(county_data.dPct_2016)}</td>
+	<td class="desktop-show number r-2016 R-{county_data.winner_2016}-2016">{roundPct(r_pct_2016)}</td>
+	<td class="desktop-show number d-2016 D-{county_data.winner_2016}-2016">{roundPct(d_pct_2016)}</td>
 	<td class="number r-2020" class:R-R-projected="{proj_final_r_pct > proj_final_d_pct}">{roundPct(proj_final_r_pct)}</td>
 	<td class="number d-2020" class:D-D-projected="{proj_final_r_pct < proj_final_d_pct}">{roundPct(proj_final_d_pct)}</td>
 </tr>
