@@ -42,3 +42,8 @@ export const proj_d_votes_regional_rural = writable(0);
 export const proj_d_votes_regional_outstate = writable(0);
 export const proj_d_votes_regional_suburban = writable(0);
 export const proj_d_votes_regional_urban = writable(0);
+
+export let excessive_turnout_rural = writable([]);
+export let excessive_turnout_outstate = writable([]);
+export let excessive_turnout_suburban = writable([]);
+export let excessive_turnout_urban = writable([]);

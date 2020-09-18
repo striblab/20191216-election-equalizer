@@ -1,1 +1,1 @@
-[production] forgot to hide the hero
+[production] No deploy message specified.

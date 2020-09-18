@@ -7,7 +7,7 @@
 
 	const commaNumber = require('comma-number')
 
-	import { eligible_voters_rural, eligible_voters_outstate, eligible_voters_suburban, eligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban } from './stores.js';
+	import { eligible_voters_rural, eligible_voters_outstate, eligible_voters_suburban, eligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban, excessive_turnout_rural, excessive_turnout_outstate, excessive_turnout_suburban, excessive_turnout_urban } from './stores.js';
 
 	export let county_list = CountyData.sort( function( a, b ) {
 	    return a.county < b.county ? -1 : a.county > b.county ? 1 : 0;
@@ -535,7 +535,7 @@ Reset dials</button>
 
 		<h3>Small town/rural<br></h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_rural_2016}%</span> of the small town/rural county votes in 2016.</p>
-		<label>Total votes<br/>
+		<label>Total votes{#if $excessive_turnout_rural.length > 0} oh no!!!{/if}<br/>
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
 				<p class="turnout">{100 + turnout_modifiers["rural"]}% of 2016</p>
@@ -569,7 +569,7 @@ Reset dials</button>
 	<div id="outcity-dashboard"  class="dashboard">
 		<h3><!-- Greater  -->Minn. counties with regional centers</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_outstate_2016}%</span> of the regional center votes in 2016.</p>
-		<label>Total votes<br/>
+		<label>Total votes{#if $excessive_turnout_outstate.length > 0} oh no!!!{/if}<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
 				<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</p>
@@ -602,7 +602,7 @@ Reset dials</button>
 	<div id="suburban-dashboard"  class="dashboard">
 		<h3>Suburban Twin Cities</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_suburban_2016}%</span> of the suburban county votes in 2016.</p>
-		<label>Total votes<br/>
+		<label>Total votes{#if $excessive_turnout_suburban.length > 0} oh no!!!{/if}<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
 				<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</p>
@@ -635,7 +635,7 @@ Reset dials</button>
 	<div id="urban-dashboard"  class="dashboard">
 		<h3>Hennepin and Ramsey counties</h3>
 		<p class="summary">Clinton won <span class="dem percent">{d_pct_urban_2016}%</span> of the urban county votes in 2016.</p>
-		<label>Total votes<br/>
+		<label>Total votes{#if $excessive_turnout_urban.length > 0} oh no!!!{/if}<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
 				<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</p>
