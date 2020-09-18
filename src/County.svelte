@@ -45,9 +45,9 @@
 		} else if (classification == 'urban') {
 			return 'Urban'
 		} else if (classification == 'suburban') {
-			return 'Twin Cities suburbs'
+			return 'Twin Cities suburb'
 		} else if (classification == 'rural') {
-			return 'Rural'
+			return 'Small town/rural'
 		}
 	}
 
@@ -124,7 +124,6 @@
 			proj_d_votes_statewide.update(n => n - prev_proj_d_votes + proj_d_votes);
 
 			if (county_data['classification'] == 'rural') {
-				console.log('rural change')
 				proj_total_votes_regional_rural.update(n => n - prev_proj_total_votes + proj_total_votes);
 				proj_r_votes_regional_rural.update(n => n - prev_proj_r_votes + proj_r_votes);
 				proj_d_votes_regional_rural.update(n => n - prev_proj_d_votes + proj_d_votes);

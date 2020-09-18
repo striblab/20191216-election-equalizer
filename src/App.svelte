@@ -300,7 +300,7 @@
 
 <div class="scenario ahead">
 	<h5>Looking ahead</h5>
-	<p>So what does Trump need to do this time to turn things around? Let’s start by giving Biden and Trump the same vote totals Clinton and Trump received in Minnesota in 2016. Then we’ll split the state up by grouping counties into four groups: urban (Hennepin and Ramsey counties), suburban (five other counties surrounding the Twin Cities), regional centers (five counties with mid-sized cities) and rural (the 74 remaining counties).</p>
+	<p>So what does Trump need to do this time to turn things around? Let’s start by giving Biden and Trump the same vote totals Clinton and Trump received in Minnesota in 2016. Then we’ll split the state up by grouping counties into four groups: urban (Hennepin and Ramsey counties), suburban (five other counties surrounding the Twin Cities), regional centers (five counties with mid-sized cities) and small town/rural (the 74 remaining counties).</p>
 	<p>We’ll use those (imperfect) regions to game out some Here are some scenarios where Trump could come out ahead.</p>
 </div>
 
@@ -338,7 +338,7 @@
 		<div class="modifiers">
 			<div class="wrapper">
 				<div class="rural">
-					<h5>Rural</h5>
+					<h5>Small town/a</h5>
 					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["rural"]}% of 2016</p>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_modifiers["rural"]}</span></p>
 				</div>
@@ -368,11 +368,11 @@
 	<div class="map mobile-show">
 		<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
 	</div>
-	<p>Trump’s campaign in 2020 has focused on driving up voter turnout in rural areas of Minnesota and across the Midwest. Rural Minnesota turnout was the lowest of the four regions in 2016. However, the number of additional votes that can come from the state’s sparsely populated counties is relatively limited. Try changing rural turnout with the sliders, then watch the scoreboard change at the top of the page. Even if you increase the number of rural votes by 10 percentage points over 2016, it’s not enough for Trump to win. And that would require some rural counties to have more than 80% of voters turn out -- an unlikely number, even for high-turnout Minnesota.</p>
+	<p>Trump’s campaign in 2020 has focused on driving up voter turnout in small towns and rural areas of Minnesota and across the Midwest. Rural Minnesota turnout was the lowest of the four regions in 2016. However, the number of additional votes that can come from the state’s sparsely populated counties is relatively limited. Try changing rural turnout with the sliders, then watch the scoreboard change at the top of the page. Even if you increase the number of rural votes by 10 percentage points over 2016, it’s not enough for Trump to win. And that would require some rural counties to have more than 80% of voters turn out -- an unlikely number, even for high-turnout Minnesota.</p>
 
 	<div class="inline-ex middle">
 		<div class="inline-wrapper">
-			<p class="explainer">Total votes in <b>rural counties</b></p>
+			<p class="explainer">Total votes in <b>small town/rural counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 				<div class="wrapper">
@@ -380,7 +380,7 @@
 					<!-- <input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0> -->
 				</div>
 			</label>
-			<p class="explainer">Partisan balance in <b>rural counties</b></p>
+			<p class="explainer">Partisan balance in <b>small town/rural counties</b></p>
 			<label>
 				<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan" id="rural-p">
 				<div class="wrapper">
@@ -521,8 +521,8 @@ Reset dials</button>
 <div id="dashboard" class="dashboard-wrapper">
 	<div id="rural-dashboard" class="dashboard">
 
-		<h3>Rural<br></h3>
-		<p class="summary">Trump won <span class="gop percent">{r_pct_rural_2016}%</span> of the rural county votes in 2016.</p>
+		<h3>Small town/rural<br></h3>
+		<p class="summary">Trump won <span class="gop percent">{r_pct_rural_2016}%</span> of the small town/rural county votes in 2016.</p>
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
@@ -678,7 +678,7 @@ Reset dials</button>
 
 <div class="scenario">
 	<h5>Methodology</h5>
-	<p>Calculations start with each county's 2016 certified presidential vote totals from the Minnesota Secretary of State. The sliders apply percentage-point modifiers to total votes and partisan split. Turnout is calculated by dividing total 2016 votes in each county by the Citizen Voting Age Population in the U.S. Census Bureau's 2012-2016 5-Year American Community Survey as a proxy for eligible voters. County regional classifications are based on 2015 reports from the Minnesota State Demographic Center, with the exception of Wright County, which has been reclassified as "rural."</p>
+	<p>Calculations start with each county's 2016 certified presidential vote totals from the Minnesota Secretary of State. The sliders apply percentage-point modifiers to total votes and partisan split. Turnout is calculated by dividing total 2016 votes in each county by the Citizen Voting Age Population in the U.S. Census Bureau's 2012-2016 5-Year American Community Survey as a proxy for eligible voters. County regional classifications are based on 2015 reports from the Minnesota State Demographic Center, with the exception of Wright County, which has been reclassified as "small town/rural."</p>
 
 	<p>Special thanks to David Schultz and Eric Ostermeier for consulting on the methodology and assumptions.</p>
 
