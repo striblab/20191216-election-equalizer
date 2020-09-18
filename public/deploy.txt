@@ -1,1 +1,1 @@
-[production] more updates
+[production] forgot to hide the hero

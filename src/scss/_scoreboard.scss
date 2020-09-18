@@ -299,11 +299,22 @@ div.cand-totals {
 			@media only screen and (max-width: 900px) {
 				left: -10px;
 			}
-			div.cand-mug {
+			div.cand-mug.happy {
 				background-color: #3498DB;
 				background-image: url(https://static.startribune.com/svg/biden.png?cache=trashshs);
 				background-size: cover;
 				background-position: 50% 45%;
+			}
+			div.cand-mug.sad {
+				background-color: #3498DB;
+				background-image: url(https://static.startribune.com/svg/bidensad.png?cache=trashshs);
+				background-size: cover;
+				background-position: 50% 45%;
+				opacity: 0;
+				transition: 0.5s opacity;
+				&.show {
+					opacity: 1;
+				}
 			}
 			h4.cand-name {
 				left: 80px;
@@ -311,12 +322,6 @@ div.cand-totals {
 				@media only screen and (max-width: 900px) {
 					left: 55px;
 					top: -5px;
-				}
-			}
-			&.loser {
-				div.cand-mug {
-					background-image: url(https://static.startribune.com/svg/bidensad.png?cache=trash);
-					background-position: 50% 80%;
 				}
 			}
 		}
@@ -327,13 +332,24 @@ div.cand-totals {
 				right: -10px;
 				/*top: 100px;*/
 			}
-			div.cand-mug {
+			div.cand-mug.happy {
 				background-color: #C0392B;
 				background-image: url(https://static.startribune.com/svg/trump.png?cache=trashshs);
 				background-size: cover;
 				background-position: 50% 50%;
 				position: absolute;
 				right: 0;
+			}
+			div.cand-mug.sad {
+				background-color: #C0392B;
+				background-image: url(https://static.startribune.com/svg/sadtrump.png?cache=trashshs);
+				background-size: cover;
+				background-position: 50% 50%;
+				opacity: 0;
+				transition: 0.5s opacity;
+				&.show {
+					opacity: 1;
+				}
 
 			}
 			h4.cand-name {
@@ -349,24 +365,27 @@ div.cand-totals {
 					right: 90px;
 				}
 			}
-			&.loser {
-				div.cand-mug {
-					background-image: url(https://static.startribune.com/svg/sadtrump.png?cache=trashfsfdsdf);
-					background-position: 50% 50%;
-				}
-			}
 		}
-		div.cand-mug {
+		div.cand-mug-wrapper {
 			width: 75px;
 			height: 75px;
 			border-radius: 50%;
 			margin: 0 !important;
 			z-index: 1000;
 			border: 2px solid white;
+			position: relative;
 			@media only screen and (max-width: 900px) {
 				width: 50px;
 				height: 50px;
 				margin-bottom: -5px;
+			}
+			div.cand-mug {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				position: absolute;
+				top: 0;
+				left: 0;
 			}
 
 		}
