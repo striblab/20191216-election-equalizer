@@ -41,8 +41,12 @@ table.county-projections {
 			width: 50%
 		}
 	}
+	.votes-2016, .votes-2020 {
+		text-align: right;
+	}
 	.r-2016, .r-2020, .d-2016, .d-2020 {
 		width: 10%;
+		text-align: right;
 		@media only screen and (max-width: 900px) {
 			width: 25%
 		}
@@ -57,7 +61,7 @@ table.county-projections {
 
 
 td.number {
-	text-align: left;
+	text-align: right;
 	@media only screen and (max-width: 900px) {
 		width: 25%;
 	}

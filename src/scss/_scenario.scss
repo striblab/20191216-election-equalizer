@@ -1,15 +1,16 @@
 div.scenario {
 	max-width: 650px;
 	width: 85%;
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-top: 75px;
+	padding-bottom: 75px;
 	margin: 0 auto;
 	@media only screen and (max-width: 900px) {
-		padding-top: 75px;
-		padding-bottom: 75px;
+		padding-top: 50px;
+		padding-bottom: 50px;
 	}
 	&.first {
 		padding-bottom: 50px;
+		padding-top: 50px;
 	}
 	&.ahead {
 		padding-bottom: 30px;
@@ -31,6 +32,7 @@ div.scenario {
 		font-weight: normal;
 		font-size: 16px !important;
 		line-height: 1.5;
+		margin-bottom: 15px;
 	}
 	p.explainer {
 		margin-bottom: 0px;
@@ -68,6 +70,9 @@ div.scenario {
   	@media only screen and (max-width: 900px) {
 		display: block;
 	}
+	&.middle {
+		margin-top: 40px;
+	}
 	.map {
 		width: 35%;
 		margin-left: 5%;
@@ -90,12 +95,16 @@ div.scenario {
 	}
 }
 
+button.reset-button.middle {
+		margin-bottom: 70px;
+	}
+
 
 div.credits {
 	padding-top: 30px;
 	margin-top: 50px;
 	border-top: 1px solid #E5E7E9;
-	padding-bottom: 20vh;
+	padding-bottom: 0vh;
 	width: 100%;
 	max-width: 650px;
 	font-family: "Benton Sans";

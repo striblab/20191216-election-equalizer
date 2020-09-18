@@ -115,6 +115,7 @@
 					letter-spacing: 0.5px;
 					margin-top: 0;
 					font-family: "Benton Sans";
+					margin-bottom: 10px;
 					@media only screen and (max-width: 900px) {
 						margin-bottom: 10px;
 						margin-top: 0;
@@ -405,7 +406,6 @@ h4.cand-votes {
 	&.r {
 		text-align: left;
 		@media only screen and (max-width: 900px) {
-			top: 55px;
 			right: 40px !important;
 			text-align: right;
 			width: auto;
@@ -414,7 +414,6 @@ h4.cand-votes {
 	&.d {
 		text-align: right;
 		@media only screen and (max-width: 900px) {
-			top: 55px;
 			left: 40px !important;
 			text-align: left;
 			width: auto;
