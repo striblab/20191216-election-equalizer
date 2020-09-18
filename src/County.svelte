@@ -1,5 +1,5 @@
 <script>
-	import { elligible_voters_rural, elligible_voters_outstate, elligible_voters_suburban, elligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban } from './stores.js';
+	import { eligible_voters_rural, eligible_voters_outstate, eligible_voters_suburban, eligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban } from './stores.js';
 	const commaNumber = require('comma-number')
 
 	const roundPct = function(input) {
@@ -26,7 +26,7 @@
 	let proj_turnout_pct = 0;
 	let proj_final_r_pct = 1;
 	let proj_final_d_pct= 1;
-	let elligible_voters = 0;
+	let eligible_voters = 0;
 	let turnout_2016_rounded = 0;
 
 	// let proj_other_pct = 0.5;  // By default each party loses/gains half of projected third party votes
@@ -60,34 +60,34 @@
 	r_votes_statewide_2016.update(n => n + county_data.rVotes_2016);
 	d_votes_statewide_2016.update(n => n + county_data.dVotes_2016);
 
-	// elligible_voters = county_data.votes_2016 / county_data.turnout_2016);
-	elligible_voters = county_data.cvap_2016;
-	turnout_2016_rounded = Math.round((county_data.votes_2016 / elligible_voters) * 1000) / 10;
+	// eligible_voters = county_data.votes_2016 / county_data.turnout_2016);
+	eligible_voters = county_data.cvap_2016;
+	turnout_2016_rounded = Math.round((county_data.votes_2016 / eligible_voters) * 1000) / 10;
 
 	if (county_data['classification'] == 'rural') {
 		total_votes_regional_2016_rural.update(n => n + county_data.votes_2016);
 		r_votes_regional_2016_rural.update(n => n + county_data.rVotes_2016);
 		d_votes_regional_2016_rural.update(n => n + county_data.dVotes_2016);
 
-		elligible_voters_rural.update(n => n + elligible_voters);
+		eligible_voters_rural.update(n => n + eligible_voters);
 	} else if (county_data['classification'] == 'outstate city') {
 		total_votes_regional_2016_outstate.update(n => n + county_data.votes_2016);
 		r_votes_regional_2016_outstate.update(n => n + county_data.rVotes_2016);
 		d_votes_regional_2016_outstate.update(n => n + county_data.dVotes_2016);
 
-		elligible_voters_outstate.update(n => n + elligible_voters);
+		eligible_voters_outstate.update(n => n + eligible_voters);
 	} else if (county_data['classification'] == 'suburban') {
 		total_votes_regional_2016_suburban.update(n => n + county_data.votes_2016);
 		r_votes_regional_2016_suburban.update(n => n + county_data.rVotes_2016);
 		d_votes_regional_2016_suburban.update(n => n + county_data.dVotes_2016);
 
-		elligible_voters_suburban.update(n => n + elligible_voters);
+		eligible_voters_suburban.update(n => n + eligible_voters);
 	} else if (county_data['classification'] == 'urban') {
 		total_votes_regional_2016_urban.update(n => n + county_data.votes_2016);
 		r_votes_regional_2016_urban.update(n => n + county_data.rVotes_2016);
 		d_votes_regional_2016_urban.update(n => n + county_data.dVotes_2016);
 
-		elligible_voters_urban.update(n => n + elligible_voters);
+		eligible_voters_urban.update(n => n + eligible_voters);
 	}
 
 	// total_votes_regional_2016[county_data['classification']].update(n => n + county_data.votes_2016);
@@ -101,7 +101,7 @@
 			let prev_proj_d_votes = proj_d_votes;
 			proj_total_votes = Math.round(county_data.votes_2016 * (1 + (turnout_modifier / 100)));
 
-			proj_turnout_pct = Math.round((proj_total_votes / elligible_voters) * 1000) / 10;
+			proj_turnout_pct = Math.round((proj_total_votes / eligible_voters) * 1000) / 10;
 
 			let proj_base_r_pct = (county_data.rVotes_2016 / county_data.votes_2016) + (partisan_modifier / 100);
 			let proj_base_d_pct = (county_data.dVotes_2016 / county_data.votes_2016) - (partisan_modifier / 100);
