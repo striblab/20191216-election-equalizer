@@ -241,7 +241,7 @@
 	});
 </script>
 
-<!-- <div class="hero">
+<div class="hero">
 	<div class="gop">
 	</div>
 	<div class="dem">
@@ -258,7 +258,7 @@
 	<h2>Geography is just one of many variables in a presidential race — but it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Use the interactive sliders below to see how changes in turnout and the partisan mix in different regions could flip Minnesota.</h2>
 
 	<p class="byline-special"><b>Michael Corey, Anna Boone, Jessie Van Berkel and Torey Van Oot</b><br>Star Tribune • Sept. 21, 2020</p>
-</div> -->
+</div>
 
 <div class="scenario first">
 	<h5>What we know from 2016</h5>
@@ -366,7 +366,7 @@
 <div class="scenario second">
 	<h5>RELYING ON RURAL SUPPORT</h5>
 	<div class="map mobile-show">
-		<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/rural.svg?cache=trash" alt="map" class="map">
 	</div>
 	<p>Trump’s campaign in 2020 has focused on driving up voter turnout in small towns and rural areas of Minnesota and across the Midwest. Rural Minnesota turnout was the lowest of the four regions in 2016. However, the number of additional votes that can come from the state’s sparsely populated counties is relatively limited. Try changing rural turnout with the sliders, then watch the scoreboard change at the top of the page. Even if you increase the number of rural votes by 10 percentage points over 2016, it’s not enough for Trump to win. And that would require some rural counties to have more than 80% of voters turn out -- an unlikely number, even for high-turnout Minnesota.</p>
 
@@ -389,7 +389,7 @@
 			</label>
 		</div>
 		<div class="map desktop-show">
-			<img src="https://static.startribune.com/svg/rural.svg" alt="map" class="map">
+			<img src="https://static.startribune.com/svg/rural.svg?cache=trash" alt="map" class="map">
 		</div>
 	</div>
 	<button class="reset-button middle" type="button" on:click={resetDials}>
@@ -404,7 +404,7 @@ Reset dials</button>
 <div class="scenario fourth">
 	<h5>TWO COUNTIES, A LOAD OF VOTES</h5>
 	<div class="map mobile-show">
-		<img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/urban.svg?cache=trash" alt="map" class="map">
 	</div>
 	<p>Hennepin and Ramsey counties, which include Minneapolis, St. Paul and many surrounding suburban cities, are home to nearly a third of Minnesota’s residents. Voter turnout in these counties, which historically have overwhelmingly favored Democrats, can have a significant impact on statewide elections.</p>
 	<p>Hillary Clinton carried the two counties with 64.4% of the vote four years ago. Democratic officials are trying to fire up voters in the heart of the metro. They are not only trying to get their base to show up but also attempting to draw new voters, including young people and voters in the Twin Cities’ immigrant communities. Young voters appear poised to turn out at a higher rate than they did four years ago, with young voter registration up 12% compared to 2016, a nonpartisan poll shows.</p>
@@ -429,7 +429,7 @@ Reset dials</button>
 			</label>
 		</div>
 		<div class="map">
-			<img src="https://static.startribune.com/svg/urban.svg" alt="map" class="map">
+			<img src="https://static.startribune.com/svg/urban.svg?cache=trash" alt="map" class="map">
 		</div>
 	</div>
 	<button class="reset-button" type="button" on:click={resetDials}>
@@ -442,7 +442,7 @@ Reset dials</button>
 <div class="scenario third clear">
 	<h5>WILL THE SUBURBS SHIFT?</h5>
 	<div class="map mobile-show">
-		<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/suburbs.svg?cache=trash" alt="map" class="map">
 	</div>
 	<p>Over the past three presidential elections, Republicans have carried three of the five metro counties that surround Hennepin and Ramsey. However, the suburban communities around the Twin Cities trended deeper blue in 2018, with Democratic U.S. Reps. Angie Craig and Dean Phillips flipping districts that include wide swaths of the south and west suburbs. In that midterm election, Sen. Amy Klobuchar carried all five of the counties – which could bode well for Biden’s chances in those areas.</p>
 	<p>Past polls have shown Trump struggling with suburban swing voters, particularly women. However, Republicans are hoping to make inroads among moderates in the suburbs and are painting Biden as part of the “radical left.” The GOP has emphasized public safety and their support for police as they try to win over those areas, saying that Democrats have failed to prevent lawlessness during the civil unrest that followed the killing of George Floyd by Minneapolis police.</p>
@@ -465,7 +465,7 @@ Reset dials</button>
 			</label>
 		</div>
 		<div class="map">
-			<img src="https://static.startribune.com/svg/suburbs.svg" alt="map" class="map">
+			<img src="https://static.startribune.com/svg/suburbs.svg?cache=trash" alt="map" class="map">
 		</div>
 	</div>
 	<button class="reset-button" type="button" on:click={resetDials}>
@@ -476,7 +476,7 @@ Reset dials</button>
 <div class="scenario third clear">
 	<h5>Will urban centers outside the Twin Cities tip the scales? </h5>
 	<div class="map mobile-show">
-		<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/regional.svg?cache=trash" alt="map" class="map">
 	</div>
 	<p>While much of Greater Minnesota tends to vote Republican, there are several significant regional population centers that could boost either party. Population growth?shifts in the Rochester area, home to the Mayo Clinic, have created fresh opportunities for the DFL, especially among college-educated voters and growing communities of color. Though Clinton narrowly defeated Trump in Olmsted County in 2016, Democrats have gained ground in the region since 2014.</p>
 	<p>St. Louis County, home to Duluth, remains a Democratic stronghold, even as GOP support grows elsewhere on the Iron Range. Clinton won that county by 11 percentage points in 2016. Trump is making a play to peel more votes, though, with multiple campaign events in and around Duluth.</p>
@@ -501,7 +501,7 @@ Reset dials</button>
 			</label>
 		</div>
 		<div class="map">
-			<img src="https://static.startribune.com/svg/regional.svg" alt="map" class="map">
+			<img src="https://static.startribune.com/svg/regional.svg?cache=trash" alt="map" class="map">
 		</div>
 	</div>
 	<button class="reset-button" type="button" on:click={resetDials}>
