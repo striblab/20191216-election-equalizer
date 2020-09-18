@@ -241,7 +241,7 @@
 	});
 </script>
 
-<!-- <div class="hero">
+<div class="hero">
 	<div class="gop">
 	</div>
 	<div class="dem">
@@ -258,7 +258,7 @@
 	<h2>Geography is just one of many variables in a presidential race — but it’s a big one. Where voters turn out could determine whether President Donald Trump becomes the first Republican presidential candidate to win Minnesota in nearly half a century. Use the interactive sliders below to see how changes in turnout and the partisan mix in different regions could flip Minnesota.</h2>
 
 	<p class="byline-special"><b>Michael Corey, Anna Boone, Jessie Van Berkel and Torey Van Oot</b><br>Star Tribune • Sept. 21, 2020</p>
-</div> -->
+</div>
 
 <div class="scenario first">
 	<h5>What we know from 2016</h5>
