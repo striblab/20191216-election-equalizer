@@ -84,6 +84,16 @@
 		letter-spacing: 1px;
 		margin-bottom: 0;
 	}
+	p.positive {
+	  background: #F2D7D5;
+	  transition: 0.5s background;
+		border-radius: 5px;
+	}
+	p.negative {
+	  background: #D6EAF8;
+	  transition: 0.5s background;
+		border-radius: 5px;
+	}
 	p.summary {
 		font-size: 13px !important;
 		margin-top: 10px;

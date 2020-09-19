@@ -160,12 +160,22 @@
 		}
 	}
 
+	const partisan_display = function (modifier) {
+		if (modifier == 0) {
+			return 'Same as 2016'
+		} else if (modifier > 0) {
+			return `${modifier} points more GOP`
+		} else if (modifier < 0) {
+			return `${Math.abs(modifier)} points more Dem`
+		}
+	}
+
 	let resetDials = function () {
 		partisan_modifiers = {
 			"rural": 0,
 			"outstate city": 0,
 			"suburban": 0,
-			"urban": 0
+			"urban": 0,
 		}
 
 		turnout_modifiers = {
@@ -364,22 +374,22 @@
 				<div class="rural">
 					<h5>Small town/a</h5>
 					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["rural"]}% of 2016</p>
-					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_modifiers["rural"]}</span></p>
+					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{Math.abs(partisan_modifiers["rural"])}</span></p>
 				</div>
 				<div class="regional">
 					<h5>Regional</h5>
 					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["outstate city"]}% of 2016</p>
-					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_modifiers["outstate city"]}</span></p>
+					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{Math.abs(partisan_modifiers["outstate city"])}</span></p>
 				</div>
 				<div class="suburban">
 					<h5>Suburban</h5>
 					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["suburban"]}% of 2016</p>
-					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_modifiers["suburban"]}</span></p>
+					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{Math.abs(partisan_modifiers["suburban"])}</span></p>
 				</div>
 				<div class="urban">
 					<h5>Urban</h5>
 					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["urban"]}% of 2016</p>
-					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_modifiers["urban"]}</span></p>
+					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{Math.abs(partisan_modifiers["urban"])}</span></p>
 				</div>
 			</div>
 			<button class="reset-button" type="button" on:click={resetDials}><img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">Reset dials</button>
@@ -409,7 +419,7 @@
 			<label>
 				<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan" id="rural-p">
 				<div class="wrapper">
-					<input type=number bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0 >
+					<p class="partisan" class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_display(partisan_modifiers["rural"])}</p>
 				</div>
 			</label>
 		</div>
@@ -448,7 +458,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 class="partisan">
 				<div class="wrapper">
-					<input type=number bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="partisan" class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_display(partisan_modifiers["urban"])}</p>
 				</div>
 			</label>
 		</div>
@@ -485,7 +495,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 class="partisan">
 				<div class="wrapper">
-					<input type=number bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="partisan" class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_display(partisan_modifiers["suburban"])}</p>
 				</div>
 			</label>
 		</div>
@@ -522,7 +532,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="partisan">
 				<div class="wrapper">
-					<input type=number bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
+					<p class="partisan" class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_display(partisan_modifiers["outstate city"])}</p>
 				</div>
 			</label>
 		</div>
@@ -559,7 +569,7 @@ Reset dials</button>
 		<label>Partisan balance<br/>
 			<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan" id="rural-p">
 			<div class="wrapper">
-				<input type=number bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0 >
+				<p class="partisan" class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_display(partisan_modifiers["rural"])}</p>
 			</div>
 		</label>
 
@@ -594,7 +604,7 @@ Reset dials</button>
 		<label>Partisan balance<br/>
 			<input type=range bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="partisan">
 			<div class="wrapper">
-				<input type=number bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 placeholder=0>
+				<p class="partisan" class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_display(partisan_modifiers["outstate city"])}</p>
 			</div>
 		</label>
 
@@ -627,7 +637,7 @@ Reset dials</button>
 		<label>Partisan balance<br/>
 			<input type=range bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 class="partisan">
 			<div class="wrapper">
-				<input type=number bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 placeholder=0>
+				<p class="partisan" class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_display(partisan_modifiers["suburban"])}</p>
 			</div>
 		</label>
 
@@ -660,7 +670,7 @@ Reset dials</button>
 		<label>Partisan balance<br/>
 			<input type=range bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 class="partisan">
 			<div class="wrapper">
-				<input type=number bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0>
+				<p class="partisan" class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_display(partisan_modifiers["urban"])}</p>
 			</div>
 		</label>
 
