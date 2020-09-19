@@ -347,6 +347,11 @@ div.cand-totals {
 				right: -10px;
 				/*top: 100px;*/
 			}
+			div.cand-mug-wrapper {
+				@media only screen and (max-width: 900px) {
+					right: -10px;
+				}
+			}
 			div.cand-mug.happy {
 				background-color: #C0392B;
 				background-image: url(https://static.startribune.com/svg/trump.png?cache=trashshs);
