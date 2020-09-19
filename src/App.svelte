@@ -385,7 +385,7 @@
 		<div class="modifiers">
 			<div class="wrapper">
 				<div class="rural">
-					<h5>Small town/a</h5>
+					<h5>Small town/rural</h5>
 					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["rural"]}% of 2016</p>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{Math.abs(partisan_modifiers["rural"])}</span></p>
 				</div>
