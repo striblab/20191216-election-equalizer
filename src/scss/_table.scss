@@ -24,6 +24,9 @@ table.county-projections {
 	margin-top: 50px;
 	margin-bottom: 100px;
 	width: 100%;
+	@media only screen and (max-width: 900px) {
+		margin-bottom: 0;
+	}
 	.desktop-show {
 		display: table-cell !important;
 		@media only screen and (max-width: 900px) {
