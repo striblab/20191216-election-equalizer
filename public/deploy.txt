@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 [production] No deploy message specified.
-=======
-[production] style updates
->>>>>>> 1edc3067b211fc7d4796c8f4308b109c023e827f

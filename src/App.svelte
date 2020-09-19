@@ -386,22 +386,22 @@
 			<div class="wrapper">
 				<div class="rural">
 					<h5>Small town/rural</h5>
-					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["rural"]}% of 2016</p>
+					<span class="first"><b>Total votes:</b> {100 + turnout_modifiers["rural"]}% of 2016</span>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{Math.abs(partisan_modifiers["rural"])}</span></p>
 				</div>
 				<div class="regional">
 					<h5>Regional</h5>
-					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["outstate city"]}% of 2016</p>
+					<span class="first"><b>Total votes:</b> {100 + turnout_modifiers["outstate city"]}% of 2016</span>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{Math.abs(partisan_modifiers["outstate city"])}</span></p>
 				</div>
 				<div class="suburban">
 					<h5>Suburban</h5>
-					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["suburban"]}% of 2016</p>
+					<span class="first"><b>Total votes:</b> {100 + turnout_modifiers["suburban"]}% of 2016</span>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{Math.abs(partisan_modifiers["suburban"])}</span></p>
 				</div>
 				<div class="urban">
 					<h5>Urban</h5>
-					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["urban"]}% of 2016</p>
+					<span class="first"><b>Total votes:</b> {100 + turnout_modifiers["urban"]}% of 2016</span>
 					<p><b>Partisanship:</b> <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{Math.abs(partisan_modifiers["urban"])}</span></p>
 				</div>
 			</div>
@@ -423,7 +423,7 @@
 			<label>
 				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 				<div class="wrapper">
-					<p class="turnout">{100 + turnout_modifiers["rural"]}% of 2016</p>
+					<span class="turnout">{100 + turnout_modifiers["rural"]}% of 2016</span>
 					<!-- <input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0> -->
 				</div>
 			</label>
@@ -431,7 +431,7 @@
 			<label>
 				<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan" id="rural-p">
 				<div class="wrapper">
-					<p class="partisan" class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_display(partisan_modifiers["rural"])}</p>
+					<span class="partisan" class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_display(partisan_modifiers["rural"])}</span>
 				</div>
 			</label>
 		</div>
@@ -463,7 +463,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</p>
+					<span class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</span>
 					<!-- <input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0> -->
 				</div>
 			</label>
@@ -471,7 +471,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 class="partisan">
 				<div class="wrapper">
-					<p class="partisan" class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_display(partisan_modifiers["urban"])}</p>
+					<span class="partisan" class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_display(partisan_modifiers["urban"])}</span>
 				</div>
 			</label>
 		</div>
@@ -500,14 +500,14 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</p>
+					<span class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</span>
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>suburban counties</b></p>
 			<label>
 				<input type=range bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 class="partisan">
 				<div class="wrapper">
-					<p class="partisan" class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_display(partisan_modifiers["suburban"])}</p>
+					<span class="partisan" class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_display(partisan_modifiers["suburban"])}</span>
 				</div>
 			</label>
 		</div>
@@ -536,14 +536,14 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</p>
+					<span class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</span>
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>regional city counties</b></p>
 			<label>
 				<input type=range bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="partisan">
 				<div class="wrapper">
-					<p class="partisan" class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_display(partisan_modifiers["outstate city"])}</p>
+					<span class="partisan" class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_display(partisan_modifiers["outstate city"])}</span>
 				</div>
 			</label>
 		</div>
@@ -573,14 +573,14 @@ Reset dials</button>
 		<label>Total votes{#if $excessive_turnout_rural.length > 0} oh no!!!{/if}<br/>
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
-				<p class="turnout" class:warning="{bool_excessive_rural}">{turnout_display(turnout_modifiers["rural"])}</p>
+				<span class="turnout" class:warning="{bool_excessive_rural}">{turnout_display(turnout_modifiers["rural"])}</span>
 			</div>
 		</label>
 
 		<label>Partisan balance<br/>
 			<input type=range bind:value={partisan_modifiers["rural"]} min=-10 max=10 step=0.1 class="partisan" id="rural-p">
 			<div class="wrapper">
-				<p class="partisan" class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_display(partisan_modifiers["rural"])}</p>
+				<span class="partisan" class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{partisan_display(partisan_modifiers["rural"])}</span>
 			</div>
 		</label>
 
@@ -607,13 +607,13 @@ Reset dials</button>
 		<label>Total votes{#if $excessive_turnout_outstate.length > 0} oh no!!!{/if}<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</p>
+				<span class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</span>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
 			<input type=range bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="partisan">
 			<div class="wrapper">
-				<p class="partisan" class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_display(partisan_modifiers["outstate city"])}</p>
+				<span class="partisan" class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{partisan_display(partisan_modifiers["outstate city"])}</span>
 			</div>
 		</label>
 
@@ -640,13 +640,13 @@ Reset dials</button>
 		<label>Total votes{#if $excessive_turnout_suburban.length > 0} oh no!!!{/if}<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</p>
+				<span class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</span>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
 			<input type=range bind:value={partisan_modifiers["suburban"]} min=-10 max=10 step=0.1 class="partisan">
 			<div class="wrapper">
-				<p class="partisan" class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_display(partisan_modifiers["suburban"])}</p>
+				<span class="partisan" class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{partisan_display(partisan_modifiers["suburban"])}</span>
 			</div>
 		</label>
 
@@ -673,13 +673,13 @@ Reset dials</button>
 		<label>Total votes{#if $excessive_turnout_urban.length > 0} oh no!!!{/if}<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</p>
+				<span class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</span>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
 			<input type=range bind:value={partisan_modifiers["urban"]} min=-10 max=10 step=0.1 class="partisan">
 			<div class="wrapper">
-				<p class="partisan" class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_display(partisan_modifiers["urban"])}</p>
+				<span class="partisan" class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{partisan_display(partisan_modifiers["urban"])}</span>
 			</div>
 		</label>
 
