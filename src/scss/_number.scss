@@ -50,9 +50,9 @@ div.scenario {
 	div.wrapper {
 		display: block;
 		vertical-align: middle;
-		width: 120px;
+		width: 150px;
 		margin: 0 auto;
-		margin-top: -15px;
+		margin-top: -10px;
 		margin-bottom: 30px;
 		position: relative;
 		p.turnout {
@@ -60,6 +60,9 @@ div.scenario {
 			margin-top: 0;
 			padding-top: 5px;
 			font-family: "Benton Sans";
+			img.warning {
+				margin-bottom: -2.5px;
+			}
 		}
 		.button {
 			width: 25px;
@@ -117,14 +120,50 @@ input[type="number"]:focus {
     outline: none;
 }
 
+
+
 div.wrapper {
 	display: block;
 	vertical-align: middle;
-	width: 125px;
+	width: 150px;
 	margin: 0 auto;
 	margin-top: -15px;
-	margin-bottom: 0px;
+	margin-bottom: 10px;
 	position: relative;
+	height: 25px;
+	p.turnout {
+		position: relative;
+		height: auto;
+		line-height: 1;
+		span {
+			display: inline-block;
+		}
+		img.warning {
+			display: inline-block;
+			width: 16px;
+			height: auto;
+			margin-bottom: -5px;
+			background: #F4D03F;
+			padding: 1px;
+			border-radius: 2px;
+		}
+		span.tooltip {
+			visibility: hidden;
+		    width: 200px;
+		    display: block;
+		    background-color: white;
+		    color: #333;
+		    border: 1px solid #333;
+		    padding: 10px;
+		    border-radius: 6px;
+		    position: absolute;
+		    z-index: 100;
+		    left: -35px;
+		    top: 100%;
+		    font-size: 15px;
+		    line-height: 1.4;
+		}
+	}
 	.button {
 		width: 25px;
 		height: 25px;
@@ -152,4 +191,12 @@ div.wrapper {
 			right: -0%;
 		}
 	}
+}
+
+div.wrapper p.turnout:hover {
+	cursor: pointer;
+}
+
+div.wrapper p.turnout:hover span.tooltip {
+	visibility: visible;
 }

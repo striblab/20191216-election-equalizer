@@ -85,6 +85,13 @@
 	let confettiGop;
 	let last_winner = 'd';
 
+	const check_length = function (array) {
+		if (array.length > 0) {
+			return true
+		}
+		return false
+	}
+
 	$ : {
 
 		d_pct_2016 = Math.round(($d_votes_statewide_2016 / $total_votes_statewide_2016) * 1000) / 10;
@@ -124,6 +131,11 @@
 		d_pct_urban_projected = Math.round(($proj_d_votes_regional_urban / $proj_total_votes_regional_urban) * 1000) / 10;
 		r_pct_urban_2016 = Math.round(($r_votes_regional_2016_urban / $total_votes_regional_2016_urban) * 1000) / 10;
 		r_pct_urban_projected = Math.round(($proj_r_votes_regional_urban / $proj_total_votes_regional_urban) * 1000) / 10;
+
+		// bool_excessive_rural = check_length($excessive_turnout_rural);
+		// bool_excessive_outstate = check_length($excessive_turnout_outstate);
+		// bool_excessive_suburban = check_length($excessive_turnout_suburban);
+		// bool_excessive_urban = check_length($excessive_turnout_urban);
 
 		if ($proj_d_votes_statewide > $proj_r_votes_statewide && last_winner == 'r') {
 			last_winner = 'd';
@@ -348,7 +360,7 @@
 		</div>
 		<h3 class="applied" on:click={myFunction}><span>See applied county modifiers <i class="strib-icon strib-nav-forward"></i></span></h3>
 		<div class="modifiers">
-			<div class="wrapper">
+			<div class="region-wrapper">
 				<div class="rural">
 					<h5>Small town/a</h5>
 					<p class="first"><b>Total votes:</b> {100 + turnout_modifiers["rural"]}% of 2016</p>
@@ -388,7 +400,8 @@
 			<label>
 				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 				<div class="wrapper">
-					<p class="turnout">{100 + turnout_modifiers["rural"]}% of 2016</p>
+					<p class="turnout">{100 + turnout_modifiers["rural"]}% of 2016  {#if $excessive_turnout_rural.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 80%. While it would be great if that many people showed up for their civic duty, it is highly unlikely.</span>{/if}
+					</p>
 					<!-- <input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0> -->
 				</div>
 			</label>
@@ -428,8 +441,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</p>
-					<!-- <input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0> -->
+					<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016 {#if $excessive_turnout_urban.length > 0}<span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 80%. While it would be great if that many people showed up for their civic duty, it is highly unlikely.</span>{/if}</p>
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>urban counties</b></p>
@@ -465,7 +477,8 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</p>
+					<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016  {#if $excessive_turnout_suburban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 80%. While it would be great if that many people showed up for their civic duty, it is highly unlikely.</span>{/if}
+					</p>
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>suburban counties</b></p>
@@ -501,7 +514,8 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</p>
+					<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016  {#if $excessive_turnout_outstate.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 80%. While it would be great if that many people showed up for their civic duty, it is highly unlikely.</span>{/if}
+					</p>
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>regional city counties</b></p>
@@ -535,10 +549,10 @@ Reset dials</button>
 
 		<h3>Small town/rural<br></h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_rural_2016}%</span> of the small town/rural county votes in 2016.</p>
-		<label>Total votes{#if $excessive_turnout_rural.length > 0} oh no!!!{/if}<br/>
+		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
-				<p class="turnout">{100 + turnout_modifiers["rural"]}% of 2016</p>
+				<p class="turnout">{100 + turnout_modifiers["rural"]}% of 2016 {#if $excessive_turnout_rural.length > 0}<span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 80%. While it would be great if that many people showed up for their civic duty, it is highly unlikely.</span>{/if}</p>
 			</div>
 		</label>
 
@@ -569,10 +583,12 @@ Reset dials</button>
 	<div id="outcity-dashboard"  class="dashboard">
 		<h3><!-- Greater  -->Minn. counties with regional centers</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_outstate_2016}%</span> of the regional center votes in 2016.</p>
-		<label>Total votes{#if $excessive_turnout_outstate.length > 0} oh no!!!{/if}<br/>
+		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016</p>
+				<p class="turnout">{100 + turnout_modifiers["outstate city"]}% of 2016 
+					{#if $excessive_turnout_outstate.length > 0}<span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 80%. While it would be great if that many people showed up for their civic duty, it is highly unlikely.</span>{/if}
+				</p>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -602,10 +618,10 @@ Reset dials</button>
 	<div id="suburban-dashboard"  class="dashboard">
 		<h3>Suburban Twin Cities</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_suburban_2016}%</span> of the suburban county votes in 2016.</p>
-		<label>Total votes{#if $excessive_turnout_suburban.length > 0} oh no!!!{/if}<br/>
+		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016</p>
+				<p class="turnout">{100 + turnout_modifiers["suburban"]}% of 2016 {#if $excessive_turnout_suburban.length > 0}<span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 80%. While it would be great if that many people showed up for their civic duty, it is highly unlikely.</span>{/if}</p>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -635,10 +651,10 @@ Reset dials</button>
 	<div id="urban-dashboard"  class="dashboard">
 		<h3>Hennepin and Ramsey counties</h3>
 		<p class="summary">Clinton won <span class="dem percent">{d_pct_urban_2016}%</span> of the urban county votes in 2016.</p>
-		<label>Total votes{#if $excessive_turnout_urban.length > 0} oh no!!!{/if}<br/>
+		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016</p>
+				<p class="turnout">{100 + turnout_modifiers["urban"]}% of 2016 {#if $excessive_turnout_urban.length > 0}<span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 80%. While it would be great if that many people showed up for their civic duty, it is highly unlikely.</span>{/if}</p>
 			</div>
 		</label>
 		<label>Partisan balance<br/>

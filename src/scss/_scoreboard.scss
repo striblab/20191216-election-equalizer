@@ -78,12 +78,13 @@
 		width: 100%;
 		max-width: 900px;
 		margin: 0 auto;
+		height: auto;
 		height: 0;
 		overflow: hidden;
 		transition: 0.5s height;
 		padding: 0;
 		margin-top: 10px;
-		div.wrapper {
+		div.region-wrapper {
 			display: grid;
 			grid-template-columns: 24% 24% 24% 24%;
   			grid-template-rows: 100%;
@@ -217,6 +218,10 @@
 				background-image: url(https://static.startribune.com/svg/clinton.png?cache=trash);
 				background-size: cover;
 				background-position: 50% 0%;
+				width: 75px;
+				height: 75px;
+				border-radius: 50%;
+				border: 2px solid white;
 			}
 			h4.cand-name {
 				left: 75px;
@@ -233,6 +238,16 @@
 				@media only screen and (max-width: 900px) {
 					right: 50px;
 				}
+			}
+			div.cand-mug {
+				width: 75px;
+				height: 75px;
+				border-radius: 50%;
+				border: 2px solid white;
+				background-color: #C0392B;
+				background-image: url(https://static.startribune.com/svg/trump.png?cache=trash);
+				background-size: cover;
+				background-position: 50% 50%;
 			}
 		}
 	}
@@ -350,7 +365,6 @@ div.cand-totals {
 				&.show {
 					opacity: 1;
 				}
-
 			}
 			h4.cand-name {
 				right: 80px;
