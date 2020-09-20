@@ -116,6 +116,16 @@
 		font-size: 15px;
 		margin-bottom: 0;
 		font-family: "Benton Sans";
+		span.partisan {
+			padding: 1.5px 4px;
+			border-radius: 5px;
+			&.positive {
+				background: #F2D7D5;
+			}
+			&.negative {
+				background: #D6EAF8;
+			}
+		}
 	}
 	.regional-turnout,
 	.regional-votes {

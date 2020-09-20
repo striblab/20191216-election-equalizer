@@ -55,20 +55,24 @@ div.scenario {
 		margin-top: -10px;
 		margin-bottom: 30px;
 		position: relative;
-		p.turnout {
+		span.turnout {
+			display: block;
 			text-align: center;
 			margin-top: 0;
-			padding-top: 15px;
+			padding-top: 10px;
 			font-family: "Benton Sans";
+			font-weight: normal;
 			img.warning {
 				margin-bottom: -2.5px;
 			}
 		}
-		p.partisan{
+		span.partisan{
+			display: block;
 			text-align: center;
 			margin-top: 0;
 			padding: 1.5px 4px;
    			border-radius: 5px;
+   			font-weight: normal;
 			font-family: "Benton Sans";
 			&.negative {
 					background: #D6EAF8;
@@ -138,17 +142,19 @@ input[type="number"]:focus {
 div.wrapper {
 	display: block;
 	vertical-align: middle;
-	width: 150px;
+	width: 170px;
 	margin: 0 auto;
 	margin-top: -15px;
 	margin-bottom: 10px;
 	position: relative;
 	height: 25px;
-	p.turnout {
+	span.turnout {
+		display: block;
 		position: relative;
 		height: auto;
-		margin-top: 20px;
+		margin-top: 10px;
 		line-height: 1;
+		font-weight: normal;
 		&.negative {
 			background: #D6EAF8;
 		}
@@ -162,14 +168,14 @@ div.wrapper {
 			display: inline-block;
 			width: 16px;
 			height: auto;
-			margin-bottom: 0px;
+			margin-bottom: -3px;
 			background: #F4D03F;
 			padding: 1px;
 			border-radius: 2px;
 		}
 		span.tooltip {
 			visibility: hidden;
-		    width: 200px;
+		    width: 250px;
 		    display: block;
 		    background-color: white;
 		    color: #333;
@@ -178,7 +184,7 @@ div.wrapper {
 		    border-radius: 6px;
 		    position: absolute;
 		    z-index: 100;
-		    left: -35px;
+		    left: -60px;
 		    top: 100%;
 		    font-size: 15px;
 		    line-height: 1.4;
@@ -213,10 +219,10 @@ div.wrapper {
 	}
 }
 
-div.wrapper p.turnout:hover {
+div.wrapper span.turnout:hover {
 	cursor: pointer;
 }
 
-div.wrapper p.turnout:hover span.tooltip {
+div.wrapper span.turnout:hover span.tooltip {
 	visibility: visible;
 }

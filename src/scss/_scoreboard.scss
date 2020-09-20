@@ -13,6 +13,14 @@
 	left: 0;
 }
 
+.project-wrapper div.region-wrapper div span.first:hover {
+	cursor: pointer;
+}
+
+.project-wrapper div.region-wrapper div span.first:hover span.tooltip {
+	visibility: visible;
+}
+
 .project-wrapper {
 	width: 100%;
 	margin: 0 auto;
@@ -86,7 +94,7 @@
 		margin-top: 10px;
 		div.region-wrapper {
 			display: grid;
-			grid-template-columns: 24% 24% 24% 24%;
+			grid-template-columns: 25% 25% 25% 25%;
   			grid-template-rows: 100%;
 			width: 100%;
 			text-align: center;
@@ -102,7 +110,7 @@
 			}
 			div {
 				width: 100%;
-				padding: 0px 10px;
+				/*padding: 0px 10px;*/
 				margin-top: 10px;
 				margin-bottom: 10px;
 				font-size: 13px;
@@ -125,35 +133,58 @@
 						margin-top: 0;
 					}
 				}
-				p {
+				span.first {
 					position: relative;
+					display: block;
 					margin-bottom: 10px;
 					padding-bottom: 0px;
 					transition: 0.5s background;
+					padding: 0px 10px;
 					@media only screen and (max-width: 900px) {
 						margin-bottom: 5px;
 						padding-bottom: 5px;
-						padding: 0px 10px;
 					}
-					b {
+					img.warning {
 						display: inline-block;
-						text-align: right;
-						padding-right: 2.5px;
-						background: white;
-						font-weight: normal;
+						width: 16px;
+						height: auto;
+						margin-bottom: -3px;
+						background: #F4D03F;
+						padding: 1px;
+						border-radius: 2px;
+					}
+					span.tooltip {
+						visibility: hidden;
+					    width: 250px;
+					    display: block;
+					    background-color: white;
+					    color: #333;
+					    border: 1px solid #333;
+					    padding: 10px;
+					    border-radius: 6px;
+					    position: absolute;
+					    z-index: 10000;
+					    left: -60px;
+					    top: 100%;
+					    font-size: 15px;
+					    line-height: 1.4;
 					}
 					span {
 						padding: 2.5px 5px;
 						border-radius: 5px;
 					}
-					.positive {
-						background: #F2D7D5;
-						transition: 0.5s background;
-					}
-					.negative {
-						background: #D6EAF8;
-						transition: 0.5s background;
-					}
+				}
+				.positive {
+					background: #F2D7D5;
+					transition: 0.5s background;
+					padding: 2.5px 5px;
+					border-radius: 5px;
+				}
+				.negative {
+					background: #D6EAF8;
+					transition: 0.5s background;
+					padding: 2.5px 5px;
+					border-radius: 5px;
 				}
 			}
 			div:nth-child(1) {
@@ -190,6 +221,14 @@
 			margin-top: 5px;
 		}
 	}
+}
+
+.project-wrapper div.region-wrapper div span.first:hover {
+	cursor: pointer;
+}
+
+.project-wrapper div.region-wrapper div span.first:hover span.tooltip {
+	visibility: visible;
 }
 
 .results-2016 {
