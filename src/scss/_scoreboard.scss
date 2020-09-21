@@ -106,7 +106,7 @@
   				grid-template-rows: 50% 50%;
   				margin-bottom: 20px;
   				margin-top: 10px;
-  				overflow: show;
+  				overflow: visible;
 			}
 			div {
 				width: 100%;
@@ -120,6 +120,7 @@
 				@media only screen and (max-width: 900px) {
 					margin: 0 auto;
 					padding: 0;
+					padding-bottom: 12px;
 				}
 				h5 {
 					text-transform: uppercase;
@@ -150,8 +151,8 @@
 						width: 16px;
 						height: auto;
 						margin-bottom: -3px;
-						background: #F4D03F;
-						padding: 1px;
+						/*background: #F4D03F;*/
+						padding: 0px;
 						border-radius: 2px;
 					}
 					span.tooltip {

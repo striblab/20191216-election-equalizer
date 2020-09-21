@@ -325,7 +325,7 @@
 
 <div class="scenario ahead">
 	<h5>Looking ahead</h5>
-	<p>So what does Trump need to do this time to turn things around? Let’s start by giving Biden and Trump the same vote totals Clinton and Trump received in Minnesota in 2016. Then we’ll split the state up by grouping counties into four regions: urban (Hennepin and Ramsey counties), suburban (five other counties surrounding the Twin Cities), regional centers (six counties with mid-sized cities) and rural (the 74 remaining counties).</p>
+	<p>So what does Trump need to do this time to turn things around? Let’s start by giving Biden and Trump the same vote totals Clinton and Trump received in Minnesota in 2016. Then we’ll split the state up by grouping counties into four regions: urban (Hennepin and Ramsey counties), suburban (five other counties surrounding the Twin Cities), regional centers (six counties outside the Twin Cities with mid-sized metro areas) and rural/small town (the 74 remaining counties).</p>
 
 	<p>We’ll use those (imperfect) regions to game out some scenarios where Trump could come out ahead.</p>
 </div>
@@ -371,23 +371,23 @@
 			<div class="region-wrapper">
 				<div class="rural">
 					<h5>Small town/rural</h5>
-					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["rural"])} {#if $excessive_turnout_rural.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
-					<p>Partisanship: <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{Math.abs(partisan_modifiers["rural"])}</span></p>
+					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["rural"])} {#if $excessive_turnout_rural.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+					<span>Partisanship: <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{Math.abs(partisan_modifiers["rural"])}</span></span>
 				</div>
 				<div class="regional">
 					<h5>Regional</h5>
-					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["outstate city"])} {#if $excessive_turnout_outstate.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
-					<p>Partisanship: <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{Math.abs(partisan_modifiers["outstate city"])}</span></p>
+					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["outstate city"])} {#if $excessive_turnout_outstate.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+					<span>Partisanship: <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{Math.abs(partisan_modifiers["outstate city"])}</span></span>
 				</div>
 				<div class="suburban">
 					<h5>Suburban</h5>
-					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["suburban"])} {#if $excessive_turnout_suburban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
-					<p>Partisanship: <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{Math.abs(partisan_modifiers["suburban"])}</span></p>
+					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["suburban"])} {#if $excessive_turnout_suburban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+					<span>Partisanship: <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{Math.abs(partisan_modifiers["suburban"])}</span></span>
 				</div>
 				<div class="urban">
 					<h5>Urban</h5>
-					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["urban"])} {#if $excessive_turnout_urban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
-					<p>Partisanship: <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{Math.abs(partisan_modifiers["urban"])}</span></p>
+					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["urban"])} {#if $excessive_turnout_urban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+					<span>Partisanship: <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{Math.abs(partisan_modifiers["urban"])}</span></span>
 				</div>
 			</div>
 			<button class="reset-button" type="button" on:click={resetDials}><img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">Reset dials</button>
@@ -408,7 +408,7 @@
 			<label>
 				<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 				<div class="wrapper">
-					<span class="turnout">{@html turnout_display(turnout_modifiers["rural"])} {#if $excessive_turnout_rural.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+					<span class="turnout">{@html turnout_display(turnout_modifiers["rural"])} {#if $excessive_turnout_rural.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"> </span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
 					<!-- <input type=number bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 placeholder=0.0> -->
 				</div>
 			</label>
@@ -452,7 +452,7 @@
 			<label>
 				<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<span class="turnout">{@html turnout_display(turnout_modifiers["urban"])} {#if $excessive_turnout_urban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+					<span class="turnout">{@html turnout_display(turnout_modifiers["urban"])} {#if $excessive_turnout_urban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
 					<!-- <input type=number bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 placeholder=0> -->
 				</div>
 			</label>
@@ -490,7 +490,7 @@ Reset dials</button>
 			<label>
 				<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<span class="turnout">{@html turnout_display(turnout_modifiers["suburban"])} {#if $excessive_turnout_suburban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+					<span class="turnout">{@html turnout_display(turnout_modifiers["suburban"])} {#if $excessive_turnout_suburban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
 				</div>
 			</label>
 			<p class="explainer">Partisan balance in <b>suburban counties</b></p>
@@ -511,13 +511,15 @@ Reset dials</button>
 </div>
 
 <div class="scenario third clear">
-	<h5>Could urban centers outside the Twin Cities tip the scales? </h5>
+	<h5>Could regional centers outside the Twin Cities tip the scales? </h5>
 	<div class="map mobile-show">
 		<img src="https://static.startribune.com/svg/regional.svg?cache=trfsdash" alt="map" class="map">
 	</div>
-	<p>While much of greater Minnesota tends to vote Republican, several significant regional population centers could boost either party. Population growth in the Rochester area, home to the Mayo Clinic, has created fresh opportunities for the DFL, especially among college-educated voters and growing communities of color. Though Clinton narrowly defeated Trump in Olmsted County in 2016, Democrats have gained ground in the region since 2014.</p>
+	<p>While much of greater Minnesota tends to vote Republican, several significant regional population centers outside the Twin Cities could boost either party. Population growth in the Rochester area, home to the Mayo Clinic, has created fresh opportunities for the DFL, especially among college-educated voters and growing communities of color. Though Clinton narrowly defeated Trump in Olmsted County in 2016, Democrats have gained ground in the region since 2014.</p>
 
 	<p>St. Louis County, home to Duluth, remains a Democratic stronghold, even as GOP support grows elsewhere on the Iron Range. Clinton won that county by 11 percentage points in 2016. Trump is making a play to peel more votes, though, with campaign events in and around Duluth.</p>
+
+	<p>Voters in Clay County, which includes Moorhead, broke narrowly for Trump in 2016, 46% to 44%. But the county, part of the broader Fargo-Moorhead metro area, has also been a consistent source of votes for Democrats down-ballot.</p>
 
 	<p>In central Minnesota, the greater St. Cloud area leans GOP. The president won both Stearns and Sherburne counties by wide margins in 2016. He also edged out Clinton in Blue Earth County, which includes Mankato, by about 1,000 votes. The margin there was 47% to 43% in 2016. Turning these areas even redder in November could help Trump win. </p>
 
@@ -525,14 +527,14 @@ Reset dials</button>
 
 	<div class="inline-ex">
 		<div class="inline-wrapper">
-			<p class="explainer">Total votes in <b>regional city counties</b></p>
+			<p class="explainer">Total votes in <b>regional center counties</b></p>
 			<label>
 				<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 				<div class="wrapper">
-					<span class="turnout">{@html turnout_display(turnout_modifiers["outstate city"])} {#if $excessive_turnout_outstate.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+					<span class="turnout">{@html turnout_display(turnout_modifiers["outstate city"])} {#if $excessive_turnout_outstate.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
 				</div>
 			</label>
-			<p class="explainer">Partisan balance in <b>regional city counties</b></p>
+			<p class="explainer">Partisan balance in <b>regional center counties</b></p>
 			<label>
 				<input type=range bind:value={partisan_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="partisan">
 				<div class="wrapper">
@@ -566,7 +568,7 @@ Reset dials</button>
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["rural"]} min=-10 max=10 step=0.1 class="density" id="rural-d">
 			<div class="wrapper">
-				<span class="turnout" class:warning="{bool_excessive_rural}">{@html turnout_display(turnout_modifiers["rural"])} {#if $excessive_turnout_rural.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+				<span class="turnout" class:warning="{bool_excessive_rural}">{@html turnout_display(turnout_modifiers["rural"])} {#if $excessive_turnout_rural.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
 			</div>
 		</label>
 
@@ -595,12 +597,12 @@ Reset dials</button>
 	</div>
 
 	<div id="outcity-dashboard"  class="dashboard">
-		<h3><!-- Greater  -->Minn. counties with regional centers</h3>
+		<h3><!-- Greater  -->regional centers</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_outstate_2016}%</span> of the regional center votes in 2016.</p>
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<span class="turnout">{@html turnout_display(turnout_modifiers["outstate city"])} {#if $excessive_turnout_outstate.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+				<span class="turnout">{@html turnout_display(turnout_modifiers["outstate city"])} {#if $excessive_turnout_outstate.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -633,7 +635,7 @@ Reset dials</button>
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["suburban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<span class="turnout">{@html turnout_display(turnout_modifiers["suburban"])} {#if $excessive_turnout_suburban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+				<span class="turnout">{@html turnout_display(turnout_modifiers["suburban"])} {#if $excessive_turnout_suburban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -661,12 +663,12 @@ Reset dials</button>
 	</div>
 
 	<div id="urban-dashboard"  class="dashboard">
-		<h3>Hennepin and Ramsey counties</h3>
+		<h3>Hennepin and Ramsey</h3>
 		<p class="summary">Clinton won <span class="dem percent">{d_pct_urban_2016}%</span> of the urban county votes in 2016.</p>
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">
 			<div class="wrapper">
-				<span class="turnout">{@html turnout_display(turnout_modifiers["urban"])} {#if $excessive_turnout_urban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+				<span class="turnout">{@html turnout_display(turnout_modifiers["urban"])} {#if $excessive_turnout_urban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
 			</div>
 		</label>
 		<label>Partisan balance<br/>
@@ -718,7 +720,7 @@ Reset dials</button>
 
 <div class="scenario">
 	<h5>Methodology</h5>
-	<p>Calculations start with each county's 2016 certified presidential vote totals from the Minnesota secretary of state. The sliders apply percentage-point modifiers to total votes and partisan split. Turnout is calculated by dividing total 2016 votes in each county by the Citizen Voting Age Population in the U.S. Census Bureau's 2012-2016 5-Year American Community Survey as a proxy for eligible voters. County regional classifications are based on a seven-county metro area, with a mix of federal and state designations.</p>
+	<p>Calculations start with each county's 2016 certified presidential vote totals from the Minnesota secretary of state. The sliders apply percentage-point modifiers to total votes and partisan split. Turnout is calculated by dividing total 2016 votes in each county by the Citizen Voting Age Population in the U.S. Census Bureau's 2012-2016 5-Year American Community Survey as a proxy for eligible voters. County regional classifications are based on a seven-county metro area, with a mix of federal and state designations. Regional centers are principally defined as counties outside the Twin Cities metro area with both a voting age citizen population of 50,000 or more and a county seat larger than 20,000 residents, which includes: St. Louis, Stearns, Sherburne, Blue Earth and Olmsted. An added exception is Clay County, which contains the city of Moorhead.</p>
 
 	<p>Special thanks to <a href="https://www.law.umn.edu/profiles/david-schultz" target="_blank">David Schultz</a> and <a href="https://www.hhh.umn.edu/directory/eric-ostermeier" target="_blank">Eric Ostermeier</a> for consulting on the methodology and assumptions.</p>
 
