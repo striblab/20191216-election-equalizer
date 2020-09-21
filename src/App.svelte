@@ -284,7 +284,7 @@
 
 <div class="scenario first">
 	<h5>What we know from 2016</h5>
-	<p>On its face, Clinton’s victory was not surprising. Minnesotans have delivered the state’s 10 electoral votes to the Democratic nominee in every presidential election since 1972.</p>
+	<p>On its face, Clinton’s victory was not surprising. Minnesotans have delivered the state’s 10 electoral votes to the Democratic nominee in every presidential election since 1972, when President Nixon carried the state.</p>
 
 	<p>But the 44,765-vote margin was the closest since 1984, when Democratic nominee Walter Mondale, a Minnesota native, eked out a 3,700-vote win over Republican Ronald Reagan.</p>
 	<div class="results-2016">
@@ -325,7 +325,7 @@
 
 <div class="scenario ahead">
 	<h5>Looking ahead</h5>
-	<p>So what does Trump need to do this time to turn things around? Let’s start by giving Biden and Trump the same vote totals Clinton and Trump received in Minnesota in 2016. Then we’ll split the state up by grouping counties into four regions: urban (Hennepin and Ramsey counties), suburban (six other counties surrounding the Twin Cities), regional centers (six counties with mid-sized cities) and rural (the 74 remaining counties).</p>
+	<p>So what does Trump need to do this time to turn things around? Let’s start by giving Biden and Trump the same vote totals Clinton and Trump received in Minnesota in 2016. Then we’ll split the state up by grouping counties into four regions: urban (Hennepin and Ramsey counties), suburban (five other counties surrounding the Twin Cities), regional centers (six counties with mid-sized cities) and rural (the 74 remaining counties).</p>
 
 	<p>We’ll use those (imperfect) regions to game out some scenarios where Trump could come out ahead.</p>
 </div>
@@ -442,7 +442,7 @@
 	</div>
 	<p>Hennepin and Ramsey counties, which include Minneapolis, St. Paul and many surrounding suburban cities, are home to nearly a third of Minnesota’s residents. Voter turnout in these counties, which historically have overwhelmingly favored Democrats, can have a significant impact on statewide elections.</p>
 
-	<p>Hillary Clinton carried both counties with 64.4% of the vote four years ago. Democratic officials are trying to fire up voters in the heart of the metro. They are not only trying to get their base to show up but also attempting to draw new voters, including young people and voters in the Twin Cities’ immigrant communities. Young voters appear poised to turn out at a higher rate than they did four years ago, with young voter registration up 12% compared to 2016, <a href="https://www.startribune.com/youth-voter-registration-on-the-rise-in-minnesota/572444352/" target="_blank">a nonpartisan poll shows</a>.</p>
+	<p>Hillary Clinton carried both counties with 64% of the vote four years ago. Democratic officials are trying to fire up voters in the heart of the metro. They are not only trying to get their base to show up but also attempting to draw new voters, including young people and voters in the Twin Cities’ immigrant communities. Young voters appear poised to turn out at a higher rate than they did four years ago, with young voter registration up 12% compared to 2016, <a href="https://www.startribune.com/youth-voter-registration-on-the-rise-in-minnesota/572444352/" target="_blank">a nonpartisan poll shows</a>.</p>
 
 	<p>The Fifth Congressional District, which includes Minneapolis, delivered more than 270,000 votes for the Democratic nominee in 2016 — 9% of all presidential votes cast statewide. Minnesota DFL Party Chairman Ken Martin said his party cannot have a drop in turnout in the urban core. “Those are the vote engines,” he said of Ramsey and Hennepin counties.</p>
 
