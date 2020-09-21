@@ -63,7 +63,7 @@ div.scenario {
 			font-family: "Benton Sans";
 			font-weight: normal;
 			img.warning {
-				margin-bottom: -2.5px;
+				margin-bottom: 2px;
 			}
 		}
 		span.partisan{
@@ -152,7 +152,7 @@ div.wrapper {
 		display: block;
 		position: relative;
 		height: auto;
-		margin-top: 10px;
+		margin-top: 15px;
 		line-height: 1;
 		font-weight: normal;
 		&.negative {
@@ -166,12 +166,12 @@ div.wrapper {
 		}
 		img.warning {
 			display: inline-block;
-			width: 16px;
+			width: 20px;
 			height: auto;
-			margin-bottom: -3px;
-			background: #F4D03F;
-			padding: 1px;
-			border-radius: 2px;
+			margin-bottom: -5px;
+			/*background: #F4D03F;*/
+			padding: 0px;
+			/*border-radius: 2px;*/
 		}
 		span.tooltip {
 			visibility: hidden;
@@ -184,7 +184,7 @@ div.wrapper {
 		    border-radius: 6px;
 		    position: absolute;
 		    z-index: 100;
-		    left: -60px;
+		    left: -40px;
 		    top: 100%;
 		    font-size: 15px;
 		    line-height: 1.4;
