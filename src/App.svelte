@@ -398,7 +398,7 @@
 <div class="scenario second">
 	<h5>RELYING ON RURAL SUPPORT</h5>
 	<div class="map mobile-show">
-		<img src="https://static.startribune.com/svg/rural.svg?cache=trash" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/rural.svg?cache=trfdsdash" alt="map" class="map">
 	</div>
 	<p>Trump’s campaign in 2020 has focused on driving up voter turnout in rural areas of Minnesota and across the Midwest. Rural Minnesota had the lowest turnout of our four regions in 2016. However, the number of additional votes that can come from the state’s sparsely populated counties is relatively limited. Try changing rural turnout with the sliders, then watch the scoreboard change at the top of the page. Even if you increase the number of rural votes by 10 percentage points over 2016, it’s not enough for Trump to win. And that would require some rural counties to have more than 80% of voters turn out — an unlikely number, even for high-turnout Minnesota.</p>
 
@@ -421,7 +421,7 @@
 			</label>
 		</div>
 		<div class="map desktop-show">
-			<img src="https://static.startribune.com/svg/rural.svg?cache=trash" alt="map" class="map">
+			<img src="https://static.startribune.com/svg/rural.svg?cache=trfdsdash" alt="map" class="map">
 		</div>
 	</div>
 	<button class="reset-button middle" type="button" on:click={resetDials}>
@@ -513,7 +513,7 @@ Reset dials</button>
 <div class="scenario third clear">
 	<h5>Could urban centers outside the Twin Cities tip the scales? </h5>
 	<div class="map mobile-show">
-		<img src="https://static.startribune.com/svg/regional.svg?cache=trash" alt="map" class="map">
+		<img src="https://static.startribune.com/svg/regional.svg?cache=trfsdash" alt="map" class="map">
 	</div>
 	<p>While much of greater Minnesota tends to vote Republican, several significant regional population centers could boost either party. Population growth in the Rochester area, home to the Mayo Clinic, has created fresh opportunities for the DFL, especially among college-educated voters and growing communities of color. Though Clinton narrowly defeated Trump in Olmsted County in 2016, Democrats have gained ground in the region since 2014.</p>
 
@@ -541,7 +541,7 @@ Reset dials</button>
 			</label>
 		</div>
 		<div class="map">
-			<img src="https://static.startribune.com/svg/regional.svg?cache=trash" alt="map" class="map">
+			<img src="https://static.startribune.com/svg/regional.svg?cache=trafsfdsh" alt="map" class="map">
 		</div>
 	</div>
 	<button class="reset-button" type="button" on:click={resetDials}>
