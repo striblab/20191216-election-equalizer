@@ -597,7 +597,7 @@ Reset dials</button>
 	</div>
 
 	<div id="outcity-dashboard"  class="dashboard">
-		<h3><!-- Greater  -->regional center counties</h3>
+		<h3><!-- Greater  -->regional centers</h3>
 		<p class="summary">Trump won <span class="gop percent">{r_pct_outstate_2016}%</span> of the regional center votes in 2016.</p>
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["outstate city"]} min=-10 max=10 step=0.1 class="density">
@@ -663,7 +663,7 @@ Reset dials</button>
 	</div>
 
 	<div id="urban-dashboard"  class="dashboard">
-		<h3>Hennepin and Ramsey counties</h3>
+		<h3>Hennepin and Ramsey</h3>
 		<p class="summary">Clinton won <span class="dem percent">{d_pct_urban_2016}%</span> of the urban county votes in 2016.</p>
 		<label>Total votes<br/>
 			<input type=range bind:value={turnout_modifiers["urban"]} min=-10 max=10 step=0.1 class="density">

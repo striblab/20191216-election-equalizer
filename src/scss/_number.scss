@@ -29,24 +29,6 @@ div.scenario {
 	    width: 100%;
 	    font-family: "Benton Sans";
 	}
-
-
-	/*input[type=number]:before {
-		content: '+';
-		color: gray;
-		opacity: 1;
-		font-size: 16px;
-		position: absolute;
-		width: 25px;
-		height: 25px;
-		border-radius: 50%;
-		border: 1px solid gray;
-		right: 30px;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 100;
-	}*/
-
 	div.wrapper {
 		display: block;
 		vertical-align: middle;
@@ -63,7 +45,10 @@ div.scenario {
 			font-family: "Benton Sans";
 			font-weight: normal;
 			img.warning {
-				margin-bottom: 2px;
+				margin-bottom: 4px;
+				@media only screen and (max-width: 900px) {
+					margin-bottom: -3.5px;
+				}
 			}
 		}
 		span.partisan{
@@ -168,10 +153,13 @@ div.wrapper {
 			display: inline-block;
 			width: 20px;
 			height: auto;
-			margin-bottom: -5px;
+			margin-bottom: 4px;
 			/*background: #F4D03F;*/
 			padding: 0px;
 			/*border-radius: 2px;*/
+			@media only screen and (max-width: 900px) {
+				margin-bottom: -3.5px;
+			}
 		}
 		span.tooltip {
 			visibility: hidden;
