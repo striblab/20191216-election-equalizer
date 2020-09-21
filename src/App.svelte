@@ -372,22 +372,22 @@
 				<div class="rural">
 					<h5>Small town/rural</h5>
 					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["rural"])} {#if $excessive_turnout_rural.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
-					<p>Partisanship: <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{Math.abs(partisan_modifiers["rural"])}</span></p>
+					<span>Partisanship: <span class:positive="{partisan_modifiers["rural"] > 0}" class:negative="{partisan_modifiers["rural"] < 0}">{Math.abs(partisan_modifiers["rural"])}</span></span>
 				</div>
 				<div class="regional">
 					<h5>Regional</h5>
 					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["outstate city"])} {#if $excessive_turnout_outstate.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
-					<p>Partisanship: <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{Math.abs(partisan_modifiers["outstate city"])}</span></p>
+					<span>Partisanship: <span class:positive="{partisan_modifiers["outstate city"] > 0}" class:negative="{partisan_modifiers["outstate city"] < 0}">{Math.abs(partisan_modifiers["outstate city"])}</span></span>
 				</div>
 				<div class="suburban">
 					<h5>Suburban</h5>
 					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["suburban"])} {#if $excessive_turnout_suburban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
-					<p>Partisanship: <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{Math.abs(partisan_modifiers["suburban"])}</span></p>
+					<span>Partisanship: <span class:positive="{partisan_modifiers["suburban"] > 0}" class:negative="{partisan_modifiers["suburban"] < 0}">{Math.abs(partisan_modifiers["suburban"])}</span></span>
 				</div>
 				<div class="urban">
 					<h5>Urban</h5>
 					<span class="first">Total votes: {@html turnout_display(turnout_modifiers["urban"])} {#if $excessive_turnout_urban.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
-					<p>Partisanship: <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{Math.abs(partisan_modifiers["urban"])}</span></p>
+					<span>Partisanship: <span class:positive="{partisan_modifiers["urban"] > 0}" class:negative="{partisan_modifiers["urban"] < 0}">{Math.abs(partisan_modifiers["urban"])}</span></span>
 				</div>
 			</div>
 			<button class="reset-button" type="button" on:click={resetDials}><img src="https://static.startribune.com/svg/reset.svg" alt="reset" class="reset">Reset dials</button>
