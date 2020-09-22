@@ -284,7 +284,7 @@
 
 <div class="scenario first">
 	<h5>What we know from 2016</h5>
-	<p>On its face, Clinton’s victory was not surprising. Minnesotans have delivered the state’s 10 electoral votes to the Democratic nominee in every presidential election since 1972, when President Nixon carried the state.</p>
+	<p>On its face, Hillary Clinton’s victory was not surprising. Minnesotans have delivered the state’s 10 electoral votes to the Democratic nominee in every presidential election since 1972, when President Nixon carried the state.</p>
 
 	<p>But the 44,765-vote margin was the closest since 1984, when Democratic nominee Walter Mondale, a Minnesota native, eked out a 3,700-vote win over Republican Ronald Reagan.</p>
 	<div class="results-2016">
