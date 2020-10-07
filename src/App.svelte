@@ -1,5 +1,5 @@
 <script>
-	import CountyData from './data/mncounties.json'
+	import CountyData from './data/mncounties-brianastan.json'
 	import County from './County.svelte';
 	import RegionalStats from './RegionalStats.svelte';
 	import { onMount } from 'svelte';
@@ -7,7 +7,7 @@
 
 	const commaNumber = require('comma-number')
 
-	import { eligible_voters_rural, eligible_voters_outstate, eligible_voters_suburban, eligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban, excessive_turnout_rural, excessive_turnout_outstate, excessive_turnout_suburban, excessive_turnout_urban } from './stores.js';
+	import { eligible_voters_rural, eligible_voters_outstate, eligible_voters_suburban, eligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban, excessive_turnout_rural, excessive_turnout_outstate, excessive_turnout_suburban, excessive_turnout_urban, eligible_voters_brianastan, total_votes_regional_2016_brianastan, r_votes_regional_2016_brianastan, d_votes_regional_2016_brianastan, proj_total_votes_regional_brianastan, proj_r_votes_regional_brianastan, proj_d_votes_regional_brianastan, excessive_turnout_brianastan } from './stores.js';
 
 	export let county_list = CountyData.sort( function( a, b ) {
 	    return a.county < b.county ? -1 : a.county > b.county ? 1 : 0;
@@ -61,6 +61,10 @@
 	let turnout_urban_2016 = 0;
 	let turnout_urban_projected = 0;
 
+	let total_votes_brianastan_2016 = 0;
+	let turnout_brianastan_2016 = 0;
+	let turnout_brianastan_projected = 0;
+
 	let d_pct_rural_2016 = 0;
 	let d_pct_rural_projected = 0;
 	let r_pct_rural_2016 = 0;
@@ -81,10 +85,17 @@
 	let r_pct_urban_2016 = 0;
 	let r_pct_urban_projected = 0;
 
+	let d_pct_brianastan_2016 = 0;
+	let d_pct_brianastan_projected = 0;
+	let r_pct_brianastan_2016 = 0;
+	let r_pct_brianastan_projected = 0;
+
 	let bool_excessive_rural = false;
 	let bool_excessive_outstate = false;
 	let bool_excessive_suburban = false;
 	let bool_excessive_urban = false;
+
+	let bool_excessive_brianastan = false;
 
 	let confettiDem;
 	let confettiGop;
@@ -117,10 +128,18 @@
 		turnout_urban_2016 = Math.round(($total_votes_regional_2016_urban / $eligible_voters_urban) * 1000) / 10;
 		turnout_urban_projected = Math.round(($proj_total_votes_regional_urban / $eligible_voters_urban) * 1000) / 10;
 
+		turnout_brianastan_2016 = Math.round(($total_votes_regional_2016_brianastan / $eligible_voters_brianastan) * 1000) / 10;
+		turnout_brianastan_projected = Math.round(($proj_total_votes_regional_brianastan / $eligible_voters_brianastan) * 1000) / 10;
+
 		d_pct_rural_2016 = Math.round(($d_votes_regional_2016_rural / $total_votes_regional_2016_rural) * 1000) / 10;
 		d_pct_rural_projected = Math.round(($proj_d_votes_regional_rural / $proj_total_votes_regional_rural) * 1000) / 10;
 		r_pct_rural_2016 = Math.round(($r_votes_regional_2016_rural / $total_votes_regional_2016_rural) * 1000) / 10;
 		r_pct_rural_projected = Math.round(($proj_r_votes_regional_rural / $proj_total_votes_regional_rural) * 1000) / 10;
+
+		d_pct_brianastan_2016 = Math.round(($d_votes_regional_2016_brianastan / $total_votes_regional_2016_brianastan) * 1000) / 10;
+		d_pct_brianastan_projected = Math.round(($proj_d_votes_regional_brianastan / $proj_total_votes_regional_brianastan) * 1000) / 10;
+		r_pct_brianastan_2016 = Math.round(($r_votes_regional_2016_brianastan / $total_votes_regional_2016_brianastan) * 1000) / 10;
+		r_pct_brianastan_projected = Math.round(($proj_r_votes_regional_brianastan / $proj_total_votes_regional_brianastan) * 1000) / 10;
 
 		d_pct_outstate_2016 = Math.round(($d_votes_regional_2016_outstate / $total_votes_regional_2016_outstate) * 1000) / 10;
 		d_pct_outstate_projected = Math.round(($proj_d_votes_regional_outstate / $proj_total_votes_regional_outstate) * 1000) / 10;
@@ -141,6 +160,7 @@
 		bool_excessive_outstate = check_length($excessive_turnout_outstate);
 		bool_excessive_suburban = check_length($excessive_turnout_suburban);
 		bool_excessive_urban = check_length($excessive_turnout_urban);
+		bool_excessive_brianastan = check_length($excessive_turnout_brianastan);
 
 		if ($proj_d_votes_statewide > $proj_r_votes_statewide && last_winner == 'r') {
 			last_winner = 'd';
@@ -189,27 +209,31 @@
 			"outstate city": 0,
 			"suburban": 0,
 			"urban": 0,
+			"brianastan": 0,
 		}
 
 		turnout_modifiers = {
 			"rural": 0,
 			"outstate city": 0,
 			"suburban": 0,
-			"urban": 0
+			"urban": 0,
+			"brianastan": 0,
 		}
 
 		other_party_modifiers = {
 			"rural": 0,
 			"outstate city": 0,
 			"suburban": 0,
-			"urban": 0
+			"urban": 0,
+			"brianastan": 0,
 		}
 
 		other_party_partisan_modifiers = {  // What share of new other votes go to Rs
 			"rural": 0.5,
 			"outstate city": 0.5,
 			"suburban": 0.5,
-			"urban": 0.5
+			"urban": 0.5,
+			"brianastan": 0,
 		}
 	}
 
@@ -561,6 +585,41 @@ Reset dials</button>
 Reset dials</button>
 
 <div id="dashboard" class="dashboard-wrapper">
+	<div id="brianastan-dashboard" class="dashboard">
+
+	  <h3>North Brianastan<br></h3>
+	  <p class="summary">Trump won <span class="gop percent">{r_pct_brianastan_2016}%</span> of the North Brianastan county votes in 2016.</p>
+	  <label>Total votes<br/>
+	    <input type=range bind:value={turnout_modifiers["brianastan"]} min=-10 max=10 step=0.1 class="density" id="brianastan-d">
+	    <div class="wrapper">
+	      <span class="turnout" class:warning="{bool_excessive_brianastan}">{@html turnout_display(turnout_modifiers["brianastan"])} {#if $excessive_turnout_brianastan.length > 0} <span><img src="https://static.startribune.com/svg/warning.svg?cache=traw" class="warning" alt="warning"></span> <span class="tooltip">A county in this region now has voter turnout higher than 81%. While it would be great if that many people showed up for their civic duty, experts say it's unlikely.</span>{/if}</span>
+	    </div>
+	  </label>
+
+	  <label>Partisan balance<br/>
+	    <input type=range bind:value={partisan_modifiers["brianastan"]} min=-10 max=10 step=0.1 class="partisan" id="brianastan-p">
+	    <div class="wrapper">
+	      <span class="partisan" class:positive="{partisan_modifiers["brianastan"] > 0}" class:negative="{partisan_modifiers["brianastan"] < 0}">{@html partisan_display(partisan_modifiers["brianastan"])}</span>
+	    </div>
+	  </label>
+
+	  <RegionalStats
+	    region='brianastan'
+	    d_votes_2016={$d_votes_regional_2016_brianastan}
+	    d_pct_2016={d_pct_brianastan_2016}
+	    d_votes_proj={$proj_d_votes_regional_brianastan}
+	    d_pct_proj={d_pct_brianastan_projected}
+	    r_votes_2016={$r_votes_regional_2016_brianastan}
+	    r_pct_2016={r_pct_brianastan_2016}
+	    r_votes_proj={$proj_r_votes_regional_brianastan}
+	    r_pct_proj={r_pct_brianastan_projected}
+	    total_votes_2016={$total_votes_regional_2016_brianastan}
+	    total_votes_proj={$proj_total_votes_regional_brianastan}
+	    turnout_pct_2016={turnout_brianastan_2016}
+	    turnout_pct_proj={turnout_brianastan_projected}
+	  />
+	</div>
+
 	<div id="rural-dashboard" class="dashboard">
 
 		<h3>Small town/rural<br></h3>

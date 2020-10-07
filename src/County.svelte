@@ -1,5 +1,5 @@
 <script>
-	import { eligible_voters_rural, eligible_voters_outstate, eligible_voters_suburban, eligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban, excessive_turnout_rural, excessive_turnout_outstate, excessive_turnout_suburban, excessive_turnout_urban } from './stores.js';
+	import { eligible_voters_rural, eligible_voters_outstate, eligible_voters_suburban, eligible_voters_urban, total_votes_statewide_2016, r_votes_statewide_2016, d_votes_statewide_2016, proj_total_votes_statewide, proj_r_votes_statewide, proj_d_votes_statewide, total_votes_regional_2016_rural, total_votes_regional_2016_outstate, total_votes_regional_2016_suburban, total_votes_regional_2016_urban, r_votes_regional_2016_rural, r_votes_regional_2016_outstate, r_votes_regional_2016_suburban, r_votes_regional_2016_urban, d_votes_regional_2016_rural, d_votes_regional_2016_outstate, d_votes_regional_2016_suburban, d_votes_regional_2016_urban, proj_total_votes_regional_rural, proj_total_votes_regional_outstate, proj_total_votes_regional_suburban, proj_total_votes_regional_urban, proj_r_votes_regional_rural, proj_r_votes_regional_outstate, proj_r_votes_regional_suburban, proj_r_votes_regional_urban, proj_d_votes_regional_rural, proj_d_votes_regional_outstate, proj_d_votes_regional_suburban, proj_d_votes_regional_urban, excessive_turnout_rural, excessive_turnout_outstate, excessive_turnout_suburban, excessive_turnout_urban, eligible_voters_brianastan, total_votes_regional_2016_brianastan, r_votes_regional_2016_brianastan, d_votes_regional_2016_brianastan, proj_total_votes_regional_brianastan, proj_r_votes_regional_brianastan, proj_d_votes_regional_brianastan, excessive_turnout_brianastan } from './stores.js';
 	const commaNumber = require('comma-number')
 
 	const roundPct = function(input) {
@@ -51,6 +51,8 @@
 			return 'Twin Cities suburb'
 		} else if (classification == 'rural') {
 			return 'Small town/rural'
+		} else if (classification == 'brianastan') {
+			return 'North Brianastan'
 		}
 	}
 
@@ -94,6 +96,12 @@
 		d_votes_regional_2016_urban.update(n => n + county_data.dVotes_2016);
 
 		eligible_voters_urban.update(n => n + eligible_voters);
+	} else if (county_data['classification'] == 'brianastan') {
+		total_votes_regional_2016_brianastan.update(n => n + county_data.votes_2016);
+		r_votes_regional_2016_brianastan.update(n => n + county_data.rVotes_2016);
+		d_votes_regional_2016_brianastan.update(n => n + county_data.dVotes_2016);
+
+		eligible_voters_brianastan.update(n => n + eligible_voters);
 	}
 
 	const add_to_array = function (array, county) {
@@ -184,6 +192,15 @@
 				 add_to_array($excessive_turnout_urban, name);
 			 } else {
 				 remove_from_array($excessive_turnout_urban, name);
+			 }
+		 } else if (county_data['classification'] == 'brianastan') {
+			 proj_total_votes_regional_brianastan.update(n => n - prev_proj_total_votes + proj_total_votes);
+			 proj_r_votes_regional_brianastan.update(n => n - prev_proj_r_votes + proj_r_votes);
+			 proj_d_votes_regional_brianastan.update(n => n - prev_proj_d_votes + proj_d_votes);
+			 if (bool_excessive_turnout === true) {
+				 add_to_array($excessive_turnout_brianastan, name);
+			 } else {
+				 remove_from_array($excessive_turnout_brianastan, name);
 			 }
 			}
 		}
