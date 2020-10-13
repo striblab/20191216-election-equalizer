@@ -730,8 +730,13 @@ Reset dials</button>
       <h5>Credits</h5>
 			<p><b>Reporting</b> Torey Van Oot and Jessie Van Berkel</p>
 			<p><b>Design</b> Anna Boone and Michael Corey</p>
-      <p><b>Development</b> Michael Corey and Anna Boone</p>
-      <p><b>Data</b> Jeff Hargarten</p>
-      <p><b>Editing</b> Matt DeLong, Eric Wieffering and Catherine Preus</p>
+	      <p><b>Development</b> Michael Corey and Anna Boone</p>
+	      <p><b>Data</b> Jeff Hargarten</p>
+	      <p><b>Editing</b> Matt DeLong, Eric Wieffering and Catherine Preus</p>
   </div>
+
+  <div class="subscribe-promo">
+	<img src="/static/img/branding/logos/startribune-star-black.svg" alt="Star Tribune" width="45" height="45"><h3>Be Informed. Be Ready. Be a Subscriber.</h3>
+	<a href="https://users.startribune.com/placement/6/environment/3/PreElectionPDAPromotion/start?offer=689" target="_blank"><h4>Subscribe today</h4></a>
+	</div>
 </div>
